@@ -595,12 +595,19 @@ box-shadow:0 0 10px rgba(0,224,198,.6);
 /*                 فواصل ثابتة بين عناصر القائمة              */
 /* ========================================================= */
 
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
+/* إزالة الفاصل قبل زر تسجيل الدخول */
 
-border-bottom:1px solid rgba(255,255,255,0.08);
+.tera-login-item{
+border-top:none;
+}
 
+.tera-login-item::before{
+display:none;
+}
+/* إزالة آخر فاصل في القائمة */
+
+.tera-sidebar-menu li:last-child{
+border-bottom:none;
 }
 
 /* ===================================== */
@@ -614,7 +621,6 @@ border-bottom:1px solid rgba(255,255,255,0.08);
 .tera-submenu a{
 position:relative;
 }
-
 .tera-menu-link::after,
 .tera-menu-item::after,
 .tera-submenu a::after{
@@ -623,13 +629,13 @@ content:"";
 
 position:absolute;
 
-bottom:-8px;
-
+top:50%;
 right:0;
 
-width:0;
+transform:translateY(-50%);
 
-height:2px;
+width:0;
+height:3px;
 
 background:linear-gradient(
 90deg,
@@ -637,9 +643,7 @@ var(--tera-accent),
 #66fff2
 );
 
-border-radius:6px;
-
-transition:width .35s ease;
+transition:width .3s ease;
 
 }
 
