@@ -549,31 +549,33 @@ overflow-y:auto;
 /*                 عناصر القائمة المطورة                      */
 /* ========================================================= */
 
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
 
-content:"";
+display:flex;
+align-items:center;
+justify-content:space-between;
 
-position:absolute;
+width:100%;
 
-bottom:-8px;
+padding:20px 24px;
 
-right:0;
+background:none;
+border:none;
 
-width:0;
+cursor:pointer;
 
-height:2px;
+font-size:16px;
+font-weight:600;
 
-background:linear-gradient(
-90deg,
-var(--tera-accent),
-#66fff2
-);
+color:var(--tera-text);
 
-border-radius:6px;
+text-decoration:none;
 
-transition:width .35s ease;
+border-radius:8px;
+
+transition:all .35s ease;
 
 }
 
