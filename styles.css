@@ -657,6 +657,30 @@ border-radius:20px;
 
 
 
+
+/* ========================================================= */
+/*        تثبيت لون نصوص القائمة الرئيسية والفرعية أبيض        */
+/* ========================================================= */
+
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a,
+.tera-menu-link .tera-text,
+.tera-menu-item .tera-text,
+.tera-submenu a .tera-text{
+  color:#ffffff !important;
+}
+
+/* عند المرور بالماوس */
+.tera-menu-link:hover,
+.tera-menu-item:hover,
+.tera-submenu a:hover,
+.tera-menu-link:hover .tera-text,
+.tera-menu-item:hover .tera-text,
+.tera-submenu a:hover .tera-text{
+  color:#ffffff !important;
+}
+
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
 /* ========================================================= */
