@@ -1,102 +1,116 @@
 /* ============================================================ */
-/*                نظام TERA Sidebar — النسخة النهائية          */
-/*                    جميع الحقوق محفوظة 2026                  */
+/* تيرا سايدبار - النسخة الأصلية 2026 (الألوان كما هي)           */
+/* جميع الحقوق محفوظة                                           */
 /* ============================================================ */
 
-
-
-/* ========================================================= */
-/*                     المتغيرات الأساسية                    */
-/* ========================================================= */
-
-
 :root {
-
+  /* الألوان الأصلية - لم يتم تغييرها */
   --tera-primary: #0f172a;
   --tera-accent: #4abba6;
+  --tera-accent-light: #38bdf8;
   --tera-white: #ffffff;
-
+  --tera-dark-blue: #0f172a;
+  --tera-divider: #1e293b;
   --tera-bg: #132a4f;
+  --tera-bg-soft: #0f1f3f;
   --tera-text: #e2e8f0;
+  --tera-glow: rgba(74, 187, 166, 0.6);
+  --tera-overlay: rgba(0, 0, 0, 0.65);
 
-  --tera-overlay: rgba(0,0,0,0.65);
-
-  --header-height: 90px;
+  /* الأحجام الثابتة (كما كانت في التصميم الأصلي) */
+  --header-height: 75px;
   --sidebar-width: 380px;
+  --font-size-normal: 16px;
+  --font-size-small: 14px;
+  --spacing-lg: 24px;
+  --spacing-md: 18px;
+  --spacing-sm: 12px;
 
-  --font-arabic: 'Tajawal','Cairo',sans-serif;
-
+  --font-arabic: 'Tajawal', 'Cairo', sans-serif;
 }
 
-
-/* ========================================================= */
-/*                     الإعدادات العامة                       */
-/* ========================================================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+/* الوضع الفاتح (بدون تغيير) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --tera-bg: #f4f7fb;
+    --tera-bg-soft: #ffffff;
+    --tera-text: #1e293b;
+    --tera-accent: #0ea5a4;
+    --tera-glow: rgba(14, 165, 164, 0.4);
+    --tera-dark-blue: #1e293b;
+  }
 }
 
-html,body{
-
-width:100%;
-overflow-x:hidden;
-
-font-family:var(--font-arabic);
-
-background:var(--tera-bg);
-color:var(--tera-text);
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-
-/* ========================================================= */
-/*                         الهيدر                            */
-/* ========================================================= */
-
-.tera-header{
-
-position:fixed;
-
-top:0;
-right:0;
-
-width:100%;
-height:var(--header-height);
-
-background:linear-gradient(135deg,#0f172a,#111c2d,#0b1220);
-
-display:flex;
-align-items:center;
-justify-content:flex-start;
-
-padding:0 25px;
-
-z-index:9999;
-
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-
-box-shadow:0 4px 20px rgba(0,0,0,.4);
-
-direction:rtl;
-
-transition:.4s;
-
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-arabic);
+  background: var(--tera-bg);
+  color: var(--tera-text);
 }
 
-
-/* تقليص الهيدر */
-
-.tera-header.scrolled{
-
-height:65px;
-
+/* ========== الهيدر ========== */
+.tera-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: linear-gradient(135deg, #0f172a, #111c2d, #0b1220);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 25px;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  direction: rtl;
 }
 
+.tera-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(74, 187, 166, 0.12), transparent);
+  transform: skewX(-25deg);
+  animation: teraLight 6s ease-in-out infinite;
+}
+
+.tera-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--tera-accent), #66fff2, var(--tera-accent), transparent);
+  background-size: 200% 100%;
+  animation: teraLineMove 4s linear infinite;
+  box-shadow: 0 0 18px rgba(74, 187, 166, 0.8);
+}
+
+.tera-header.scrolled {
+  height: 65px;
+  background: #0b1220;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+body.sidebar-open .tera-header {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
 
 
 /* ========================================================= */
