@@ -604,6 +604,17 @@ background:rgba(255,255,255,0.15);
 
 }
 
+/* ========================================================= */
+/*                 فواصل ثابتة بين عناصر القائمة              */
+/* ========================================================= */
+
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+
+}
 
 /* ===================================== */
 /*            مؤشر التحديد                */
@@ -753,13 +764,42 @@ display:flex;
 /*                    زر تسجيل الدخول                         */
 /* ========================================================= */
 
-.tera-login-item{
+..tera-login-item{
 
-margin-top:20px;
+margin-top:30px;
 
-padding-top:20px;
+padding-top:25px;
 
-border-top:1px solid rgba(255,255,255,.08);
+position:relative;
+
+}
+
+/* فاصل مثل فاصل الشعار */
+
+.tera-login-item::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:15%;
+right:15%;
+
+height:2px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+opacity:.6;
+
+border-radius:10px;
 
 }
 
