@@ -432,17 +432,60 @@ filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
 
 
 
-/* مسافة زر الإغلاق */
+/* ========================================================= */
+/*                     زر إغلاق السايدبار                     */
+/* ========================================================= */
 
 .tera-close-btn{
+
+position:absolute;
 
 top:18px;
 left:18px;
 
-z-index:50;
+width:42px;
+height:42px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,#00e0c6,#00bfa6);
+
+color:#062c33;
+
+font-size:22px;
+font-weight:700;
+
+cursor:pointer;
+
+z-index:100;
+
+box-shadow:
+0 6px 18px rgba(0,0,0,0.35),
+0 0 12px rgba(0,224,198,0.4);
+
+transition:all .35s ease;
 
 }
 
+
+
+/* تأثير hover */
+
+.tera-close-btn:hover{
+
+transform:rotate(90deg) scale(1.08);
+
+box-shadow:
+0 8px 25px rgba(0,0,0,0.45),
+0 0 20px rgba(0,224,198,0.6);
+
+}
 
 
 /* خط فاصل احترافي تحت الشعار */
