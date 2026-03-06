@@ -549,43 +549,6 @@ overflow-y:auto;
 /*                 عناصر القائمة المطورة                      */
 /* ========================================================= */
 
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
-
-position:relative;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-width:100%;
-
-padding:20px 24px;
-
-background:none;
-border:none;
-
-cursor:pointer;
-
-font-size:16px;
-font-weight:600;
-
-color:var(--tera-text);
-
-text-decoration:none;
-
-border-radius:8px;
-
-transition:all .35s ease;
-
-}
-
-
-/* ===================================== */
-/*          الفاصل بين العناصر            */
-/* ===================================== */
-
 .tera-menu-link::after,
 .tera-menu-item::after,
 .tera-submenu a::after{
@@ -594,15 +557,37 @@ content:"";
 
 position:absolute;
 
-bottom:-6px;
-left:0;
+bottom:-8px;
 
-width:100%;
-height:1px;
+right:0;
 
-background:rgba(255,255,255,0.15);
+width:0;
+
+height:2px;
+
+background:linear-gradient(
+90deg,
+var(--tera-accent),
+#66fff2
+);
+
+border-radius:6px;
+
+transition:width .35s ease;
 
 }
+
+.tera-menu-link:hover::after,
+.tera-menu-item:hover::after,
+.tera-submenu a:hover::after{
+
+width:85%;
+
+box-shadow:0 0 10px rgba(0,224,198,.6);
+
+}
+
+
 
 /* ========================================================= */
 /*                 فواصل ثابتة بين عناصر القائمة              */
@@ -764,7 +749,7 @@ display:flex;
 /*                    زر تسجيل الدخول                         */
 /* ========================================================= */
 
-..tera-login-item{
+.tera-login-item{
 
 margin-top:30px;
 
