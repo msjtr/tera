@@ -609,21 +609,29 @@ background:rgba(255,255,255,0.15);
 /*            مؤشر التحديد                */
 /* ===================================== */
 
-.tera-menu-link::before,
-.tera-menu-item::before,
-.tera-submenu a::before{
+/* مؤشر تحت النص */
+
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
+position:relative;
+}
+
+.tera-menu-link::after,
+.tera-menu-item::after,
+.tera-submenu a::after{
 
 content:"";
 
 position:absolute;
 
-left:-20px;
-top:50%;
+bottom:-8px;
 
-transform:translateY(-50%);
+right:0;
 
 width:0;
-height:3px;
+
+height:2px;
 
 background:linear-gradient(
 90deg,
@@ -633,20 +641,20 @@ var(--tera-accent),
 
 border-radius:6px;
 
-transition:.35s;
+transition:width .35s ease;
 
 }
 
 
-/* السهم في نهاية المؤشر */
+/* عند المرور */
 
-.tera-menu-link:hover::before,
-.tera-menu-item:hover::before,
-.tera-submenu a:hover::before{
+.tera-menu-link:hover::after,
+.tera-menu-item:hover::after,
+.tera-submenu a:hover::after{
 
-width:65px;
+width:85%;
 
-box-shadow:0 0 12px rgba(0,224,198,.6);
+box-shadow:0 0 10px rgba(0,224,198,.6);
 
 }
 
@@ -749,7 +757,7 @@ display:flex;
 
 margin-top:20px;
 
-padding-top:15px;
+padding-top:20px;
 
 border-top:1px solid rgba(255,255,255,.08);
 
