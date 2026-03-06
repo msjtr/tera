@@ -3,56 +3,88 @@
 /* جميع الحقوق محفوظة                                           */
 /* ============================================================ */
 
-:root {
-  /* الألوان الأصلية - لم يتم تغييرها */
-  --tera-primary: #0f172a;
-  --tera-accent: #4abba6;
-  --tera-accent-light: #38bdf8;
-  --tera-white: #ffffff;
-  --tera-dark-blue: #0f172a;
-  --tera-divider: #1e293b;
-  --tera-bg: #132a4f;
-  --tera-bg-soft: #0f1f3f;
-  --tera-text: #ffffff;
-  --tera-glow: rgba(74, 187, 166, 0.6);
-  --tera-overlay: rgba(0, 0, 0, 0.65);
+:root{
 
-  /* الأحجام الثابتة (كما كانت في التصميم الأصلي) */
-  --header-height: 75px;
-  --sidebar-width: 380px;
-  --font-size-normal: 16px;
-  --font-size-small: 14px;
-  --spacing-lg: 24px;
-  --spacing-md: 18px;
-  --spacing-sm: 12px;
+/* الألوان الأساسية */
+--tera-primary:#0f172a;
+--tera-accent:#4abba6;
+--tera-accent-light:#38bdf8;
+--tera-white:#ffffff;
 
-  --font-arabic: 'Tajawal', 'Cairo', sans-serif;
+--tera-dark-blue:#0f172a;
+--tera-divider:#1e293b;
+
+--tera-bg:#132a4f;
+--tera-bg-soft:#0f1f3f;
+
+--tera-text:#ffffff;
+
+--tera-glow:rgba(74,187,166,0.6);
+--tera-overlay:rgba(0,0,0,0.65);
+
+
+/* الأحجام */
+--header-height:75px;
+--sidebar-width:380px;
+
+--font-size-normal:16px;
+--font-size-small:14px;
+
+--spacing-lg:24px;
+--spacing-md:18px;
+--spacing-sm:12px;
+
+
+/* الخط */
+--font-arabic:'Tajawal','Cairo',sans-serif;
+
 }
 
-/* الوضع الفاتح (بدون تغيير) */
-@media (prefers-color-scheme: light) {
-  :root {
-    --tera-bg: #f4f7fb;
-    --tera-bg-soft: #ffffff;
-    --tera-text: #ffffff;
-    --tera-accent: #0ea5a4;
-    --tera-glow: rgba(14, 165, 164, 0.4);
-    --tera-dark-blue: #1e293b;
-  }
+
+
+/* الوضع الفاتح */
+
+@media (prefers-color-scheme:light){
+
+:root{
+
+--tera-bg:#f4f7fb;
+--tera-bg-soft:#ffffff;
+
+--tera-text:#1e293b;
+
+--tera-accent:#0ea5a4;
+
+--tera-glow:rgba(14,165,164,0.4);
+
+--tera-dark-blue:#1e293b;
+
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  font-family: var(--font-arabic);
-  background: var(--tera-bg);
-  color: var(--tera-text);
+
+
+/* إعدادات عامة */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+
+html,body{
+
+width:100%;
+overflow-x:hidden;
+
+font-family:var(--font-arabic);
+
+background:var(--tera-bg);
+
+color:var(--tera-text);
+
 }
 
 /* ========== الهيدر ========== */
@@ -681,6 +713,9 @@ border-radius:20px;
   color:#ffffff !important;
 }
 
+.tera-text{
+color:#ffffff !important;
+}
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
 /* ========================================================= */
