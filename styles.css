@@ -9,27 +9,24 @@
 /*                     المتغيرات الأساسية                    */
 /* ========================================================= */
 
-:root{
 
-  --tera-primary:#0f172a;
-  --tera-accent:#4abba6;
-  --tera-accent-light:#38bdf8;
+:root {
 
-  --tera-white:#ffffff;
-  --tera-text:#e2e8f0;
+  --tera-primary: #0f172a;
+  --tera-accent: #4abba6;
+  --tera-white: #ffffff;
 
-  --tera-bg:#132a4f;
-  --tera-bg-soft:#0f1f3f;
+  --tera-bg: #132a4f;
+  --tera-text: #e2e8f0;
 
-  --tera-overlay:rgba(0,0,0,.65);
+  --tera-overlay: rgba(0,0,0,0.65);
 
-  --header-height:90px;
-  --sidebar-width:380px;
+  --header-height: 90px;
+  --sidebar-width: 380px;
 
-  --font-arabic:'Tajawal','Cairo',sans-serif;
+  --font-arabic: 'Tajawal','Cairo',sans-serif;
 
 }
-
 
 
 /* ========================================================= */
