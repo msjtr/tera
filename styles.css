@@ -355,66 +355,123 @@ padding:0 25px 25px;
 }
 
 
-
 /* ========================================================= */
-/*                       زر الإغلاق                           */
-/* ========================================================= */
-
-.tera-close-btn{
-
-position:absolute;
-
-left:15px;
-top:20px;
-
-width:42px;
-height:42px;
-
-border:none;
-border-radius:12px;
-
-background:linear-gradient(135deg,#00e0c6,#00bfa6);
-
-color:#062c33;
-
-font-size:22px;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.tera-close-btn:hover{
-
-transform:rotate(180deg) scale(1.05);
-
-}
-
-
-
-/* ========================================================= */
-/*                          الشعار                            */
+/*                    شعار تيرا داخل السايدبار                */
 /* ========================================================= */
 
 .tera-logo-box{
 
-padding:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+
+margin-top:20px;
+margin-bottom:30px;
+
+padding:14px 18px;
+
+background:rgba(255,255,255,0.05);
 
 border-radius:16px;
 
-background:rgba(255,255,255,.05);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.35),
+0 0 18px rgba(0,224,198,0.15);
+
+transition:all .4s ease;
 
 }
+
+
+
+/* تأثير عند المرور */
+
+.tera-logo-box:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 12px 35px rgba(0,0,0,0.4),
+0 0 25px rgba(0,224,198,0.35);
+
+}
+
+
+
+/* الشعار */
 
 .tera-sidebar-logo{
 
-max-width:180px;
+max-width:170px;
+height:auto;
 
-filter:drop-shadow(0 0 12px rgba(0,255,220,.25));
+display:block;
+
+filter:drop-shadow(0 0 12px rgba(0,224,198,0.25));
+
+transition:all .35s ease;
 
 }
 
+
+
+/* تأثير الشعار */
+
+.tera-logo-box:hover .tera-sidebar-logo{
+
+transform:scale(1.05);
+
+filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
+
+}
+
+
+
+/* مسافة زر الإغلاق */
+
+.tera-close-btn{
+
+top:18px;
+left:18px;
+
+z-index:50;
+
+}
+
+
+
+/* خط فاصل احترافي تحت الشعار */
+
+.tera-logo-box::after{
+
+content:"";
+
+position:absolute;
+
+width:70%;
+height:2px;
+
+bottom:-12px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+opacity:0.6;
+
+border-radius:10px;
+
+}
 
 
 /* ========================================================= */
