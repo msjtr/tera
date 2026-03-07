@@ -722,6 +722,8 @@ border-radius:10px;
 width:100%;
 padding:18px 0;
 
+border-radius:60px;
+
 display:flex;
 justify-content:center;
 align-items:center;
@@ -729,30 +731,29 @@ align-items:center;
 font-size:16px;
 font-weight:600;
 
-color:#ffffff;
+color:#0f172a;
 text-decoration:none;
-
-border-radius:60px;
 
 background:linear-gradient(
 135deg,
 #00e0c6,
-#38bdf8
+#66fff2
 );
 
 border:none;
 
-position:relative;
-overflow:hidden;
-
-box-shadow:
-0 8px 25px rgba(0,0,0,.45),
-0 0 20px rgba(0,224,198,.35);
-
-transition:all .35s ease;
+transition:.3s ease;
 
 }
 
+.tera-login-link:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 8px 25px rgba(0,224,198,.5);
+
+}
 
 /* تأثير الإضاءة */
 
