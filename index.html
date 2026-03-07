@@ -1,104 +1,109 @@
+<!-- ========================================================= -->
+<!--            الصفحة الرئيسية لنظام TERA                     -->
+<!-- ========================================================= -->
+<!-- يحتوي هذا الملف على:                                     -->
+<!-- 1- الهيدر                                                -->
+<!-- 2- زر القائمة                                            -->
+<!-- 3- القائمة الجانبية                                      -->
+<!-- 4- طبقة التعتيم                                          -->
+<!-- 5- ربط ملفات CSS و JavaScript                            -->
+<!-- ========================================================= -->
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-<!-- ================================================= -->
-<!-- HEAD — إعدادات الصفحة الرئيسية لنظام TERA -->
-<!-- يحتوي إعدادات اللغة وربط ملفات التصميم -->
-<!-- ================================================= -->
-
+<!-- ========================================================= -->
+<!--                         HEAD                              -->
+<!-- ========================================================= -->
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TERA | عالمك بلا حدود</title>
 
-<!-- ================================================= -->
-<!-- ربط ملفات CSS -->
-<!-- ================================================= -->
+<!-- الخطوط -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ملف التصميم -->
 <link rel="stylesheet" href="styles.css">
+
 </head>
 
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>TERA</title>
-
-  <!-- الخطوط -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-
+<!-- ========================================================= -->
+<!--                         BODY                              -->
+<!-- ========================================================= -->
 
 <body>
 
 
 
 <!-- ========================================================= -->
-<!--                 نظام القائمة الجانبية — TERA              -->
+<!--                         HEADER                            -->
 <!-- ========================================================= -->
 
-
-<!-- ================= HEADER ================= -->
 <header class="tera-header">
 
-  <!-- زر فتح القائمة -->
-  <button
-    id="menuToggle"
-    class="tera-menu-toggle"
-    aria-label="فتح القائمة"
-    aria-expanded="false">
+<!-- زر فتح القائمة -->
 
-    <span class="line l1"></span>
-    <span class="line l2"></span>
-    <span class="line l3"></span>
+<button
+id="menuToggle"
+class="tera-menu-toggle"
+aria-label="فتح القائمة"
+aria-expanded="false">
 
-  </button>
+<span class="line l1"></span>
+<span class="line l2"></span>
+<span class="line l3"></span>
 
-
-
+</button>
 
 </header>
 
 
 
-<!-- ================= طبقة التعتيم ================= -->
+<!-- ========================================================= -->
+<!--                      طبقة التعتيم                         -->
+<!-- ========================================================= -->
+
 <div id="teraOverlay" class="tera-overlay"></div>
 
 
 
-<!-- ================= SIDEBAR ================= -->
+<!-- ========================================================= -->
+<!--                       القائمة الجانبية                     -->
+<!-- ========================================================= -->
+
 <div
-  id="teraSidebar"
-  class="tera-sidebar"
-  aria-hidden="true"
-  tabindex="-1">
+id="teraSidebar"
+class="tera-sidebar"
+aria-hidden="true"
+tabindex="-1">
 
-  <div class="tera-sidebar-inner">
-
-
-    <!-- زر الإغلاق -->
-    <button
-      id="teraClose"
-      class="tera-close-btn"
-      aria-label="إغلاق القائمة">
-      ✕
-    </button>
+<div class="tera-sidebar-inner">
 
 
+<!-- زر الإغلاق -->
 
-    <!-- ================= شعار تيرا ================= -->
- <div class="tera-logo-box">
+<button
+id="teraClose"
+class="tera-close-btn"
+aria-label="إغلاق القائمة">
+
+✕
+
+</button>
+
+
+
+<!-- شعار تيرا -->
+
+<div class="tera-logo-box">
 
 <img
 src="assets/images/tera-logo.svg"
@@ -108,149 +113,147 @@ alt="TERA Logo">
 </div>
 
 
-    <!-- ================================================= -->
-    <!--            القائمة القابلة للتمرير (Scroll)        -->
-    <!-- ================================================= -->
-    <ul class="tera-sidebar-menu">
+
+<!-- القائمة -->
+
+<ul class="tera-sidebar-menu">
 
 
-      <!-- عن تيرا -->
-      <li class="tera-has-submenu">
+<!-- عن تيرا -->
 
-        <button class="tera-menu-item" type="button">
+<li class="tera-has-submenu">
 
-          <span class="tera-text">عن تيرا</span>
-          <span class="tera-arrow">⌄</span>
+<button class="tera-menu-item" type="button">
 
-        </button>
+<span class="tera-text">عن تيرا</span>
+<span class="tera-arrow">⌄</span>
 
-        <ul class="tera-submenu">
+</button>
 
-          <li>
-            <a href="#about">
-              <span class="tera-text">من نحن</span>
-            </a>
-          </li>
+<ul class="tera-submenu">
 
-          <li>
-            <a href="#vision">
-              <span class="tera-text">رؤيتنا</span>
-            </a>
-          </li>
+<li>
+<a href="#about">
+<span class="tera-text">من نحن</span>
+</a>
+</li>
 
-          <li>
-            <a href="#goals">
-              <span class="tera-text">أهدافنا</span>
-            </a>
-          </li>
+<li>
+<a href="#vision">
+<span class="tera-text">رؤيتنا</span>
+</a>
+</li>
 
-        </ul>
+<li>
+<a href="#goals">
+<span class="tera-text">أهدافنا</span>
+</a>
+</li>
 
-      </li>
+</ul>
 
-
-
-      <!-- ما يميزنا -->
-      <li>
-        <a href="#features" class="tera-menu-link">
-          <span class="tera-text">ما يميزنا</span>
-        </a>
-      </li>
+</li>
 
 
 
-      <!-- إحصائياتنا -->
-      <li>
-        <a href="#stats" class="tera-menu-link">
-          <span class="tera-text">إحصائياتنا</span>
-        </a>
-      </li>
+<li>
+<a href="#features" class="tera-menu-link">
+<span class="tera-text">ما يميزنا</span>
+</a>
+</li>
 
 
 
-      <!-- معايير تيرا -->
-      <li>
-        <a href="#standards" class="tera-menu-link">
-          <span class="tera-text">معايير تيرا</span>
-        </a>
-      </li>
+<li>
+<a href="#stats" class="tera-menu-link">
+<span class="tera-text">إحصائياتنا</span>
+</a>
+</li>
 
 
 
-      <!-- آراء العملاء -->
-      <li>
-        <a href="#clients" class="tera-menu-link">
-          <span class="tera-text">آراء عملائنا</span>
-        </a>
-      </li>
+<li>
+<a href="#standards" class="tera-menu-link">
+<span class="tera-text">معايير تيرا</span>
+</a>
+</li>
 
 
 
-      <!-- تواصل معنا -->
-      <li class="tera-has-submenu">
-
-        <button class="tera-menu-item" type="button">
-
-          <span class="tera-text">تواصل معنا</span>
-          <span class="tera-arrow">⌄</span>
-
-        </button>
-
-        <ul class="tera-submenu">
-
-          <li>
-            <a href="#channels">
-              <span class="tera-text">القنوات الرسمية</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#ticket">
-              <span class="tera-text">فتح تذكرة</span>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
+<li>
+<a href="#clients" class="tera-menu-link">
+<span class="tera-text">آراء عملائنا</span>
+</a>
+</li>
 
 
 
-      <!-- وسائل الدفع -->
-      <li>
-        <a href="#payment" class="tera-menu-link">
-          <span class="tera-text">وسائل الدفع</span>
-        </a>
-      </li>
+<li class="tera-has-submenu">
 
+<button class="tera-menu-item" type="button">
 
-    </ul>
+<span class="tera-text">تواصل معنا</span>
+<span class="tera-arrow">⌄</span>
 
+</button>
 
+<ul class="tera-submenu">
 
-    <!-- ================================================= -->
-    <!--          زر تسجيل الدخول (ثابت أسفل الصندوق)       -->
-    <!-- ================================================= -->
+<li>
+<a href="#channels">
+<span class="tera-text">القنوات الرسمية</span>
+</a>
+</li>
 
-    <div class="tera-login-item">
+<li>
+<a href="#ticket">
+<span class="tera-text">فتح تذكرة</span>
+</a>
+</li>
 
-      <a
-        href="https://tera-services.com.sa/login?next=/"
-        class="tera-login-link"
-        target="_blank"
-        rel="noopener noreferrer">
+</ul>
 
-        تسجيل الدخول
-
-      </a>
-
-    </div>
+</li>
 
 
 
-  </div>
+<li>
+<a href="#payment" class="tera-menu-link">
+<span class="tera-text">وسائل الدفع</span>
+</a>
+</li>
+
+
+</ul>
+
+
+
+<!-- زر تسجيل الدخول -->
+
+<div class="tera-login-item">
+
+<a
+href="https://tera-services.com.sa/login?next=/"
+class="tera-login-link"
+target="_blank"
+rel="noopener noreferrer">
+
+تسجيل الدخول
+
+</a>
+
 </div>
 
+
+
+</div>
+</div>
+
+
+
+<!-- ========================================================= -->
+<!--                نهاية الصفحة الرئيسية TERA                 -->
+<!-- ========================================================= -->
 
   
 
@@ -1515,19 +1518,16 @@ margin-top:40px;
 
 
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 
 
 <!-- ================================================= -->
 <!-- ربط JavaScript -->
 <!-- ================================================= -->
-<script defer src="script.js"></script>
-
+<script src="script.js"></script>
 
 </body>
 </html>
+
 
 
 
