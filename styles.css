@@ -546,7 +546,85 @@ overflow-y:auto;
 /* ========================================================= */
 
 
+/* ========================================================= */
+/*      تأثير احترافي لعناصر القائمة (TERA Hover Effect)     */
+/* ========================================================= */
 
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
+
+position:relative;
+overflow:hidden;
+
+transition:all .35s ease;
+
+}
+
+
+/* الخلفية المتوهجة */
+
+.tera-menu-link:hover,
+.tera-menu-item:hover,
+.tera-submenu a:hover{
+
+background:linear-gradient(
+90deg,
+rgba(74,187,166,0.18),
+rgba(74,187,166,0.05)
+);
+
+box-shadow:
+0 0 18px rgba(0,224,198,0.25),
+inset 0 0 12px rgba(0,224,198,0.15);
+
+transform:translateX(-5px) scale(1.02);
+
+}
+
+
+/* الخط المتحرك */
+
+.tera-menu-link::after,
+.tera-menu-item::after,
+.tera-submenu a::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-6px;   /* المسافة تحت العنصر */
+
+right:0;
+
+width:0;
+height:2px;
+
+background:linear-gradient(
+90deg,
+#00e0c6,
+#66fff2,
+#00e0c6
+);
+
+border-radius:20px;
+
+transition:width .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* حركة الخط */
+
+.tera-menu-link:hover::after,
+.tera-menu-item:hover::after,
+.tera-submenu a:hover::after{
+
+width:100%;
+
+box-shadow:0 0 12px rgba(0,224,198,0.7);
+
+}
 
 
 
