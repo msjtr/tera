@@ -253,7 +253,7 @@ box-shadow:0 30px 80px rgba(0,0,0,.65);
 display:flex;
 flex-direction:column;
 
-overflow:hidden;
+overflow:visible;
 
 transition:
 transform .55s cubic-bezier(.22,1,.36,1),
@@ -264,7 +264,6 @@ z-index:10000;
 position:relative;
 
 }
-
 /* عند الفتح */
 
 .tera-sidebar.active{
