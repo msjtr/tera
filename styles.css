@@ -712,47 +712,133 @@ border-radius:10px;
 
 }
 
+
+/* ========================================================= */
+/*        زر تسجيل الدخول الاحترافي - TERA                   */
+/* ========================================================= */
+
 .tera-login-link{
 
 width:100%;
-
 padding:18px 0;
-
-border-radius:60px;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-color:#fff;
+font-size:16px;
+font-weight:600;
+
+color:#ffffff;
+text-decoration:none;
+
+border-radius:60px;
 
 background:linear-gradient(
 135deg,
-rgba(0,224,198,.25),
-rgba(0,224,198,.12)
+#00e0c6,
+#38bdf8
 );
 
 border:none;
 
-box-shadow:none;
+position:relative;
+overflow:hidden;
+
+box-shadow:
+0 8px 25px rgba(0,0,0,.45),
+0 0 20px rgba(0,224,198,.35);
+
+transition:all .35s ease;
 
 }
+
+
+/* تأثير الإضاءة */
+
+.tera-login-link::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:120%;
+height:100%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+
+transform:skewX(-25deg);
+
+transition:all .7s ease;
+
+}
+
+
+/* حركة الإضاءة */
+
+.tera-login-link:hover::before{
+
+left:120%;
+
+}
+
+
+/* تأثير hover */
 
 .tera-login-link:hover{
 
-background:linear-gradient(
-135deg,
-rgba(0,224,198,.6),
-rgba(0,224,198,.4)
-);
+transform:translateY(-3px) scale(1.02);
 
-transform:translateY(-2px);
+box-shadow:
+0 15px 35px rgba(0,0,0,.55),
+0 0 30px rgba(0,224,198,.6);
 
 }
 
-.tera-login-link{
-text-shadow:none;
+
+/* ========================================================= */
+/*          تأثير الإطار المضيء المتحرك - TERA                */
+/* ========================================================= */
+
+@keyframes teraBorderFlow{
+
+0%{
+background-position:
+0% 0%,
+100% 0%,
+100% 100%,
+0% 100%;
 }
+
+50%{
+background-position:
+100% 0%,
+100% 100%,
+0% 100%,
+0% 0%;
+}
+
+100%{
+background-position:
+0% 0%,
+100% 0%,
+100% 100%,
+0% 100%;
+}
+
+}
+
+
+
+
 
 /* ========================================================= */
 /*                    شريط التمرير                            */
