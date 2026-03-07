@@ -545,93 +545,6 @@ overflow-y:auto;
 /*                       عناصر القائمة                        */
 /* ========================================================= */
 
-
-/* ========================================================= */
-/*      تأثير احترافي لعناصر القائمة (TERA Hover Effect)     */
-/* ========================================================= */
-
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
-
-position:relative;
-overflow:hidden;
-
-transition:all .35s ease;
-
-}
-
-
-/* الخلفية المتوهجة */
-
-.tera-menu-link:hover,
-.tera-menu-item:hover,
-.tera-submenu a:hover{
-
-background:linear-gradient(
-90deg,
-rgba(74,187,166,0.18),
-rgba(74,187,166,0.05)
-);
-
-box-shadow:
-0 0 18px rgba(0,224,198,0.25),
-inset 0 0 12px rgba(0,224,198,0.15);
-
-transform:translateX(-5px) scale(1.02);
-
-}
-
-
-/* الخط المتحرك */
-
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
-
-content:"";
-
-position:absolute;
-
-bottom:-6px;   /* المسافة تحت العنصر */
-
-right:0;
-
-width:0;
-height:2px;
-
-background:linear-gradient(
-90deg,
-#00e0c6,
-#66fff2,
-#00e0c6
-);
-
-border-radius:20px;
-
-transition:width .45s cubic-bezier(.22,1,.36,1);
-
-}
-
-
-/* حركة الخط */
-
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-width:100%;
-
-box-shadow:0 0 12px rgba(0,224,198,0.7);
-
-}
-
-
-
-
-
-
-
 /* ========================================================= */
 /*                       السهم                                */
 /* ========================================================= */
@@ -852,3 +765,174 @@ color:#ffffff !important;
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
 /* ========================================================= */
+/* ========================================================= */
+/*                 عناصر القائمة الاحترافية                   */
+/* ========================================================= */
+
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
+
+display:flex;
+align-items:center;
+
+width:100%;
+
+padding:20px 24px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+font-weight:600;
+
+color:#ffffff;
+
+text-decoration:none;
+
+border-radius:10px;
+
+transition:all .35s cubic-bezier(.22,1,.36,1);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+/* ========================================================= */
+/*                       تأثير المرور                         */
+/* ========================================================= */
+
+.tera-menu-link:hover,
+.tera-menu-item:hover,
+.tera-submenu a:hover{
+
+background:linear-gradient(
+90deg,
+rgba(74,187,166,.18),
+rgba(74,187,166,.05)
+);
+
+transform:translateX(-6px) scale(1.02);
+
+box-shadow:
+0 0 18px rgba(0,224,198,.2),
+inset 0 0 10px rgba(0,224,198,.15);
+
+}
+
+
+/* ========================================================= */
+/*                    الخط المتحرك أسفل العنصر                */
+/* ========================================================= */
+
+.tera-menu-link::after,
+.tera-menu-item::after,
+.tera-submenu a::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-8px;
+
+right:24px;
+
+width:0;
+
+height:2px;
+
+border-radius:20px;
+
+background:linear-gradient(
+90deg,
+#00e0c6,
+#66fff2,
+#00e0c6
+);
+
+transition:width .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* حركة الخط */
+
+.tera-menu-link:hover::after,
+.tera-menu-item:hover::after,
+.tera-submenu a:hover::after{
+
+width:75%;
+
+box-shadow:0 0 12px rgba(0,224,198,.7);
+
+}
+
+
+/* ========================================================= */
+/*                   تأثير النص                               */
+/* ========================================================= */
+
+.tera-menu-link:hover .tera-text,
+.tera-menu-item:hover .tera-text,
+.tera-submenu a:hover .tera-text{
+
+text-shadow:0 0 10px rgba(0,224,198,.6);
+
+}
+
+
+/* ========================================================= */
+/*                     السهم أقصى اليسار                     */
+/* ========================================================= */
+
+.tera-arrow{
+
+margin-left:auto;
+
+font-size:22px;
+
+opacity:.8;
+
+transition:all .35s ease;
+
+}
+
+
+/* حركة السهم */
+
+.tera-menu-item:hover .tera-arrow{
+
+transform:translateX(-6px);
+
+opacity:1;
+
+}
+
+
+/* دوران السهم عند فتح القائمة */
+
+.tera-has-submenu.active .tera-arrow{
+
+transform:rotate(180deg);
+
+}
+
+
+/* ========================================================= */
+/*                 عناصر القائمة الفرعية                      */
+/* ========================================================= */
+
+.tera-submenu a{
+
+padding-right:35px;
+
+font-size:15px;
+
+opacity:.95;
+
+}
