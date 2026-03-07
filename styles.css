@@ -223,15 +223,12 @@ opacity:1;
 visibility:visible;
 
 }
-
 /* ========================================================= */
-/*                         السايدبار                         */
+/*               إطار السايدبار المضيء الصحيح                */
 /* ========================================================= */
 
 .tera-sidebar{
-
 position:fixed;
-
 top:calc(var(--header-height) + 10px);
 left:50%;
 
@@ -260,21 +257,18 @@ opacity .4s ease;
 
 z-index:10000;
 
+position:relative;
 }
 
 /* عند الفتح */
 
 .tera-sidebar.active{
-
 transform:translate(-50%,0) scale(1);
 opacity:1;
-
 }
 
 
-/* ========================================================= */
-/*                إطار السايدبار المضيء - TERA               */
-/* ========================================================= */
+/* الإطار */
 
 .tera-sidebar::before{
 
@@ -282,12 +276,12 @@ content:"";
 
 position:absolute;
 
-top:-2px;
-left:-2px;
-right:-2px;
-bottom:-2px;
+top:-6px;
+left:-6px;
+right:-6px;
+bottom:-6px;
 
-border-radius:26px;
+border-radius:30px;
 
 background:linear-gradient(
 90deg,
@@ -308,20 +302,10 @@ pointer-events:none;
 
 }
 
-
-/* ========================================================= */
-/*                    حركة الإطار المتحرك                    */
-/* ========================================================= */
-
 @keyframes teraBorderFlow{
 
-0%{
-background-position:0% 50%;
-}
-
-100%{
-background-position:300% 50%;
-}
+0%{background-position:0% 50%;}
+100%{background-position:300% 50%;}
 
 }
 
