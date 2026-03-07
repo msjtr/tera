@@ -623,7 +623,6 @@ position:relative;
 }
 
 /* فاصل مثل فاصل الشعار */
-
 .tera-login-item::before{
 
 content:"";
@@ -631,8 +630,11 @@ content:"";
 position:absolute;
 
 top:0;
-left:15%;
-right:15%;
+
+left:50%;
+transform:translateX(-50%);
+
+width:70%;
 
 height:2px;
 
