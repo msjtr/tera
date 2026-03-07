@@ -95,7 +95,7 @@ color:var(--tera-text);
   align-items: center;
   justify-content: flex-start;
   padding: 0 25px;
-  z-index: 9999;
+  z-index: 4000;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -239,7 +239,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:9000;
+z-index:3000;
 
 }
 
@@ -291,7 +291,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .35s ease;
 
-z-index:10000;
+z-index:5000;
 
 position:relative;
 
