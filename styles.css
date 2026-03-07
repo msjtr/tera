@@ -500,20 +500,13 @@ border-radius:10px;
 /* ========================================================= */
 
 .tera-sidebar-menu{
-
 list-style:none;
-
 margin-top:20px;
-
 display:flex;
 flex-direction:column;
-
-gap:18px;
-
+gap:12px;
 flex:1;
-
 overflow-y:auto;
-
 }
 
 /* ========================================================= */
@@ -654,50 +647,6 @@ box-shadow:0 0 8px rgba(0,224,198,.15);
 
 }
 
-
-/* ========================================================= */
-/*                    الفواصل بين العناصر                     */
-/* ========================================================= */
-
-.tera-sidebar-menu li{
-
-position:relative;
-
-}
-
-.tera-sidebar-menu li::after{
-
-content:"";
-
-position:absolute;
-
-bottom:-8px;
-
-right:10%;
-
-width:80%;
-
-height:1px;
-
-background:linear-gradient(
-90deg,
-transparent,
-rgba(0,224,198,.35),
-transparent
-);
-
-opacity:.5;
-
-}
-
-
-/* إلغاء الفاصل لآخر عنصر */
-
-.tera-sidebar-menu li:last-child::after{
-
-display:none;
-
-}
 
 /* ========================================================= */
 /*      إلغاء أي خطوط تحت عناصر القائمة نهائياً              */
