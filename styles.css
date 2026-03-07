@@ -255,7 +255,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .4s ease;
 
-z-index:10000;
+z-index:1;
 
 position:relative;
 }
