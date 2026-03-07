@@ -302,10 +302,10 @@ linear-gradient(270deg,transparent,var(--tera-accent),transparent) bottom,
 linear-gradient(0deg,transparent,var(--tera-accent),transparent) left;
 
 background-size:
-200% 2px,
-2px 200%,
-200% 2px,
-2px 200%;
+200% 4px,
+4px 200%,
+200% 4px,
+4px 200%;
 
 background-repeat:no-repeat;
 
