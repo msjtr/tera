@@ -252,138 +252,6 @@ visibility:visible;
 
 
 
-
-/* ========================================================= */
-/*               سايدبار TERA مع إطار متحرك نظيف              */
-/* ========================================================= */
-
-.tera-sidebar{
-
-position:fixed;
-
-top:calc(var(--header-height) + 10px);
-left:50%;
-
-transform:translate(-50%,-60px) scale(.96);
-opacity:0;
-
-width:var(--sidebar-width);
-max-width:90%;
-
-height:calc(100vh - var(--header-height) - 40px);
-
-background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
-
-border-radius:24px;
-
-/* إزالة الإطار القديم */
-border:none;
-
-/* ظل طبيعي فقط */
-box-shadow:0 30px 80px rgba(0,0,0,.65);
-
-display:flex;
-flex-direction:column;
-
-overflow:hidden;
-
-transition:
-transform .55s cubic-bezier(.22,1,.36,1),
-opacity .3s ease;
-
-z-index:2;
-
-position:relative;
-
-}
-
-/* ========================================================= */
-/*                    الإطار المتحرك الصحيح                   */
-/* ========================================================= */
-
-.tera-sidebar{
-position:fixed;
-
-top:calc(var(--header-height) + 10px);
-left:50%;
-
-transform:translate(-50%,-60px) scale(.96);
-opacity:0;
-
-width:var(--sidebar-width);
-max-width:90%;
-
-height:calc(100vh - var(--header-height) - 40px);
-
-background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
-
-border-radius:24px;
-
-box-shadow:0 30px 80px rgba(0,0,0,.65);
-
-display:flex;
-flex-direction:column;
-
-overflow:visible;
-
-transition:
-transform .55s cubic-bezier(.22,1,.36,1),
-opacity .3s ease;
-
-z-index:2;
-
-position:relative;
-}
-
-
-/* الإطار */
-
-.tera-sidebar::before{
-
-content:"";
-
-position:absolute;
-
-top:-3px;
-left:-3px;
-right:-3px;
-bottom:-3px;
-
-border-radius:27px;
-
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#6/* ========================================================= */
-/*                       طبقة التعتيم                        */
-/* ========================================================= */
-
-.tera-overlay{
-
-position:fixed;
-inset:0;
-
-background:var(--tera-overlay);
-
-opacity:0;
-visibility:hidden;
-
-transition:.4s;
-
-z-index:1500;
-
-}
-
-.tera-overlay.active{
-
-opacity:1;
-visibility:visible;
-
-}
-
-
-
 /* ========================================================= */
 /*                     صندوق السايدبار                       */
 /* ========================================================= */
@@ -407,6 +275,11 @@ background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 border-radius:24px;
 
+/* الإطار المتحرك */
+border:2px solid transparent;
+
+background-clip:padding-box;
+
 box-shadow:0 30px 80px rgba(0,0,0,.65);
 
 display:flex;
@@ -425,9 +298,8 @@ position:relative;
 }
 
 
-
 /* ========================================================= */
-/*                       عند الفتح                            */
+/*                        عند الفتح                           */
 /* ========================================================= */
 
 .tera-sidebar.active{
@@ -438,25 +310,15 @@ opacity:1;
 }
 
 
-
 /* ========================================================= */
-/*                  الإطار المتحرك حول الصندوق               */
+/*                   الإطار المتحرك                           */
 /* ========================================================= */
 
-.tera-sidebar::before{
+.tera-sidebar{
 
-content:"";
-
-position:absolute;
-
-top:-3px;
-left:-3px;
-right:-3px;
-bottom:-3px;
-
-border-radius:26px;
-
-background:linear-gradient(
+background-image:
+linear-gradient(180deg,#102a43,#0f2740,#0c2238),
+linear-gradient(
 90deg,
 transparent,
 #00e0c6,
@@ -465,21 +327,15 @@ transparent,
 transparent
 );
 
-background-size:200% 100%;
+background-origin:border-box;
+background-clip:padding-box, border-box;
 
 animation:teraBorderMove 2s linear infinite;
-
-pointer-events:none;
-
-z-index:-1;
 
 }
 
 
-
-/* ========================================================= */
-/*                        حركة الإطار                         */
-/* ========================================================= */
+/* حركة الإطار */
 
 @keyframes teraBorderMove{
 
@@ -493,6 +349,25 @@ background-position:200% 50%;
 
 }
 
+
+/* ========================================================= */
+/*                     الطبقة الداخلية                        */
+/* ========================================================= */
+
+.tera-sidebar-inner{
+
+height:100%;
+
+display:flex;
+flex-direction:column;
+
+padding:0 25px 25px;
+
+overflow:hidden;
+
+border-radius:24px;
+
+}
 
 
 /* ========================================================= */
