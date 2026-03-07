@@ -558,12 +558,11 @@ rgba(74,187,166,.18),
 rgba(74,187,166,.05)
 );
 
-box-shadow:0 0 12px rgba(0,224,198,.15);
+box-shadow:0 0 8px rgba(0,224,198,.12);
 
-transform:translateX(-4px);
+transform:none;
 
 }
-
 
 /* ========================================================= */
 /*                     سهم القوائم الفرعية                    */
@@ -652,13 +651,16 @@ box-shadow:0 0 8px rgba(0,224,198,.15);
 /*      إلغاء أي خطوط تحت عناصر القائمة نهائياً              */
 /* ========================================================= */
 
-.tera-sidebar-menu li::after,
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
-display:none !important;
+.tera-sidebar-menu{
+list-style:none;
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+flex:1;
+overflow-y:auto;
+overflow-x:hidden;
 }
-
 
 
 /* ========================================================= */
