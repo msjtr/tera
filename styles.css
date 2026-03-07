@@ -584,12 +584,6 @@ position:relative;
 }
 
 
-/* إزالة الفاصل من آخر عنصر */
-
-.tera-sidebar-menu li:last-child .tera-menu-link,
-.tera-sidebar-menu li:last-child .tera-menu-item{
-border-bottom:none;
-}
 
 
 /* ========================================================= */
