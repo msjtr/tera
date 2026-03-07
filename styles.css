@@ -225,10 +225,10 @@ visibility:visible;
 }
 
 
-
 /* ========================================================= */
 /*                         السايدبار                         */
 /* ========================================================= */
+
 .tera-sidebar{
 
 position:fixed;
@@ -237,7 +237,6 @@ top:calc(var(--header-height) + 10px);
 left:50%;
 
 transform:translate(-50%,-60px) scale(.96);
-
 opacity:0;
 
 width:var(--sidebar-width);
@@ -262,6 +261,8 @@ opacity .4s ease;
 
 z-index:10000;
 
+position:relative;
+
 }
 
 /* عند الفتح */
@@ -274,9 +275,8 @@ opacity:1;
 }
 
 
-
 /* ========================================================= */
-/*                       الإطار المتحرك                       */
+/*                     إطار السايدبار المضيء                 */
 /* ========================================================= */
 
 .tera-sidebar::before{
@@ -285,26 +285,22 @@ content:"";
 
 position:absolute;
 
-top:0;
-left:0;
-right:0;
-bottom:0;
+inset:0;
 
 border-radius:24px;
 
-pointer-events:none;
-
-/* سمك الإطار */
 padding:4px;
 
 background:linear-gradient(
 90deg,
 transparent,
-var(--tera-accent),
+#00e0c6,
 #66fff2,
-var(--tera-accent),
+#00e0c6,
 transparent
 );
+
+background-size:200% 200%;
 
 -webkit-mask:
 linear-gradient(#000 0 0) content-box,
@@ -313,17 +309,9 @@ linear-gradient(#000 0 0);
 -webkit-mask-composite:xor;
 mask-composite:exclude;
 
-animation:teraBorderFlow 2s linear infinite;
+pointer-events:none;
 
-@keyframes teraBorderFlow{
-
-0%{
-background-position:0% 50%;
-}
-
-100%{
-background-position:200% 50%;
-}
+animation:teraBorderFlow 6s linear infinite;
 
 }
 
@@ -940,6 +928,28 @@ border-radius:20px;
 .tera-text{
 color:#ffffff !important;
 }
+
+
+
+/* ========================================================= */
+/*                    حركة الإطار المتحرك                     */
+/* ========================================================= */
+
+@keyframes teraBorderFlow{
+
+0%{
+background-position:0% 50%;
+}
+
+100%{
+background-position:200% 50%;
+}
+
+}
+
+
+
+
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
 /* ========================================================= */
