@@ -273,10 +273,8 @@ background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 border-radius:24px;
 
-/* الإطار */
 border:2px solid #00e0c6;
 
-/* الإضاءة */
 box-shadow:
 0 0 15px rgba(0,224,198,.35),
 0 0 35px rgba(0,224,198,.15),
@@ -293,10 +291,7 @@ opacity .3s ease;
 
 z-index:3500;
 
-position:relative;
-
 }
-
 
 
 
