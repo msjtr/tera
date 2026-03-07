@@ -535,27 +535,75 @@ overflow-y:auto;
 
 }
 
-
-
 /* ========================================================= */
 /*                       عناصر القائمة                        */
 /* ========================================================= */
 
+.tera-menu-link,
+.tera-menu-item{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+width:100%;
+
+padding:18px 22px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+font-weight:600;
+
+color:#ffffff;
+
+text-decoration:none;
+
+border-radius:12px;
+
+transition:.3s ease;
+
+position:relative;
+
+}
+
+
 /* ========================================================= */
-/*                       السهم                                */
+/*                   تأثير القوائم الرئيسية                   */
+/* ========================================================= */
+
+.tera-menu-link:hover,
+.tera-menu-item:hover{
+
+background:linear-gradient(
+90deg,
+rgba(74,187,166,.18),
+rgba(74,187,166,.05)
+);
+
+box-shadow:0 0 12px rgba(0,224,198,.15);
+
+transform:translateX(-4px);
+
+}
+
+
+/* ========================================================= */
+/*                     سهم القوائم الفرعية                    */
 /* ========================================================= */
 
 .tera-arrow{
 
-font-size:26px;
+margin-right:auto;
 
-transition:.35s;
+font-size:22px;
 
-}
+transition:.3s;
 
-.tera-menu-item:hover .tera-arrow{
-
-transform:rotate(15deg) scale(1.05);
+opacity:.8;
 
 }
 
@@ -565,25 +613,9 @@ transform:rotate(180deg);
 
 }
 
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-background:linear-gradient(
-90deg,
-transparent,
-#ffffff,
-transparent
-);
-
-height:1px;
-
-opacity:.6;
-
-}
 
 /* ========================================================= */
-/*                     القوائم الفرعية                        */
+/*                      القائمة الفرعية                       */
 /* ========================================================= */
 
 .tera-submenu{
@@ -594,15 +626,111 @@ display:none;
 
 flex-direction:column;
 
-gap:8px;
+margin-top:6px;
 
-padding-top:10px;
+border-right:2px solid rgba(74,187,166,.25);
+
+padding-right:10px;
+
+gap:6px;
 
 }
 
 .tera-has-submenu.active .tera-submenu{
 
 display:flex;
+
+}
+
+
+/* ========================================================= */
+/*                عناصر القائمة الفرعية                       */
+/* ========================================================= */
+
+.tera-submenu a{
+
+display:flex;
+align-items:center;
+
+padding:12px 16px;
+
+font-size:15px;
+
+border-radius:8px;
+
+color:#ffffff;
+
+opacity:.9;
+
+transition:.25s;
+
+}
+
+.tera-submenu a:hover{
+
+background:rgba(74,187,166,.15);
+
+padding-right:20px;
+
+box-shadow:0 0 8px rgba(0,224,198,.15);
+
+}
+
+
+/* ========================================================= */
+/*                    الفواصل بين العناصر                     */
+/* ========================================================= */
+
+.tera-sidebar-menu li{
+
+position:relative;
+
+}
+
+.tera-sidebar-menu li::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-8px;
+
+right:10%;
+
+width:80%;
+
+height:1px;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(0,224,198,.35),
+transparent
+);
+
+opacity:.5;
+
+}
+
+
+/* إلغاء الفاصل لآخر عنصر */
+
+.tera-sidebar-menu li:last-child::after{
+
+display:none;
+
+}
+
+
+/* ========================================================= */
+/*                إزالة أي خطوط تحت النصوص                   */
+/* ========================================================= */
+
+.tera-menu-link::after,
+.tera-menu-item::after,
+.tera-submenu a::after{
+
+display:none !important;
 
 }
 
