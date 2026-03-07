@@ -625,30 +625,6 @@ transition:width .35s ease;
 }
 
 
-/* عند المرور */
-
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-width:85%;
-
-box-shadow:0 0 10px rgba(0,224,198,.6);
-
-}
-
-
-/* ========================================================= */
-/*        إصلاح منطقة زر تسجيل الدخول                        */
-/* ========================================================= */
-
-.tera-login-item{
-border-top:none;
-}
-
-.tera-login-item::before{
-display:none;
-}
 
 /* ========================================================= */
 /*                       السهم                                */
