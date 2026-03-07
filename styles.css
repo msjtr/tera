@@ -239,7 +239,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:1500;
+z-index:3500;
 
 }
 
@@ -291,7 +291,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .3s ease;
 
-z-index:3500;
+z-index:2;
 
 position:relative;
 
@@ -330,7 +330,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .3s ease;
 
-z-index:2000;
+z-index:2;
 
 position:relative;
 }
@@ -355,6 +355,111 @@ background:linear-gradient(
 90deg,
 transparent,
 #00e0c6,
+#6/* ========================================================= */
+/*                       طبقة التعتيم                        */
+/* ========================================================= */
+
+.tera-overlay{
+
+position:fixed;
+inset:0;
+
+background:var(--tera-overlay);
+
+opacity:0;
+visibility:hidden;
+
+transition:.4s;
+
+z-index:1500;
+
+}
+
+.tera-overlay.active{
+
+opacity:1;
+visibility:visible;
+
+}
+
+
+
+/* ========================================================= */
+/*                     صندوق السايدبار                       */
+/* ========================================================= */
+
+.tera-sidebar{
+
+position:fixed;
+
+top:calc(var(--header-height) + 10px);
+left:50%;
+
+transform:translate(-50%,-60px) scale(.96);
+opacity:0;
+
+width:var(--sidebar-width);
+max-width:90%;
+
+height:calc(100vh - var(--header-height) - 40px);
+
+background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
+
+border-radius:24px;
+
+box-shadow:0 30px 80px rgba(0,0,0,.65);
+
+display:flex;
+flex-direction:column;
+
+overflow:hidden;
+
+transition:
+transform .55s cubic-bezier(.22,1,.36,1),
+opacity .35s ease;
+
+z-index:3500;
+
+position:relative;
+
+}
+
+
+
+/* ========================================================= */
+/*                       عند الفتح                            */
+/* ========================================================= */
+
+.tera-sidebar.active{
+
+transform:translate(-50%,0) scale(1);
+opacity:1;
+
+}
+
+
+
+/* ========================================================= */
+/*                  الإطار المتحرك حول الصندوق               */
+/* ========================================================= */
+
+.tera-sidebar::before{
+
+content:"";
+
+position:absolute;
+
+top:-3px;
+left:-3px;
+right:-3px;
+bottom:-3px;
+
+border-radius:26px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
 #66fff2,
 #00e0c6,
 transparent
@@ -364,50 +469,50 @@ background-size:200% 100%;
 
 animation:teraBorderMove 2s linear infinite;
 
-z-index:0;
-
 pointer-events:none;
+
+z-index:-1;
 
 }
 
 
-/* الصندوق الداخلي فوق الإطار */
+
+/* ========================================================= */
+/*                        حركة الإطار                         */
+/* ========================================================= */
+
+@keyframes teraBorderMove{
+
+0%{
+background-position:0% 50%;
+}
+
+100%{
+background-position:200% 50%;
+}
+
+}
+
+
+
+/* ========================================================= */
+/*                     الطبقة الداخلية                        */
+/* ========================================================= */
 
 .tera-sidebar-inner{
 
-position:relative;
-z-index:3500;
-
-background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
-
-border-radius:24px;
+height:100%;
 
 display:flex;
 flex-direction:column;
 
-height:100%;
-
 padding:0 25px 25px;
+
+border-radius:24px;
 
 overflow:hidden;
 
-}
-
-
-/* عند الفتح */
-
-.tera-sidebar.active{
-transform:translate(-50%,0) scale(1);
-opacity:1;
-}
-
-
-/* الحركة */
-
-@keyframes teraBorderMove{
-
-0%{background-position:0% 50%;}
-100%{background-position:200% 50%;}
+background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 }
 /* ========================================================= */
