@@ -297,10 +297,46 @@ position:relative;
 
 }
 
+/* ========================================================= */
+/*                    الإطار المتحرك الصحيح                   */
+/* ========================================================= */
 
-/* ========================================================= */
-/*                    الإطار المتحرك                          */
-/* ========================================================= */
+.tera-sidebar{
+position:fixed;
+
+top:calc(var(--header-height) + 10px);
+left:50%;
+
+transform:translate(-50%,-60px) scale(.96);
+opacity:0;
+
+width:var(--sidebar-width);
+max-width:90%;
+
+height:calc(100vh - var(--header-height) - 40px);
+
+background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
+
+border-radius:24px;
+
+box-shadow:0 30px 80px rgba(0,0,0,.65);
+
+display:flex;
+flex-direction:column;
+
+overflow:visible;
+
+transition:
+transform .55s cubic-bezier(.22,1,.36,1),
+opacity .3s ease;
+
+z-index:3500;
+
+position:relative;
+}
+
+
+/* الإطار */
 
 .tera-sidebar::before{
 
@@ -308,14 +344,13 @@ content:"";
 
 position:absolute;
 
-top:-2px;
-left:-2px;
-right:-2px;
-bottom:-2px;
+top:-3px;
+left:-3px;
+right:-3px;
+bottom:-3px;
 
-border-radius:26px;
+border-radius:27px;
 
-/* نفس خط الهدر */
 background:linear-gradient(
 90deg,
 transparent,
@@ -327,37 +362,21 @@ transparent
 
 background-size:200% 100%;
 
-/* الحركة */
 animation:teraBorderMove 2s linear infinite;
 
-z-index:2000;
+z-index:0;
+
+pointer-events:none;
 
 }
 
 
-/* الحركة */
+/* الصندوق الداخلي فوق الإطار */
 
-@keyframes teraBorderMove{
+.tera-sidebar-inner{
 
-0%{
-background-position:0% 50%;
-}
-
-100%{
-background-position:200% 50%;
-}
-
-}
-
-
-
-/* ========================================================= */
-/*                     الطبقة الداخلية                        */
-/* ========================================================= */
-
-.tera-sidebar > .tera-sidebar-inner{
-
-flex:1;
+position:relative;
+z-index:2;
 
 background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
@@ -366,30 +385,31 @@ border-radius:24px;
 display:flex;
 flex-direction:column;
 
+height:100%;
+
+padding:0 25px 25px;
+
 overflow:hidden;
 
 }
 
 
-
 /* عند الفتح */
 
 .tera-sidebar.active{
-
 transform:translate(-50%,0) scale(1);
 opacity:1;
-
 }
+
 
 /* الحركة */
 
-@keyframes teraBorderFlow{
+@keyframes teraBorderMove{
 
 0%{background-position:0% 50%;}
-100%{background-position:300% 50%;}
+100%{background-position:200% 50%;}
 
 }
-
 /* ========================================================= */
 /*                        المحتوى الداخلي                     */
 /* ========================================================= */
