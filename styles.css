@@ -309,44 +309,7 @@ opacity:1;
 }
 
 
-/* ========================================================= */
-/*                   الإطار المتحرك                           */
-/* ========================================================= */
 
-.tera-sidebar{
-
-background-image:
-linear-gradient(180deg,#102a43,#0f2740,#0c2238),
-linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
-
-background-origin:border-box;
-background-clip:padding-box, border-box;
-
-animation:teraBorderMove 2s linear infinite;
-
-}
-
-
-/* حركة الإطار */
-
-@keyframes teraBorderMove{
-
-0%{
-background-position:0% 50%;
-}
-
-100%{
-background-position:200% 50%;
-}
-
-}
 
 
 
