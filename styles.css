@@ -291,7 +291,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .35s ease;
 
-z-index:3500;
+z-index:3000;
 
 position:relative;
 
