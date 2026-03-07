@@ -213,7 +213,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:1000;
+z-index:500;
 
 }
 
@@ -265,7 +265,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .3s ease;
 
-z-index:2500;
+z-index:1500;
 
 position:relative;
 
