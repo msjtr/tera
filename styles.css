@@ -243,7 +243,7 @@ max-width:90%;
 height:calc(100vh - var(--header-height) - 40px);
 
 /* الإطار */
-padding:3px;
+padding:5px;
 background:linear-gradient(
 90deg,
 transparent,
@@ -254,11 +254,11 @@ transparent
 );
 
 background-size:300% 100%;
-animation:teraBorderFlow 6s linear infinite;
+animation:teraBorderFlow 2s linear infinite;
 
 border-radius:26px;
 
-z-index:1000;
+z-index:3500;
 
 display:flex;
 
