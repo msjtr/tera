@@ -803,22 +803,6 @@ overflow:hidden;
 /*                       تأثير المرور                         */
 /* ========================================================= */
 
-.tera-menu-link:hover,
-.tera-menu-item:hover,
-.tera-submenu a:hover{
-
-background:linear-gradient(
-90deg,
-rgba(74,187,166,.18),
-rgba(74,187,166,.05)
-);
-
-transform:translateX(-6px);
-
-box-shadow:
-0 0 12px rgba(0,224,198,.15);
-
-}
 
 
 /* ========================================================= */
