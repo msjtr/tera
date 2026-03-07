@@ -544,79 +544,13 @@ overflow-y:auto;
 /* ========================================================= */
 /*                       عناصر القائمة                        */
 /* ========================================================= */
-/* ========================================================= */
-/*                 عناصر القائمة المطورة                      */
-/* ========================================================= */
-
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-width:100%;
-
-padding:20px 24px;
-
-background:none;
-border:none;
-
-cursor:pointer;
-
-font-size:16px;
-font-weight:600;
-
-color:var(--tera-text);
-
-text-decoration:none;
-
-border-radius:8px;
-
-transition:all .35s ease;
-
-/* الفاصل بين العناصر */
-border-bottom:1px solid rgba(255,255,255,0.08);
-
-position:relative;
-
-}
 
 
 
 
-/* ========================================================= */
-/*            مؤشر التحديد الجانبي                            */
-/* ========================================================= */
 
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
 
-content:"";
 
-position:absolute;
-
-top:50%;
-right:0;
-
-transform:translateY(-50%);
-
-width:0;
-height:3px;
-
-background:linear-gradient(
-90deg,
-var(--tera-accent),
-#66fff2
-);
-
-border-radius:6px;
-
-transition:width .35s ease;
-
-}
 
 
 
