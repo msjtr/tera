@@ -877,14 +877,6 @@ box-shadow:0 0 12px rgba(0,224,198,.7);
 /*                   تأثير النص                               */
 /* ========================================================= */
 
-.tera-menu-link:hover .tera-text,
-.tera-menu-item:hover .tera-text,
-.tera-submenu a:hover .tera-text{
-
-text-shadow:0 0 10px rgba(0,224,198,.6);
-
-}
-
 
 /* ========================================================= */
 /*                 عناصر القائمة الفرعية                      */
