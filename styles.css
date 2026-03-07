@@ -276,48 +276,6 @@ opacity:1;
 
 
 /* ========================================================= */
-/*                     إطار السايدبار المضيء                 */
-/* ========================================================= */
-
-.tera-sidebar::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-border-radius:24px;
-
-padding:4px;
-
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
-
-background-size:200% 200%;
-
--webkit-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
-
--webkit-mask-composite:xor;
-mask-composite:exclude;
-
-pointer-events:none;
-
-animation:teraBorderFlow 6s linear infinite;
-
-}
-
-
-
-/* ========================================================= */
 /*                        المحتوى الداخلي                     */
 /* ========================================================= */
 
@@ -930,10 +888,39 @@ color:#ffffff !important;
 }
 
 
+/* ========================================================= */
+/*                     إطار السايدبار المضيء                 */
+/* ========================================================= */
 
-/* ========================================================= */
-/*                    حركة الإطار المتحرك                     */
-/* ========================================================= */
+.tera-sidebar::before{
+
+content:"";
+
+position:absolute;
+
+top:-4px;
+left:-4px;
+right:-4px;
+bottom:-4px;
+
+border-radius:26px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+background-size:300% 100%;
+
+animation:teraBorderFlow 6s linear infinite;
+
+z-index:-1;
+
+}
 
 @keyframes teraBorderFlow{
 
@@ -942,7 +929,7 @@ background-position:0% 50%;
 }
 
 100%{
-background-position:200% 50%;
+background-position:300% 50%;
 }
 
 }
