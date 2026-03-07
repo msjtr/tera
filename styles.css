@@ -249,10 +249,13 @@ opacity:1;
 visibility:visible;
 
 }
-/* ========================================================= */
-/*               سايدبار TERA مع إطار متحرك ثابت              */
-/* ========================================================= */
 
+
+
+
+/* ========================================================= */
+/*               سايدبار TERA مع إطار متحرك نظيف              */
+/* ========================================================= */
 
 .tera-sidebar{
 
@@ -273,12 +276,11 @@ background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 border-radius:24px;
 
-border:2px solid #00e0c6;
+/* إزالة الإطار القديم */
+border:none;
 
-box-shadow:
-0 0 15px rgba(0,224,198,.35),
-0 0 35px rgba(0,224,198,.15),
-0 30px 80px rgba(0,0,0,.65);
+/* ظل طبيعي فقط */
+box-shadow:0 30px 80px rgba(0,0,0,.65);
 
 display:flex;
 flex-direction:column;
@@ -291,11 +293,67 @@ opacity .3s ease;
 
 z-index:3500;
 
+position:relative;
+
+}
+
+
+/* ========================================================= */
+/*                    الإطار المتحرك                          */
+/* ========================================================= */
+
+.tera-sidebar::before{
+
+content:"";
+
+position:absolute;
+
+top:-2px;
+left:-2px;
+right:-2px;
+bottom:-2px;
+
+border-radius:26px;
+
+/* نفس خط الهدر */
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+background-size:200% 100%;
+
+/* الحركة */
+animation:teraBorderMove 3s linear infinite;
+
+z-index:-1;
+
+}
+
+
+/* الحركة */
+
+@keyframes teraBorderMove{
+
+0%{
+background-position:0% 50%;
+}
+
+100%{
+background-position:200% 50%;
+}
+
 }
 
 
 
-/* الطبقة الداخلية */
+/* ========================================================= */
+/*                     الطبقة الداخلية                        */
+/* ========================================================= */
 
 .tera-sidebar > .tera-sidebar-inner{
 
@@ -303,9 +361,7 @@ flex:1;
 
 background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
-border-radius:23px;
-
-box-shadow:0 30px 80px rgba(0,0,0,.65);
+border-radius:24px;
 
 display:flex;
 flex-direction:column;
@@ -314,11 +370,15 @@ overflow:hidden;
 
 }
 
+
+
 /* عند الفتح */
 
 .tera-sidebar.active{
+
 transform:translate(-50%,0) scale(1);
 opacity:1;
+
 }
 
 /* الحركة */
