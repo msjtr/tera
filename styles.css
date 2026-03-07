@@ -517,17 +517,18 @@ overflow-y:auto;
 /* ========================================================= */
 /*                       عناصر القائمة                        */
 /* ========================================================= */
-
 .tera-menu-link,
 .tera-menu-item{
 
 display:flex;
 align-items:center;
-justify-content:space-between;
+justify-content:flex-start;
 
 width:100%;
 
-padding:18px 22px;
+gap:14px;
+
+padding:18px 28px;
 
 background:none;
 border:none;
@@ -543,12 +544,41 @@ text-decoration:none;
 
 border-radius:12px;
 
-transition:.3s ease;
+transition:all .25s ease;
 
 position:relative;
 
+line-height:1.4;
+
 }
 
+/* تثبيت النص داخل العنصر */
+.tera-menu-link span,
+.tera-menu-item span{
+
+flex:1;
+
+}
+
+/* السهم */
+.tera-arrow{
+
+margin-right:auto;
+
+font-size:20px;
+
+opacity:.8;
+
+transition:transform .3s ease;
+
+}
+
+/* عند فتح القائمة الفرعية */
+.tera-has-submenu.active .tera-arrow{
+
+transform:rotate(180deg);
+
+}
 
 /* ========================================================= */
 /*                   تأثير القوائم الرئيسية                   */
