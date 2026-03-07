@@ -213,7 +213,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:2500;
+z-index:1000;
 
 }
 
@@ -258,7 +258,7 @@ animation:teraBorderFlow 2s linear infinite;
 
 border-radius:26px;
 
-z-index:3500;
+z-index:2500;
 
 display:flex;
 
