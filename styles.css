@@ -229,7 +229,6 @@ visibility:visible;
 /* ========================================================= */
 /*                         السايدبار                         */
 /* ========================================================= */
-
 .tera-sidebar{
 
 position:fixed;
@@ -254,6 +253,8 @@ box-shadow:0 30px 80px rgba(0,0,0,.65);
 
 display:flex;
 flex-direction:column;
+
+overflow:hidden;
 
 transition:
 transform .55s cubic-bezier(.22,1,.36,1),
@@ -283,9 +284,13 @@ opacity:1;
 content:"";
 
 position:absolute;
-inset:-12px;
 
-border-radius:32px;
+top:-8px;
+left:-8px;
+right:-8px;
+bottom:-8px;
+
+border-radius:28px;
 
 pointer-events:none;
 
@@ -298,42 +303,16 @@ linear-gradient(0deg,transparent,var(--tera-accent),transparent) left;
 
 background-size:
 
-200% 3px,
-3px 200%,
-200% 3px,
-3px 200%;
+200% 2px,
+2px 200%,
+200% 2px,
+2px 200%;
 
 background-repeat:no-repeat;
 
-animation:teraBorderFlow 10s linear infinite;
+animation:teraBorderFlow 12s linear infinite;
 
 }
-
-@keyframes teraBorderFlow{
-
-0%{
-
-background-position:
--200% 0,
-100% -200%,
-200% 100%,
-0 200%;
-
-}
-
-100%{
-
-background-position:
-200% 0,
-100% 200%,
--200% 100%,
-0 -200%;
-
-}
-
-}
-
-
 
 /* ========================================================= */
 /*                        المحتوى الداخلي                     */
