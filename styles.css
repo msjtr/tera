@@ -294,43 +294,38 @@ border-radius:24px;
 
 pointer-events:none;
 
-background:
+/* سمك الإطار */
+padding:4px;
 
-linear-gradient(90deg,transparent,var(--tera-accent),transparent) top,
-linear-gradient(180deg,transparent,var(--tera-accent),transparent) right,
-linear-gradient(270deg,transparent,var(--tera-accent),transparent) bottom,
-linear-gradient(0deg,transparent,var(--tera-accent),transparent) left;
+background:linear-gradient(
+90deg,
+transparent,
+var(--tera-accent),
+#66fff2,
+var(--tera-accent),
+transparent
+);
 
-background-size:
-200% 4px,
-4px 200%,
-200% 4px,
-4px 200%;
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
 
-background-repeat:no-repeat;
+-webkit-mask-composite:xor;
+mask-composite:exclude;
 
-animation:teraBorderFlow 3s linear infinite;
-
-}
+animation:teraBorderFlow 2s linear infinite;
 
 @keyframes teraBorderFlow{
 
 0%{
-background-position:
--200% 0,
-100% -200%,
-200% 100%,
-0 200%;
+background-position:0% 50%;
 }
 
 100%{
-background-position:
-200% 0,
-100% 200%,
--200% 100%,
-0 -200%;
+background-position:200% 50%;
 }
 
+}
 
 
 
