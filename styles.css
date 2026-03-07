@@ -790,7 +790,7 @@ text-decoration:none;
 
 border-radius:10px;
 
-transition:all .35s cubic-bezier(.22,1,.36,1);
+transition:all .30s ease;
 
 position:relative;
 
@@ -813,64 +813,16 @@ rgba(74,187,166,.18),
 rgba(74,187,166,.05)
 );
 
-transform:translateX(-6px) scale(1.02);
+transform:translateX(-6px);
 
 box-shadow:
-0 0 18px rgba(0,224,198,.2),
-inset 0 0 10px rgba(0,224,198,.15);
+0 0 12px rgba(0,224,198,.15);
 
 }
 
 
 /* ========================================================= */
-/*                    الخط المتحرك أسفل العنصر                */
-/* ========================================================= */
-
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
-
-content:"";
-
-position:absolute;
-
-bottom:-8px;
-
-right:24px;
-
-width:0;
-
-height:2px;
-
-border-radius:20px;
-
-background:linear-gradient(
-90deg,
-#00e0c6,
-#66fff2,
-#00e0c6
-);
-
-transition:width .45s cubic-bezier(.22,1,.36,1);
-
-}
-
-
-/* حركة الخط */
-
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-width:75%;
-
-box-shadow:0 0 12px rgba(0,224,198,.7);
-
-}
-
-
-/* ========================================================= */
-/*                   تأثير النص                               */
+/*                    تأثير النص                              */
 /* ========================================================= */
 
 .tera-menu-link:hover .tera-text,
@@ -896,12 +848,15 @@ opacity:.95;
 
 }
 
+
 /* ========================================================= */
-/*      تعطيل الخط السفلي لعناصر القائمة                    */
+/*        منع أي خطوط أو عناصر تسبب تمدد العرض               */
 /* ========================================================= */
 
 .tera-menu-link::after,
 .tera-menu-item::after,
 .tera-submenu a::after{
-display:none !important;
+
+display:none;
+
 }
