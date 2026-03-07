@@ -327,6 +327,8 @@ flex-direction:column;
 
 padding:0 25px 25px;
 
+overflow-x:hidden;
+
 }
 
 
@@ -606,9 +608,6 @@ display:none;
 flex-direction:column;
 
 margin-top:6px;
-
-border-right:2px solid rgba(74,187,166,.25);
-
 padding-right:10px;
 
 gap:6px;
