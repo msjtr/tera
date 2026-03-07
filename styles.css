@@ -3,88 +3,59 @@
 /* جميع الحقوق محفوظة                                           */
 /* ============================================================ */
 
-:root{
+:root {
+  /* الألوان الأساسية */
+  --tera-primary: #0f172a;
+  --tera-accent: #4abba6;
+  --tera-accent-light: #38bdf8;
+  --tera-white: #ffffff;
+  --tera-dark-blue: #0f172a;
+  --tera-divider: #1e293b;
+  --tera-bg: #132a4f;
+  --tera-bg-soft: #0f1f3f;
+  --tera-text: #ffffff;
+  --tera-glow: rgba(74, 187, 166, 0.6);
+  --tera-overlay: rgba(0, 0, 0, 0.65);
 
-/* الألوان الأساسية */
---tera-primary:#0f172a;
---tera-accent:#4abba6;
---tera-accent-light:#38bdf8;
---tera-white:#ffffff;
+  /* الأحجام */
+  --header-height: 75px;
+  --sidebar-width: 380px;
+  --font-size-normal: 16px;
+  --font-size-small: 14px;
+  --spacing-lg: 24px;
+  --spacing-md: 18px;
+  --spacing-sm: 12px;
 
---tera-dark-blue:#0f172a;
---tera-divider:#1e293b;
-
---tera-bg:#132a4f;
---tera-bg-soft:#0f1f3f;
-
---tera-text:#ffffff;
-
---tera-glow:rgba(74,187,166,0.6);
---tera-overlay:rgba(0,0,0,0.65);
-
-
-/* الأحجام */
---header-height:75px;
---sidebar-width:380px;
-
---font-size-normal:16px;
---font-size-small:14px;
-
---spacing-lg:24px;
---spacing-md:18px;
---spacing-sm:12px;
-
-
-/* الخط */
---font-arabic:'Tajawal','Cairo',sans-serif;
-
+  /* الخط */
+  --font-arabic: 'Tajawal', 'Cairo', sans-serif;
 }
-
-
 
 /* الوضع الفاتح */
-
-@media (prefers-color-scheme:light){
-
-:root{
-
---tera-bg:#f4f7fb;
---tera-bg-soft:#ffffff;
-
---tera-text:#1e293b;
-
---tera-accent:#0ea5a4;
-
---tera-glow:rgba(14,165,164,0.4);
-
---tera-dark-blue:#1e293b;
-
+@media (prefers-color-scheme: light) {
+  :root {
+    --tera-bg: #f4f7fb;
+    --tera-bg-soft: #ffffff;
+    --tera-text: #1e293b;
+    --tera-accent: #0ea5a4;
+    --tera-glow: rgba(14, 165, 164, 0.4);
+    --tera-dark-blue: #1e293b;
+  }
 }
-
-}
-
-
 
 /* إعدادات عامة */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-html,body{
-
-width:100%;
-overflow-x:hidden;
-
-font-family:var(--font-arabic);
-
-background:var(--tera-bg);
-
-color:var(--tera-text);
-
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-arabic);
+  background: var(--tera-bg);
+  color: var(--tera-text);
 }
 
 /* ========== الهيدر ========== */
@@ -144,691 +115,388 @@ body.sidebar-open .tera-header {
   pointer-events: none;
 }
 
-
 /* ========================================================= */
 /*                       زر القائمة                           */
 /* ========================================================= */
-
-.tera-menu-toggle{
-
-width:45px;
-height:45px;
-
-background:transparent;
-border:none;
-
-cursor:pointer;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-gap:6px;
-
+.tera-menu-toggle {
+  width: 45px;
+  height: 45px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
-.tera-menu-toggle .line{
-
-width:28px;
-height:3px;
-
-background:var(--tera-white);
-
-border-radius:5px;
-
-transition:.4s;
-
+.tera-menu-toggle .line {
+  width: 28px;
+  height: 3px;
+  background: var(--tera-white);
+  border-radius: 5px;
+  transition: 0.4s;
 }
 
-.tera-menu-toggle:hover .line{
-
-background:var(--tera-accent);
-
+.tera-menu-toggle:hover .line {
+  background: var(--tera-accent);
 }
 
-.tera-menu-toggle.active .l1{
-transform:rotate(45deg) translate(5px,5px);
+.tera-menu-toggle.active .l1 {
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
-.tera-menu-toggle.active .l2{
-opacity:0;
+.tera-menu-toggle.active .l2 {
+  opacity: 0;
 }
 
-.tera-menu-toggle.active .l3{
-transform:rotate(-45deg) translate(6px,-6px);
+.tera-menu-toggle.active .l3 {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
-
-
 
 /* ========================================================= */
 /*                       طبقة التعتيم                        */
 /* ========================================================= */
-
-.tera-overlay{
-
-position:fixed;
-inset:0;
-
-background:var(--tera-overlay);
-
-opacity:0;
-visibility:hidden;
-
-transition:.4s;
-
-z-index:2500;
-
+.tera-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--tera-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+  z-index: 2500;
 }
 
-.tera-overlay.active{
-
-opacity:1;
-visibility:visible;
-
+.tera-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
-
-
 
 /* ========================================================= */
 /*                         السايدبار                         */
 /* ========================================================= */
-
-.tera-sidebar{
-
-position:fixed;
-
-top:calc(var(--header-height) + 10px);
-left:50%;
-
-transform:translate(-50%,-60px) scale(.96);
-
-opacity:0;
-
-width:var(--sidebar-width);
-max-width:90%;
-
-height:calc(100vh - var(--header-height) - 40px);
-
-background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
-
-border-radius:24px;
-
-box-shadow:0 30px 80px rgba(0,0,0,.65);
-
-display:flex;
-flex-direction:column;
-
-transition:
-transform .55s cubic-bezier(.22,1,.36,1),
-opacity .4s ease;
-
-z-index:10000;
-
+.tera-sidebar {
+  position: fixed;
+  top: calc(var(--header-height) + 10px);
+  left: 50%;
+  transform: translate(-50%, -60px) scale(0.96);
+  opacity: 0;
+  width: var(--sidebar-width);
+  max-width: 90%;
+  height: calc(100vh - var(--header-height) - 40px);
+  background: linear-gradient(180deg, #102a43, #0f2740, #0c2238);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  z-index: 10000;
 }
 
 /* عند الفتح */
-
-.tera-sidebar.active{
-
-transform:translate(-50%,0) scale(1);
-opacity:1;
-
+.tera-sidebar.active {
+  transform: translate(-50%, 0) scale(1);
+  opacity: 1;
 }
-
-
 
 /* ========================================================= */
 /*                       الإطار المتحرك                       */
 /* ========================================================= */
-
-.tera-sidebar::before{
-
-content:"";
-
-position:absolute;
-inset:-12px;
-
-border-radius:32px;
-
-pointer-events:none;
-
-background:
-
-linear-gradient(90deg,transparent,var(--tera-accent),transparent) top,
-linear-gradient(180deg,transparent,var(--tera-accent),transparent) right,
-linear-gradient(270deg,transparent,var(--tera-accent),transparent) bottom,
-linear-gradient(0deg,transparent,var(--tera-accent),transparent) left;
-
-background-size:
-
-200% 3px,
-3px 200%,
-200% 3px,
-3px 200%;
-
-background-repeat:no-repeat;
-
-animation:teraBorderFlow 10s linear infinite;
-
+.tera-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 32px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--tera-accent), transparent) top,
+    linear-gradient(180deg, transparent, var(--tera-accent), transparent) right,
+    linear-gradient(270deg, transparent, var(--tera-accent), transparent) bottom,
+    linear-gradient(0deg, transparent, var(--tera-accent), transparent) left;
+  background-size: 200% 3px, 3px 200%, 200% 3px, 3px 200%;
+  background-repeat: no-repeat;
+  animation: teraBorderFlow 10s linear infinite;
 }
 
-@keyframes teraBorderFlow{
-
-0%{
-
-background-position:
--200% 0,
-100% -200%,
-200% 100%,
-0 200%;
-
+@keyframes teraBorderFlow {
+  0% {
+    background-position: -200% 0, 100% -200%, 200% 100%, 0 200%;
+  }
+  100% {
+    background-position: 200% 0, 100% 200%, -200% 100%, 0 -200%;
+  }
 }
-
-100%{
-
-background-position:
-200% 0,
-100% 200%,
--200% 100%,
-0 -200%;
-
-}
-
-}
-
-
 
 /* ========================================================= */
 /*                        المحتوى الداخلي                     */
 /* ========================================================= */
-
-.tera-sidebar-inner{
-
-height:100%;
-
-display:flex;
-flex-direction:column;
-
-padding:0 25px 25px;
-
+.tera-sidebar-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px 25px;
 }
-
 
 /* ========================================================= */
 /*                    شعار تيرا داخل السايدبار                */
 /* ========================================================= */
-
-.tera-logo-box{
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-margin-top:20px;
-margin-bottom:30px;
-
-padding:14px 18px;
-
-background:rgba(255,255,255,0.05);
-
-border-radius:16px;
-
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.35),
-0 0 18px rgba(0,224,198,0.15);
-
-transition:all .4s ease;
-
-position:relative;
-
+.tera-logo-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(0, 224, 198, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
 }
-
-
 
 /* تأثير عند المرور */
-
-.tera-logo-box:hover{
-
-transform:translateY(-3px);
-
-box-shadow:
-0 12px 35px rgba(0,0,0,0.4),
-0 0 25px rgba(0,224,198,0.35);
-
+.tera-logo-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 224, 198, 0.35);
 }
-
-
 
 /* الشعار */
-
-.tera-sidebar-logo{
-
-max-width:170px;
-height:auto;
-
-display:block;
-
-filter:drop-shadow(0 0 12px rgba(0,224,198,0.25));
-
-transition:all .35s ease;
-
+.tera-sidebar-logo {
+  max-width: 170px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(0, 224, 198, 0.25));
+  transition: all 0.35s ease;
 }
-
-
 
 /* تأثير الشعار */
-
-.tera-logo-box:hover .tera-sidebar-logo{
-
-transform:scale(1.05);
-
-filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
-
+.tera-logo-box:hover .tera-sidebar-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 18px rgba(0, 224, 198, 0.45));
 }
 
-
+/* خط فاصل احترافي تحت الشعار */
+.tera-logo-box::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 2px;
+  bottom: -12px;
+  left: 15%;
+  background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
+  opacity: 0.6;
+  border-radius: 10px;
+}
 
 /* ========================================================= */
 /*                     زر إغلاق السايدبار                     */
 /* ========================================================= */
-
-.tera-close-btn{
-
-position:absolute;
-
-top:20px;
-left:20px;
-
-width:45px;
-height:45px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-background:#4abba6;
-
-color:#0f172a;
-
-font-size:24px;
-font-weight:bold;
-
-border:none;
-border-radius:12px;
-
-cursor:pointer;
-
-z-index:999;
-
-box-shadow:0 6px 18px rgba(0,0,0,0.3);
-
-transition:all .3s ease;
-
+.tera-close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4abba6;
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
-
 
 /* تأثير hover */
-
-.tera-close-btn:hover{
-
-transform:rotate(90deg) scale(1.1);
-
-box-shadow:
-0 10px 25px rgba(0,0,0,0.45),
-0 0 20px rgba(0,224,198,0.6);
-
+.tera-close-btn:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 224, 198, 0.6);
 }
-
-/* خط فاصل احترافي تحت الشعار */
-
-.tera-logo-box::after{
-
-content:"";
-
-position:absolute;
-
-width:70%;
-height:2px;
-
-bottom:-12px;
-left: 15%;
-
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
-
-opacity:0.6;
-
-border-radius:10px;
-
-}
-
 
 /* ========================================================= */
 /*                        القائمة                             */
 /* ========================================================= */
-
-.tera-sidebar-menu{
-
-list-style:none;
-
-margin-top:20px;
-
-display:flex;
-flex-direction:column;
-
-gap:18px;
-
-flex:1;
-
-overflow-y:auto;
-
+.tera-sidebar-menu {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+  overflow-y: auto;
 }
-
-
 
 /* ========================================================= */
 /*                       عناصر القائمة                        */
 /* ========================================================= */
-
 .tera-menu-link,
 .tera-menu-item,
-.tera-submenu a{
-
-display:flex;
-align-items:center;
-
-width:100%;
-
-padding:20px 24px;
-
-background:none;
-border:none;
-
-cursor:pointer;
-
-font-size:16px;
-font-weight:600;
-
-color:#ffffff !important;
-
-text-decoration:none;
-
-border-radius:10px;
-
-transition:all .35s cubic-bezier(.22,1,.36,1);
-
-position:relative;
-
-overflow:hidden;
-
+.tera-submenu a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-
-/* ========================================================= */
-/*                       السهم                                */
-/* ========================================================= */
-
-.tera-arrow{
-
-font-size:26px;
-
-transition:.35s;
-
-}
-
-.tera-menu-item:hover .tera-arrow{
-
-transform:rotate(15deg) scale(1.05);
-
-}
-
-.tera-has-submenu.active .tera-arrow{
-
-transform:rotate(180deg);
-
-}
-
-
-/* ========================================================= */
-/*                     القوائم الفرعية                        */
-/* ========================================================= */
-
-.tera-submenu{
-
-list-style:none;
-
-display:none;
-
-flex-direction:column;
-
-gap:8px;
-
-padding-top:10px;
-
-}
-
-.tera-has-submenu.active .tera-submenu{
-
-display:flex;
-
-}
-
-
-
-/* ========================================================= */
-/*                    زر تسجيل الدخول                         */
-/* ========================================================= */
-
-.tera-login-item{
-
-margin-top:30px;
-
-padding-top:25px;
-
-position:relative;
-
-}
-
-/* فاصل مثل فاصل الشعار */
-
-.tera-login-item::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:15%;
-right:15%;
-
-height:2px;
-
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
-
-opacity:.6;
-
-border-radius:10px;
-
-}
-
-.tera-login-link{
-
-width:100%;
-
-padding:18px 0;
-
-border-radius:60px;
-
-display:flex;
-justify-content:center;
-
-color:#fff;
-
-background:linear-gradient(
-135deg,
-rgba(0,224,198,.25),
-rgba(0,224,198,.12)
-);
-
-border:1px solid rgba(0,224,198,.35);
-
-transition:.35s;
-
-}
-
-.tera-login-link:hover{
-
-background:linear-gradient(
-135deg,
-rgba(0,224,198,.6),
-rgba(0,224,198,.4)
-);
-
-transform:translateY(-2px);
-
-}
-
-
-
-/* ========================================================= */
-/*                    شريط التمرير                            */
-/* ========================================================= */
-
-.tera-sidebar-menu::-webkit-scrollbar{
-width:6px;
-}
-
-.tera-sidebar-menu::-webkit-scrollbar-thumb{
-
-background:linear-gradient(180deg,#00e0c6,#66fff2);
-
-border-radius:20px;
-
-}
-
-
-
-/* ========================================================= */
-/*                     استجابة الشاشات                        */
-/* ========================================================= */
-
-@media(max-width:768px){
-
-:root{
---sidebar-width:85%;
---header-height:65px;
-}
-
-}
-
-@media(max-width:480px){
-
-:root{
---sidebar-width:100%;
-}
-
-}
-
-
-
-
-/* ========================================================= */
-/*        تثبيت لون نصوص القائمة الرئيسية والفرعية أبيض        */
-/* ========================================================= */
-
+/* تثبيت لون النصوص */
 .tera-menu-link,
 .tera-menu-item,
 .tera-submenu a,
 .tera-menu-link .tera-text,
 .tera-menu-item .tera-text,
-.tera-submenu a .tera-text{
-  color:#ffffff !important;
+.tera-submenu a .tera-text {
+  color: #ffffff !important;
 }
 
-/* عند المرور بالماوس */
-.tera-menu-link:hover,
-.tera-menu-item:hover,
-.tera-submenu a:hover,
-.tera-menu-link:hover .tera-text,
-.tera-menu-item:hover .tera-text,
-.tera-submenu a:hover .tera-text{
-  color:#ffffff !important;
+.tera-text {
+  color: #ffffff !important;
 }
-
-.tera-text{
-color:#ffffff !important;
-}
-
 
 /* ========================================================= */
 /*                       تأثير المرور                         */
 /* ========================================================= */
-
 .tera-menu-link:hover,
 .tera-menu-item:hover,
-.tera-submenu a:hover{
-
-background:linear-gradient(
-90deg,
-rgba(74,187,166,.18),
-rgba(74,187,166,.05)
-);
-
-transform:translateX(-6px) scale(1.02);
-
-box-shadow:
-0 0 18px rgba(0,224,198,.2),
-inset 0 0 10px rgba(0,224,198,.15);
-
+.tera-submenu a:hover {
+  background: linear-gradient(90deg, rgba(74, 187, 166, 0.18), rgba(74, 187, 166, 0.05));
+  transform: translateX(-6px) scale(1.02);
+  box-shadow: 0 0 18px rgba(0, 224, 198, 0.2), inset 0 0 10px rgba(0, 224, 198, 0.15);
 }
 
-
-/* ========================================================= */
-/*                   تأثير النص                               */
-/* ========================================================= */
-
+/* تأثير النص */
 .tera-menu-link:hover .tera-text,
 .tera-menu-item:hover .tera-text,
-.tera-submenu a:hover .tera-text{
-
-text-shadow:0 0 10px rgba(0,224,198,.6);
-
+.tera-submenu a:hover .tera-text {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0, 224, 198, 0.6);
 }
 
-
 /* ========================================================= */
-/*                 عناصر القائمة الفرعية                      */
+/*                       السهم                                */
 /* ========================================================= */
-
-.tera-submenu a{
-
-padding-right:35px;
-
-font-size:15px;
-
-opacity:.95;
-
+.tera-arrow {
+  font-size: 26px;
+  transition: 0.35s;
+  margin-right: auto;
 }
 
+.tera-menu-item:hover .tera-arrow {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.tera-has-submenu.active .tera-arrow {
+  transform: rotate(180deg);
+}
+
+/* ========================================================= */
+/*                     القوائم الفرعية                        */
+/* ========================================================= */
+.tera-submenu {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.tera-has-submenu.active .tera-submenu {
+  display: flex;
+}
+
+.tera-submenu a {
+  padding-right: 35px;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+/* ========================================================= */
+/*                    زر تسجيل الدخول                         */
+/* ========================================================= */
+.tera-login-item {
+  margin-top: 30px;
+  padding-top: 25px;
+  position: relative;
+}
+
+/* فاصل مثل فاصل الشعار */
+.tera-login-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
+  opacity: 0.6;
+  border-radius: 10px;
+}
+
+.tera-login-link {
+  width: 100%;
+  padding: 18px 0;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(0, 224, 198, 0.25), rgba(0, 224, 198, 0.12));
+  border: 1px solid rgba(0, 224, 198, 0.35);
+  transition: 0.35s;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tera-login-link:hover {
+  background: linear-gradient(135deg, rgba(0, 224, 198, 0.6), rgba(0, 224, 198, 0.4));
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 224, 198, 0.4);
+}
+
+/* ========================================================= */
+/*                    شريط التمرير                            */
+/* ========================================================= */
+.tera-sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00e0c6, #66fff2);
+  border-radius: 20px;
+}
+
+/* ========================================================= */
+/*                     استجابة الشاشات                        */
+/* ========================================================= */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 85%;
+    --header-height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 100%;
+  }
+}
 
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
