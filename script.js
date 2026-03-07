@@ -10,18 +10,17 @@
 /* 6- تقليص الهيدر عند النزول                               */
 /* ========================================================= */
 
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-  /* ===================================================== */
-  /*                  عناصر النظام الأساسية                */
-  /* ===================================================== */
+/* ===================================================== */
+/*                  عناصر النظام الأساسية                */
+/* ===================================================== */
 
-  const menuToggle = document.getElementById("menuToggle");
-  const sidebar = document.getElementById("teraSidebar");
-  const overlay = document.getElementById("teraOverlay");
-  const closeBtn = document.getElementById("teraClose");
-  const header = document.querySelector(".tera-header");
-
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("teraSidebar");
+const overlay = document.getElementById("teraOverlay");
+const closeBtn = document.getElementById("teraClose");
+const header = document.querySelector(".tera-header");
 
   /* ===================================================== */
   /*                 فتح القائمة الجانبية                   */
@@ -201,7 +200,7 @@
   });
 
 
-})();
+});
 
 /* ========================================================= */
 /*                نهاية نظام TERA Core                       */
