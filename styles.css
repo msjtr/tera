@@ -227,6 +227,7 @@ visibility:visible;
 /*               سايدبار TERA مع إطار متحرك ثابت              */
 /* ========================================================= */
 
+
 .tera-sidebar{
 
 position:fixed;
@@ -242,27 +243,36 @@ max-width:90%;
 
 height:calc(100vh - var(--header-height) - 40px);
 
+background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
+
+border-radius:24px;
+
 /* الإطار */
-padding:4px;
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
+border:2px solid #00e0c6;
 
-background-size:300% 100%;
-animation:teraBorderFlow 3s linear infinite;
+/* الإضاءة */
+box-shadow:
+0 0 15px rgba(0,224,198,.35),
+0 0 35px rgba(0,224,198,.15),
+0 30px 80px rgba(0,0,0,.65);
 
-border-radius:26px;
+display:flex;
+flex-direction:column;
+
+overflow:hidden;
+
+transition:
+transform .55s cubic-bezier(.22,1,.36,1),
+opacity .3s ease;
 
 z-index:2500;
 
-display:flex;
+position:relative;
 
 }
+
+
+
 
 /* الطبقة الداخلية */
 
