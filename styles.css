@@ -95,7 +95,7 @@ color:var(--tera-text);
   align-items: center;
   justify-content: flex-start;
   padding: 0 25px;
-  z-index: 1000;
+  z-index: 9999;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -129,7 +129,7 @@ bottom:0;
 right:0;
 
 width:100%;
-height:4px;
+height:6px;
 
 background:linear-gradient(
 90deg,
@@ -143,7 +143,7 @@ transparent
 background-size:200% 100%;
 
 /* الحركة يمين يسار */
-animation:teraHeaderFlow 5s ease-in-out infinite alternate;
+animation:teraHeaderFlow 2s ease-in-out infinite alternate;
 
 box-shadow:
 0 0 12px rgba(0,224,198,.7),
@@ -239,7 +239,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:500;
+z-index:1500;
 
 }
 
@@ -291,7 +291,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .3s ease;
 
-z-index:1500;
+z-index:3500;
 
 position:relative;
 
