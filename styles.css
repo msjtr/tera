@@ -239,7 +239,7 @@ visibility:hidden;
 
 transition:.4s;
 
-z-index:500;
+z-index:1500;
 
 }
 
@@ -330,7 +330,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .3s ease;
 
-z-index:3500;
+z-index:2000;
 
 position:relative;
 }
@@ -376,7 +376,7 @@ pointer-events:none;
 .tera-sidebar-inner{
 
 position:relative;
-z-index:2;
+z-index:3500;
 
 background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
