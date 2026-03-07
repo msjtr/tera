@@ -749,18 +749,34 @@ transform:translateY(-2px);
 /*                    شريط التمرير                            */
 /* ========================================================= */
 
+/* ========================================================= */
+/*                    شريط التمرير                            */
+/* ========================================================= */
+
+.tera-sidebar-menu{
+scrollbar-width:thin;
+scrollbar-color:#00e0c6 transparent;
+}
+
 .tera-sidebar-menu::-webkit-scrollbar{
-width:6px;
+width:5px;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-track{
+background:transparent;
 }
 
 .tera-sidebar-menu::-webkit-scrollbar-thumb{
 
-background:linear-gradient(180deg,#00e0c6,#66fff2);
+background:linear-gradient(
+180deg,
+#00e0c6,
+#66fff2
+);
 
 border-radius:20px;
 
 }
-
 
 
 /* ========================================================= */
