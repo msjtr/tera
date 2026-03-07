@@ -115,29 +115,55 @@ color:var(--tera-text);
   animation: teraLight 6s ease-in-out infinite;
 }
 
-.tera-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, transparent, var(--tera-accent), #66fff2, var(--tera-accent), transparent);
-  background-size: 200% 100%;
-  animation: teraLineMove 4s linear infinite;
-  box-shadow: 0 0 18px rgba(74, 187, 166, 0.8);
+/* ========================================================= */
+/*        الخط المتحرك تحت الهيدر - TERA                     */
+/* ========================================================= */
+
+.tera-header::after{
+
+content:"";
+
+position:absolute;
+
+bottom:0;
+right:0;
+
+width:100%;
+height:4px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+background-size:200% 100%;
+
+/* الحركة يمين يسار */
+animation:teraHeaderFlow 5s ease-in-out infinite alternate;
+
+box-shadow:
+0 0 12px rgba(0,224,198,.7),
+0 0 28px rgba(0,224,198,.35);
+
 }
 
-.tera-header.scrolled {
-  height: 65px;
-  background: #0b1220;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+
+/* حركة الخط */
+
+@keyframes teraHeaderFlow{
+
+0%{
+background-position:0% 50%;
 }
 
-body.sidebar-open .tera-header {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
+100%{
+background-position:100% 50%;
+}
+
 }
 
 
