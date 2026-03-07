@@ -235,6 +235,8 @@ body.sidebar-open .tera-header {
   display: flex;
   flex-direction: column;
   padding: 0 25px 25px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ========================================================= */
@@ -496,6 +498,36 @@ body.sidebar-open .tera-header {
   :root {
     --sidebar-width: 100%;
   }
+}
+
+/* ============================================================= */
+/*              إزالة الشريط الأفقي السفلي نهائياً                */
+/* ============================================================= */
+
+html, body {
+    overflow-x: hidden !important;      /* يخفي الشريط الأفقي */
+    width: 100% !important;             /* يضمن عدم تجاوز العرض */
+    max-width: 100% !important;
+    position: relative;
+}
+
+/* منع أي عنصر من التسبب في شريط أفقي */
+.tera-sidebar,
+.tera-header,
+.tera-overlay,
+.tera-sidebar::before,
+.tera-sidebar::after,
+.tera-sidebar * {
+    max-width: 100vw !important;        /* يحد من عرض جميع العناصر */
+    box-sizing: border-box;              /* يحسب الحواف ضمن العرض */
+}
+
+/* معالجة خاصة للإطار المتحرك (قد يكون سبب المشكلة) */
+.tera-sidebar::before {
+    inset: -12px;                        /* يبقى كما هو لكن مع ضبط */
+    left: -12px;
+    right: -12px;
+    width: auto;                         /* يسمح بالتمدد ولكن ضمن الحدود */
 }
 
 /* ========================================================= */
