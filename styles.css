@@ -309,7 +309,7 @@ background-size:
 
 background-repeat:no-repeat;
 
-animation:teraBorderFlow 6s linear infinite;
+animation:teraBorderFlow 3s linear infinite;
 
 }
 
@@ -331,7 +331,7 @@ background-position:
 0 -200%;
 }
 
-}
+
 
 
 /* ========================================================= */
