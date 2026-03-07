@@ -385,6 +385,8 @@ box-shadow:
 
 transition:all .4s ease;
 
+position:relative;
+
 }
 
 
@@ -435,7 +437,6 @@ filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
 /* ========================================================= */
 /*                     زر إغلاق السايدبار                     */
 /* ========================================================= */
-/* زر إغلاق القائمة */
 
 .tera-close-btn{
 
@@ -471,11 +472,6 @@ transition:all .3s ease;
 
 }
 
-.tera-close-btn:hover{
-
-transform:rotate(90deg) scale(1.1);
-
-}
 
 /* تأثير hover */
 
@@ -501,6 +497,7 @@ width:70%;
 height:2px;
 
 bottom:-12px;
+left: 15%;
 
 background:linear-gradient(
 90deg,
@@ -545,6 +542,40 @@ overflow-y:auto;
 /*                       عناصر القائمة                        */
 /* ========================================================= */
 
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a{
+
+display:flex;
+align-items:center;
+
+width:100%;
+
+padding:20px 24px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+font-weight:600;
+
+color:#ffffff !important;
+
+text-decoration:none;
+
+border-radius:10px;
+
+transition:all .35s cubic-bezier(.22,1,.36,1);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
 /* ========================================================= */
 /*                       السهم                                */
 /* ========================================================= */
@@ -569,22 +600,6 @@ transform:rotate(180deg);
 
 }
 
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-background:linear-gradient(
-90deg,
-transparent,
-#ffffff,
-transparent
-);
-
-height:1px;
-
-opacity:.6;
-
-}
 
 /* ========================================================= */
 /*                     القوائم الفرعية                        */
@@ -762,45 +777,6 @@ border-radius:20px;
 .tera-text{
 color:#ffffff !important;
 }
-/* ========================================================= */
-/*                 نهاية نظام TERA الكامل                     */
-/* ========================================================= */
-/* ========================================================= */
-/*                 عناصر القائمة الاحترافية                   */
-/* ========================================================= */
-
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
-
-display:flex;
-align-items:center;
-
-width:100%;
-
-padding:20px 24px;
-
-background:none;
-border:none;
-
-cursor:pointer;
-
-font-size:16px;
-font-weight:600;
-
-color:#ffffff;
-
-text-decoration:none;
-
-border-radius:10px;
-
-transition:all .35s cubic-bezier(.22,1,.36,1);
-
-position:relative;
-
-overflow:hidden;
-
-}
 
 
 /* ========================================================= */
@@ -822,53 +798,6 @@ transform:translateX(-6px) scale(1.02);
 box-shadow:
 0 0 18px rgba(0,224,198,.2),
 inset 0 0 10px rgba(0,224,198,.15);
-
-}
-
-
-/* ========================================================= */
-/*                    الخط المتحرك أسفل العنصر                */
-/* ========================================================= */
-
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
-
-content:"";
-
-position:absolute;
-
-bottom:-8px;
-
-right:24px;
-
-width:0;
-
-height:2px;
-
-border-radius:20px;
-
-background:linear-gradient(
-90deg,
-#00e0c6,
-#66fff2,
-#00e0c6
-);
-
-transition:width .45s cubic-bezier(.22,1,.36,1);
-
-}
-
-
-/* حركة الخط */
-
-.tera-menu-link:hover::after,
-.tera-menu-item:hover::after,
-.tera-submenu a:hover::after{
-
-width:75%;
-
-box-shadow:0 0 12px rgba(0,224,198,.7);
 
 }
 
@@ -900,12 +829,7 @@ opacity:.95;
 
 }
 
-/* ========================================================= */
-/*      تعطيل الخط السفلي لعناصر القائمة                    */
-/* ========================================================= */
 
-.tera-menu-link::after,
-.tera-menu-item::after,
-.tera-submenu a::after{
-display:none !important;
-}
+/* ========================================================= */
+/*                 نهاية نظام TERA الكامل                     */
+/* ========================================================= */
