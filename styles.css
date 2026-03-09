@@ -843,31 +843,61 @@ box-shadow:
 /* ========================================================= */
 /*          تأثير الإطار المضيء المتحرك - TERA                */
 /* ========================================================= */
+/* ========================================================= */
+/*      الإطار المتحرك خارج صندوق القائمة - TERA PRO        */
+/* ========================================================= */
 
-@keyframes teraBorderFlow{
-
-0%{
-background-position:
-0% 0%,
-100% 0%,
-100% 100%,
-0% 100%;
+.tera-sidebar{
+position:fixed;
+isolation:isolate;
 }
 
-50%{
-background-position:
-100% 0%,
-100% 100%,
-0% 100%,
-0% 0%;
+/* الإطار الخارجي */
+
+.tera-sidebar::before{
+
+content:"";
+
+position:absolute;
+
+top:-4px;
+left:-4px;
+right:-4px;
+bottom:-4px;
+
+border-radius:28px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00e0c6,
+#66fff2,
+#00e0c6,
+transparent
+);
+
+background-size:300% 100%;
+
+animation:teraBorderMove 3s linear infinite;
+
+z-index:-1;
+
+filter:blur(1px);
+
+opacity:.9;
+
+}
+
+/* حركة الإطار */
+
+@keyframes teraBorderMove{
+
+0%{
+background-position:0% 50%;
 }
 
 100%{
-background-position:
-0% 0%,
-100% 0%,
-100% 100%,
-0% 100%;
+background-position:300% 50%;
 }
 
 }
