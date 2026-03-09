@@ -1058,22 +1058,166 @@ box-shadow:
 }
 
 /* ========================================================= */
-/*                     دعم الجوال                             */
+/*        تحسين الشعار والقائمة للجوال - TERA MOBILE UI      */
 /* ========================================================= */
 
-@media(max-width:768px){
 
-body.sidebar-open main,
-body.sidebar-open .site-content{
+/* ---------- تحسين جودة الشعار ---------- */
 
-transform:none;
-box-shadow:none;
-border-radius:0;
+.tera-sidebar-logo{
+
+width:100%;
+max-width:170px;
+height:auto;
+
+image-rendering:-webkit-optimize-contrast;
+image-rendering:crisp-edges;
+
+object-fit:contain;
+
+filter:drop-shadow(0 0 10px rgba(0,224,198,.25));
+
+}
+
+
+/* ========================================================= */
+/*                 إعدادات الشاشات المتوسطة                  */
+/* ========================================================= */
+
+@media (max-width:768px){
+
+:root{
+
+--sidebar-width:92%;
+--header-height:65px;
+
+}
+
+
+/* صندوق القائمة */
+
+.tera-sidebar{
+
+width:92%;
+max-width:420px;
+
+top:calc(var(--header-height) + 8px);
+
+height:calc(100vh - var(--header-height) - 25px);
+
+border-radius:20px;
+
+}
+
+
+/* صندوق الشعار */
+
+.tera-logo-box{
+
+margin-top:12px;
+margin-bottom:20px;
+
+padding:10px 14px;
+
+border-radius:14px;
+
+}
+
+
+/* حجم الشعار */
+
+.tera-sidebar-logo{
+
+max-width:150px;
+
+}
+
+
+/* عناصر القائمة */
+
+.tera-menu-link,
+.tera-menu-item{
+
+padding:16px 22px;
+
+font-size:15px;
+
+border-radius:10px;
+
+}
+
+
+/* القوائم الفرعية */
+
+.tera-submenu a{
+
+padding:10px 14px;
+
+font-size:14px;
 
 }
 
 }
 
+
+
+/* ========================================================= */
+/*              إعدادات الجوال الصغيرة جدا                  */
+/* ========================================================= */
+
+@media (max-width:480px){
+
+:root{
+
+--sidebar-width:95%;
+
+}
+
+
+/* القائمة */
+
+.tera-sidebar{
+
+width:95%;
+max-width:none;
+
+border-radius:18px;
+
+}
+
+
+/* الشعار */
+
+.tera-sidebar-logo{
+
+max-width:135px;
+
+}
+
+
+/* عناصر القائمة */
+
+.tera-menu-link,
+.tera-menu-item{
+
+padding:15px 20px;
+
+font-size:14px;
+
+}
+
+
+/* زر تسجيل الدخول */
+
+.tera-login-link{
+
+padding:16px 0;
+
+font-size:15px;
+
+}
+
+}
 
 
 
