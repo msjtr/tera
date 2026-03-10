@@ -387,16 +387,77 @@ box-shadow:
 
 /* الشعار */
 
-.tera-sidebar-logo{
+/* ========================================================= */
+/*                 نظام الشعارات المتجاوبة                  */
+/* ========================================================= */
+
+/* شعار الديسكتوب */
+
+.tera-logo-desktop{
+
+display:block;
 
 max-width:170px;
 height:auto;
 
-display:block;
-
 filter:drop-shadow(0 0 12px rgba(0,224,198,0.25));
 
-transition:all .35s ease;
+}
+
+
+/* شعار التابلت */
+
+.tera-logo-tablet{
+
+display:none;
+
+max-width:150px;
+height:auto;
+
+}
+
+
+/* شعار الجوال */
+
+.tera-logo-mobile{
+
+display:none;
+
+max-width:130px;
+height:auto;
+
+image-rendering:-webkit-optimize-contrast;
+image-rendering:crisp-edges;
+
+}
+
+
+/* التابلت */
+
+@media (max-width:1024px){
+
+.tera-logo-desktop{
+display:none;
+}
+
+.tera-logo-tablet{
+display:block;
+}
+
+}
+
+
+/* الجوال */
+
+@media (max-width:768px){
+
+.tera-logo-tablet{
+display:none;
+}
+
+.tera-logo-mobile{
+display:block;
+}
 
 }
 
