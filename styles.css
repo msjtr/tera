@@ -1026,23 +1026,45 @@ box-shadow:
 
 }
 
-/* ========================================================= */
-/*                     دعم الجوال                             */
-/* ========================================================= */
 
-@media(max-width:768px){
 
-body.sidebar-open main,
-body.sidebar-open .site-content{
 
-transform:none;
-box-shadow:none;
-border-radius:0;
+
+/* شعار الديسكتوب */
+.tera-logo-desktop{
+display:block;
+max-width:180px;
+}
+
+/* شعار التابلت */
+.tera-logo-tablet{
+display:none;
+max-width:150px;
+}
+
+/* شعار الجوال */
+.tera-logo-mobile{
+display:none;
+max-width:120px;
+}
+
+
+/* التابلت */
+@media (max-width:1024px){
+
+.tera-logo-desktop{display:none;}
+.tera-logo-tablet{display:block;}
 
 }
 
-}
 
+/* الجوال */
+@media (max-width:768px){
+
+.tera-logo-tablet{display:none;}
+.tera-logo-mobile{display:block;}
+
+}
 
 
 
