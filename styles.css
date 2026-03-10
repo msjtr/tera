@@ -1,3 +1,4 @@
+
 :root{
 
 /* الألوان الأساسية */
@@ -1026,9 +1027,22 @@ box-shadow:
 
 }
 
+/* ========================================================= */
+/*                     دعم الجوال                             */
+/* ========================================================= */
 
+@media(max-width:768px){
 
+body.sidebar-open main,
+body.sidebar-open .site-content{
 
+transform:none;
+box-shadow:none;
+border-radius:0;
+
+}
+
+}
 
 /* شعار الديسكتوب */
 .tera-logo-desktop{
@@ -1065,7 +1079,6 @@ max-width:120px;
 .tera-logo-mobile{display:block;}
 
 }
-
 
 
 
