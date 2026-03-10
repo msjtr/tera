@@ -1,5 +1,6 @@
 /* ========================================================= */
 /*                     نظام TERA Core                        */
+/*                 النسخة المحسنة للجوال                    */
 /* ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -50,8 +51,26 @@ document.body.classList.remove("sidebar-open");
 sidebar.setAttribute("aria-hidden","true");
 menuToggle.setAttribute("aria-expanded","false");
 
+/* إغلاق القوائم الفرعية */
+
 document.querySelectorAll(".tera-has-submenu")
 .forEach(item => item.classList.remove("active"));
+
+}
+
+/* ===================================================== */
+/*              تبديل حالة القائمة (فتح / إغلاق)         */
+/* ===================================================== */
+
+function toggleSidebar(e){
+
+e.preventDefault();
+
+if(sidebar.classList.contains("active")){
+closeSidebar();
+}else{
+openSidebar();
+}
 
 }
 
@@ -61,13 +80,8 @@ document.querySelectorAll(".tera-has-submenu")
 
 if(menuToggle && sidebar){
 
-menuToggle.addEventListener("click", function(){
-
-sidebar.classList.contains("active")
-? closeSidebar()
-: openSidebar();
-
-});
+menuToggle.addEventListener("click", toggleSidebar);
+menuToggle.addEventListener("touchstart", toggleSidebar);
 
 }
 
@@ -76,7 +90,10 @@ sidebar.classList.contains("active")
 /* ===================================================== */
 
 if(closeBtn){
+
 closeBtn.addEventListener("click", closeSidebar);
+closeBtn.addEventListener("touchstart", closeSidebar);
+
 }
 
 /* ===================================================== */
@@ -84,7 +101,10 @@ closeBtn.addEventListener("click", closeSidebar);
 /* ===================================================== */
 
 if(overlay){
+
 overlay.addEventListener("click", closeSidebar);
+overlay.addEventListener("touchstart", closeSidebar);
+
 }
 
 /* ===================================================== */
@@ -106,9 +126,14 @@ closeSidebar();
 document.querySelectorAll(".tera-has-submenu > .tera-menu-item")
 .forEach(button => {
 
-button.addEventListener("click", function(){
+button.addEventListener("click", toggleSubmenu);
+button.addEventListener("touchstart", toggleSubmenu);
 
-const parent = this.parentElement;
+function toggleSubmenu(e){
+
+e.preventDefault();
+
+const parent = button.parentElement;
 
 document.querySelectorAll(".tera-has-submenu")
 .forEach(item => {
@@ -121,12 +146,12 @@ item.classList.remove("active");
 
 parent.classList.toggle("active");
 
-});
+}
 
 });
 
 /* ===================================================== */
-/*              إغلاق القائمة عند الضغط على رابط          */
+/*        إغلاق القائمة عند الضغط على أي رابط             */
 /* ===================================================== */
 
 document.querySelectorAll(
@@ -134,6 +159,7 @@ document.querySelectorAll(
 ).forEach(link => {
 
 link.addEventListener("click", closeSidebar);
+link.addEventListener("touchstart", closeSidebar);
 
 });
 
@@ -163,10 +189,22 @@ window.addEventListener("scroll", function(){
 
 if(!header) return;
 
-window.scrollY > 40
-? header.classList.add("scrolled")
-: header.classList.remove("scrolled");
+if(window.scrollY > 40){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
 
 });
 
+/* ===================================================== */
+/*             تفعيل نظام اللمس للجوال بالكامل             */
+/* ===================================================== */
+
+document.addEventListener("touchstart", function(){}, true);
+
 });
+
+/* ========================================================= */
+/*                 نهاية نظام TERA JavaScript               */
+/* ========================================================= */
