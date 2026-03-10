@@ -1,4 +1,4 @@
-نفس المشاكل مزالة موجودة 
+
 :root{
 
 /* الألوان الأساسية */
@@ -367,10 +367,8 @@ box-shadow:
 
 transition:all .4s ease;
 
-/* إصلاح مشكلة اللمس */
-position:relative;
-
 }
+
 
 
 /* تأثير عند المرور */
@@ -389,81 +387,30 @@ box-shadow:
 
 /* الشعار */
 
-/* ========================================================= */
-/*                 نظام الشعارات المتجاوبة                  */
-/* ========================================================= */
-
-/* شعار الديسكتوب */
-
-.tera-logo-desktop{
-
-display:block;
+.tera-sidebar-logo{
 
 max-width:170px;
 height:auto;
 
+display:block;
+
 filter:drop-shadow(0 0 12px rgba(0,224,198,0.25));
 
-}
-
-
-/* شعار التابلت */
-
-.tera-logo-tablet{
-
-display:none;
-
-max-width:150px;
-height:auto;
+transition:all .35s ease;
 
 }
 
 
-/* شعار الجوال */
 
-.tera-logo-mobile{
+/* تأثير الشعار */
 
-display:none;
+.tera-logo-box:hover .tera-sidebar-logo{
 
-max-width:130px;
-height:auto;
+transform:scale(1.05);
 
-image-rendering:-webkit-optimize-contrast;
-image-rendering:crisp-edges;
+filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
 
 }
-
-
-/* التابلت */
-
-@media (max-width:1024px){
-
-.tera-logo-desktop{
-display:none;
-}
-
-.tera-logo-tablet{
-display:block;
-}
-
-}
-
-
-/* الجوال */
-
-@media (max-width:768px){
-
-.tera-logo-tablet{
-display:none;
-}
-
-.tera-logo-mobile{
-display:block;
-}
-
-}
-
-
 
 
 
@@ -636,9 +583,6 @@ transform:rotate(180deg);
 /* ========================================================= */
 /*                   تأثير القوائم الرئيسية                   */
 /* ========================================================= */
-/* ========================================================= */
-/*           تأثير التفاعل للجوال والكمبيوتر                 */
-/* ========================================================= */
 
 .tera-menu-link:hover,
 .tera-menu-item:hover{
@@ -651,23 +595,9 @@ rgba(74,187,166,.05)
 
 box-shadow:0 0 8px rgba(0,224,198,.12);
 
-}
-
-@media (hover:none){
-
-.tera-menu-link:active,
-.tera-menu-item:active{
-
-background:rgba(74,187,166,.25);
-
-transform:scale(.96);
-
-transition:all .15s ease;
+transform:none;
 
 }
-
-}
-
 
 /* ========================================================= */
 /*                     سهم القوائم الفرعية                    */
@@ -913,61 +843,31 @@ box-shadow:
 /* ========================================================= */
 /*          تأثير الإطار المضيء المتحرك - TERA                */
 /* ========================================================= */
-/* ========================================================= */
-/*      الإطار المتحرك خارج صندوق القائمة - TERA PRO        */
-/* ========================================================= */
 
-.tera-sidebar{
-position:fixed;
-isolation:isolate;
-}
-
-/* الإطار الخارجي */
-
-.tera-sidebar::before{
-
-content:"";
-
-position:absolute;
-
-top:-4px;
-left:-4px;
-right:-4px;
-bottom:-4px;
-
-border-radius:28px;
-
-background:linear-gradient(
-90deg,
-transparent,
-#00e0c6,
-#66fff2,
-#00e0c6,
-transparent
-);
-
-background-size:300% 100%;
-
-animation:teraBorderMove 3s linear infinite;
-
-z-index:-1;
-
-filter:blur(1px);
-
-opacity:.9;
-
-}
-
-/* حركة الإطار */
-
-@keyframes teraBorderMove{
+@keyframes teraBorderFlow{
 
 0%{
-background-position:0% 50%;
+background-position:
+0% 0%,
+100% 0%,
+100% 100%,
+0% 100%;
+}
+
+50%{
+background-position:
+100% 0%,
+100% 100%,
+0% 100%,
+0% 0%;
 }
 
 100%{
-background-position:300% 50%;
+background-position:
+0% 0%,
+100% 0%,
+100% 100%,
+0% 100%;
 }
 
 }
@@ -1127,176 +1027,27 @@ box-shadow:
 
 }
 
-
 /* ========================================================= */
-/*                 نظام الجوال النهائي - TERA                */
-/* ========================================================= */
-
-@media (max-width:768px){
-
-/* ---------- حجم السايدبار ---------- */
-
-.tera-sidebar{
-
-width:90%;
-max-width:340px;
-
-top:calc(var(--header-height) + 8px);
-
-border-radius:20px;
-
-transform:translate(-50%,40px) scale(.95);
-opacity:0;
-
-transition:
-transform .45s cubic-bezier(.22,1,.36,1),
-opacity .35s ease;
-
-}
-
-/* عند الفتح */
-
-.tera-sidebar.active{
-
-transform:translate(-50%,0) scale(1);
-opacity:1;
-
-}
-
-
-/* ---------- التمرير ---------- */
-
-.tera-sidebar-inner{
-
-overflow-y:auto;
-overflow-x:hidden;
-
--webkit-overflow-scrolling:touch;
-
-}
-
-
-/* ---------- القائمة ---------- */
-
-.tera-sidebar-menu{
-
-overflow-y:auto;
-overflow-x:hidden;
-
-padding-right:4px;
-
-}
-
-
-/* ---------- الشعار ---------- */
-
-.tera-logo-box{
-
-margin-top:8px;
-margin-bottom:18px;
-
-padding:10px;
-
-}
-
-.tera-logo-mobile{
-
-max-width:180px;
-
-}
-
-
-/* ---------- زر الإغلاق ---------- */
-
-.tera-close-btn{
-
-top:10px;
-left:12px;
-
-width:38px;
-height:38px;
-
-}
-
-
-/* ---------- عناصر القائمة ---------- */
-
-.tera-menu-link,
-.tera-menu-item{
-
-padding:14px 18px;
-
-font-size:14px;
-
-border-radius:10px;
-
-}
-
-
-/* ---------- تأثير اللمس ---------- */
-
-.tera-menu-link:active,
-.tera-menu-item:active{
-
-background:rgba(74,187,166,.22);
-
-transform:scale(.96);
-
-}
-
-
-/* ---------- زر تسجيل الدخول ---------- */
-
-.tera-login-item{
-
-margin-top:25px;
-
-}
-
-.tera-login-link{
-
-padding:15px 0;
-
-font-size:15px;
-
-}
-
-
-/* ---------- منع تحرك الخلفية ---------- */
-
-body.sidebar-open{
-
-overflow:hidden;
-
-}
-
-}
-
-
-/* ========================================================= */
-/*              إصلاح تفاعل اللمس في الجوال                  */
+/*                     دعم الجوال                             */
 /* ========================================================= */
 
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a{
+@media(max-width:768px){
 
-touch-action:manipulation;
+body.sidebar-open main,
+body.sidebar-open .site-content{
 
--webkit-tap-highlight-color:transparent;
+transform:none;
+box-shadow:none;
+border-radius:0;
+
+}
 
 }
 
 
-/* ========================================================= */
-/*          منع الإطار المتحرك من تعطيل اللمس                */
-/* ========================================================= */
 
-.tera-sidebar::before{
 
-pointer-events:none;
 
-}
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
 /* ========================================================= */
