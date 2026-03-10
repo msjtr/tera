@@ -463,16 +463,6 @@ display:block;
 
 
 
-/* تأثير الشعار */
-
-.tera-logo-box:hover .tera-sidebar-logo{
-
-transform:scale(1.05);
-
-filter:drop-shadow(0 0 18px rgba(0,224,198,0.45));
-
-}
-
 
 
 /* ========================================================= */
