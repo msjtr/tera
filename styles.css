@@ -1057,168 +1057,171 @@ box-shadow:
 
 }
 
-/* ========================================================= */
-/*        تحسين الشعار والقائمة للجوال - TERA MOBILE UI      */
-/* ========================================================= */
-
-
-/* ---------- تحسين جودة الشعار ---------- */
-
-.tera-sidebar-logo{
-
-width:100%;
-max-width:170px;
-height:auto;
-
-image-rendering:-webkit-optimize-contrast;
-image-rendering:crisp-edges;
-
-object-fit:contain;
-
-filter:drop-shadow(0 0 10px rgba(0,224,198,.25));
-
-}
 
 
 /* ========================================================= */
-/*                 إعدادات الشاشات المتوسطة                  */
+/*                 نظام الجوال الكامل - TERA MOBILE          */
 /* ========================================================= */
 
 @media (max-width:768px){
 
-:root{
-
---sidebar-width:92%;
---header-height:65px;
-
-}
-
-
-/* صندوق القائمة */
+/* ---------- حجم القائمة ---------- */
 
 .tera-sidebar{
 
-width:92%;
-max-width:420px;
+width:88%;
+max-width:360px;
 
-top:calc(var(--header-height) + 8px);
+top:calc(var(--header-height) + 6px);
 
-height:calc(100vh - var(--header-height) - 25px);
+height:auto;
+max-height:85vh;
 
-border-radius:20px;
+border-radius:18px;
+
+padding:0;
+
+transform:translate(-50%,-40px) scale(.96);
 
 }
 
 
-/* صندوق الشعار */
+/* ---------- عند فتح القائمة ---------- */
+
+.tera-sidebar.active{
+
+transform:translate(-50%,0) scale(1);
+
+}
+
+
+/* ---------- صندوق الشعار ---------- */
 
 .tera-logo-box{
 
 margin-top:12px;
-margin-bottom:20px;
+margin-bottom:18px;
 
-padding:10px 14px;
+padding:10px 12px;
 
-border-radius:14px;
+border-radius:12px;
 
 }
 
 
-/* حجم الشعار */
+/* ---------- الشعار ---------- */
 
 .tera-sidebar-logo{
 
-max-width:150px;
+width:100%;
+max-width:140px;
+height:auto;
+
+object-fit:contain;
+
+image-rendering:-webkit-optimize-contrast;
+image-rendering:crisp-edges;
+
+filter:drop-shadow(0 0 8px rgba(0,224,198,.35));
+
+transition:transform .3s ease;
 
 }
 
 
-/* عناصر القائمة */
+/* تأثير لمس الشعار */
+
+.tera-logo-box:active .tera-sidebar-logo{
+
+transform:scale(1.05);
+
+}
+
+
+/* ---------- عناصر القائمة ---------- */
 
 .tera-menu-link,
 .tera-menu-item{
 
-padding:16px 22px;
+padding:14px 18px;
 
-font-size:15px;
+font-size:14px;
 
 border-radius:10px;
+
+gap:12px;
 
 }
 
 
-/* القوائم الفرعية */
+/* ---------- القوائم الفرعية ---------- */
 
 .tera-submenu a{
 
 padding:10px 14px;
 
+font-size:13px;
+
+}
+
+
+/* ---------- زر تسجيل الدخول ---------- */
+
+.tera-login-link{
+
+padding:14px 0;
+
 font-size:14px;
 
-}
+border-radius:40px;
 
 }
 
+
+/* ---------- تأثير لمس عناصر القائمة ---------- */
+
+.tera-menu-link:active,
+.tera-menu-item:active{
+
+background:rgba(74,187,166,.18);
+
+transform:scale(.98);
+
+}
+
+
+}
 
 
 /* ========================================================= */
-/*              إعدادات الجوال الصغيرة جدا                  */
+/*             الجوال الصغير جدا (آيفون القديم)             */
 /* ========================================================= */
 
 @media (max-width:480px){
 
-:root{
-
---sidebar-width:95%;
-
-}
-
-
-/* القائمة */
-
 .tera-sidebar{
 
-width:95%;
-max-width:none;
-
-border-radius:18px;
+width:92%;
+max-width:320px;
 
 }
-
-
-/* الشعار */
 
 .tera-sidebar-logo{
 
-max-width:135px;
+max-width:125px;
 
 }
-
-
-/* عناصر القائمة */
 
 .tera-menu-link,
 .tera-menu-item{
 
-padding:15px 20px;
+padding:13px 16px;
 
-font-size:14px;
-
-}
-
-
-/* زر تسجيل الدخول */
-
-.tera-login-link{
-
-padding:16px 0;
-
-font-size:15px;
+font-size:13px;
 
 }
 
 }
-
 
 
 
