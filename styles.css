@@ -1111,80 +1111,89 @@ box-shadow:
 
 
 /* ========================================================= */
-/*                 نظام الجوال الكامل - TERA MOBILE          */
+/*        تحسين قائمة الجوال الاحترافية - TERA MOBILE PRO    */
 /* ========================================================= */
 
 @media (max-width:768px){
 
-/* ---------- حجم القائمة ---------- */
+/* ---------- صندوق القائمة ---------- */
 
 .tera-sidebar{
 
-width:88%;
-max-width:360px;
+width:90%;
+max-width:340px;
 
-top:calc(var(--header-height) + 6px);
+top:calc(var(--header-height) + 8px);
 
-height:auto;
-max-height:85vh;
+border-radius:22px;
 
-border-radius:18px;
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
 
-padding:0;
+/* حركة دخول ناعمة */
 
-transform:translate(-50%,-40px) scale(.96);
+transform:translate(-50%,40px) scale(.92);
+opacity:0;
+
+transition:
+transform .45s cubic-bezier(.22,1,.36,1),
+opacity .35s ease;
 
 }
 
 
-/* ---------- عند فتح القائمة ---------- */
+/* عند فتح القائمة */
 
 .tera-sidebar.active{
 
 transform:translate(-50%,0) scale(1);
-
-}
-
-
-/* ---------- صندوق الشعار ---------- */
-
-.tera-logo-box{
-
-margin-top:12px;
-margin-bottom:18px;
-
-padding:10px 12px;
-
-border-radius:12px;
+opacity:1;
 
 }
 
 
 /* ---------- الشعار ---------- */
 
-.tera-sidebar-logo{
+.tera-logo-box{
+
+margin-top:6px;
+margin-bottom:16px;
+
+padding:8px;
+
+background:rgba(255,255,255,0.04);
+
+border-radius:14px;
+
+}
+
+/* الشعار */
+
+.tera-logo-desktop,
+.tera-logo-tablet,
+.tera-logo-mobile{
 
 width:100%;
-max-width:140px;
+max-width:200px;
+
 height:auto;
 
 object-fit:contain;
 
-image-rendering:-webkit-optimize-contrast;
-image-rendering:crisp-edges;
-
-filter:drop-shadow(0 0 8px rgba(0,224,198,.35));
-
-transition:transform .3s ease;
-
 }
 
 
-/* تأثير لمس الشعار */
+/* ---------- زر الإغلاق ---------- */
 
-.tera-logo-box:active .tera-sidebar-logo{
+.tera-close-btn{
 
-transform:scale(1.05);
+top:8px;
+left:10px;
+
+width:38px;
+height:38px;
+
+border-radius:10px;
 
 }
 
@@ -1200,18 +1209,17 @@ font-size:14px;
 
 border-radius:10px;
 
-gap:12px;
-
 }
 
 
-/* ---------- القوائم الفرعية ---------- */
+/* تأثير لمس */
 
-.tera-submenu a{
+.tera-menu-link:active,
+.tera-menu-item:active{
 
-padding:10px 14px;
+background:rgba(74,187,166,.20);
 
-font-size:13px;
+transform:scale(.96);
 
 }
 
@@ -1220,61 +1228,123 @@ font-size:13px;
 
 .tera-login-link{
 
-padding:14px 0;
+padding:15px 0;
 
-font-size:14px;
+font-size:15px;
 
-border-radius:40px;
+border-radius:50px;
 
 }
 
 
-/* ---------- تأثير لمس عناصر القائمة ---------- */
+/* ---------- منع تحرك الصفحة ---------- */
+
+body.sidebar-open{
+
+overflow:hidden;
+
+touch-action:none;
+
+}
+
+
+}
+
+/* ========================================================= */
+/*                 إصلاحات الجوال فقط - TERA                 */
+/* ========================================================= */
+
+@media (max-width:768px){
+
+/* ---------- إصلاح الشعار ---------- */
+
+.tera-logo-box{
+
+margin-top:8px;
+margin-bottom:18px;
+
+padding:8px;
+
+background:rgba(255,255,255,0.05);
+
+border-radius:14px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+/* الشعار يصبح عريض وواضح */
+
+.tera-logo-desktop,
+.tera-logo-tablet,
+.tera-logo-mobile{
+
+width:100%;
+max-width:200px;
+height:auto;
+
+object-fit:contain;
+
+image-rendering:-webkit-optimize-contrast;
+image-rendering:crisp-edges;
+
+}
+
+
+/* ---------- إصلاح زر الإغلاق ---------- */
+
+.tera-close-btn{
+
+top:10px;
+left:12px;
+
+width:40px;
+height:40px;
+
+font-size:20px;
+
+}
+
+
+/* ---------- منع تحرك الصفحة الخلفية ---------- */
+
+body.sidebar-open{
+
+overflow:hidden;
+height:100vh;
+
+touch-action:none;
+
+}
+
+
+/* ---------- تحسين حجم القائمة ---------- */
+
+.tera-sidebar{
+
+width:90%;
+max-width:340px;
+
+border-radius:18px;
+
+}
+
+
+/* ---------- تأثير لمس بدل hover ---------- */
 
 .tera-menu-link:active,
 .tera-menu-item:active{
 
 background:rgba(74,187,166,.18);
 
-transform:scale(.98);
+transform:scale(.97);
 
 }
 
 
 }
-
-
-/* ========================================================= */
-/*             الجوال الصغير جدا (آيفون القديم)             */
-/* ========================================================= */
-
-@media (max-width:480px){
-
-.tera-sidebar{
-
-width:92%;
-max-width:320px;
-
-}
-
-.tera-sidebar-logo{
-
-max-width:125px;
-
-}
-
-.tera-menu-link,
-.tera-menu-item{
-
-padding:13px 16px;
-
-font-size:13px;
-
-}
-
-}
-
-
 
 /* ========================================================= */
 /*                 نهاية نظام TERA الكامل                     */
