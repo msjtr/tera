@@ -312,7 +312,17 @@ box-shadow:
 
 }
 
+/* عند فتح السايدبار */
 
+.tera-sidebar.active{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+pointer-events:auto;
+
+}
 
 
 
