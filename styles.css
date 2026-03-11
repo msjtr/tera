@@ -274,6 +274,10 @@ max-width:90%;
 
 height:calc(100vh - var(--header-height) - 40px);
 
+max-height:calc(100vh - var(--header-height) - 40px);
+
+overflow:hidden
+  
 /* الإطار المتحرك */
 
 padding:4px;
@@ -734,14 +738,53 @@ box-shadow:none;
 /* ========================================================= */
 
 .tera-sidebar-menu{
+
 list-style:none;
+
 margin-top:20px;
+
 display:flex;
 flex-direction:column;
+
 gap:12px;
+
 flex:1;
+
 overflow-y:auto;
+
 overflow-x:hidden;
+
+max-height:100%;
+
+/* تحسين التمرير في الجوال */
+
+-webkit-overflow-scrolling:touch;
+
+padding-right:4px;
+
+}
+
+
+/* مؤشر التمرير للجوال */
+
+.tera-sidebar-menu::-webkit-scrollbar{
+
+width:4px;
+
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-thumb{
+
+background:#00e0c6;
+
+border-radius:10px;
+
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-track{
+
+background:transparent;
+
 }
 
 
