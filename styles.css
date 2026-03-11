@@ -338,14 +338,14 @@ background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 
 /* ========================================================= */
-/*                    شعار تيرا داخل السايدبار                */
+/*                 شعار تيرا داخل الصندوق                    */
 /* ========================================================= */
 
 .tera-logo-box{
 
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 
 margin-top:20px;
 margin-bottom:30px;
@@ -356,16 +356,26 @@ background:rgba(255,255,255,0.05);
 
 border-radius:16px;
 
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
+overflow:hidden;
 
-border:1px solid rgba(255,255,255,0.08);
+}
 
-box-shadow:
-0 10px 30px rgba(0,0,0,0.35),
-0 0 18px rgba(0,224,198,0.15);
+.tera-sidebar-logo{
 
-transition:all .4s ease;
+width:100%;
+max-width:170px;
+
+height:60px;
+
+object-fit:contain;
+
+display:block;
+
+margin:auto;
+
+filter:drop-shadow(0 0 12px rgba(0,224,198,0.25));
+
+transition:all .35s ease;
 
 }
 
