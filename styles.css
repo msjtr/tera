@@ -976,54 +976,6 @@ color:#ffffff !important;
 
 
 
-/* ========================================================= */
-/*         عزل السايدبار عن الصفحة بالكامل                   */
-/* ========================================================= */
-
-.tera-sidebar{
-
-position:fixed;
-
-top:calc(var(--header-height) + 10px);
-left:50%;
-
-transform:translate(-50%,-60px) scale(.96);
-
-opacity:0;
-
-z-index:10000;
-
-}
-
-.tera-sidebar.active{
-
-transform:translate(-50%,0) scale(1);
-
-opacity:1;
-
-}
-
-/* الصفحة لا تتحرك */
-
-body.sidebar-open main,
-body.sidebar-open .site-content{
-
-transform:none !important;
-
-box-shadow:none !important;
-
-}
-/* ========================================================= */
-/*                 ضبط السايدبار بشكل احترافي                */
-/* ========================================================= */
-
-.tera-sidebar{
-
-box-shadow:
-0 50px 140px rgba(0,0,0,.75),
-0 0 40px rgba(0,224,198,.15);
-
-}
 
 /* ========================================================= */
 /*                     دعم الجوال                             */
