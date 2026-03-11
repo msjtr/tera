@@ -1069,7 +1069,31 @@ border-radius:0;
 
 }
 
+/* ========================================================= */
+/*                     دعم الجوال                             */
+/* ========================================================= */
 
+@media(max-width:768px){
+
+body.sidebar-open main,
+body.sidebar-open .site-content{
+
+transform:none;
+box-shadow:none;
+border-radius:0;
+
+}
+
+}
+
+/* منع تمرير الصفحة عند فتح القائمة */
+
+body.sidebar-open{
+
+overflow:hidden;
+touch-action:none;
+
+}
 
 
 
