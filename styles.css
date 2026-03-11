@@ -300,68 +300,61 @@ box-shadow:
 
 }
 
+
+
+/* حركة الإطار */
+
+@keyframes teraSidebarBorder{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
 /* ========================================================= */
-/*           الإطار المتحرك الحقيقي حول السايدبار            */
+/*            الإطار المضيء المتحرك حول السايدبار            */
 /* ========================================================= */
 
 .tera-sidebar{
 
 position:relative;
 
-}
+border-radius:24px;
 
-.tera-sidebar::before{
-
-content:"";
-
-position:absolute;
-
-inset:-2px;
-
-border-radius:26px;
+padding:2px;
 
 background:linear-gradient(
 270deg,
 #00e0c6,
 #66fff2,
 #38bdf8,
-#00e0c6,
-#4abba6
+#00e0c6
 );
 
 background-size:400% 400%;
 
-animation:teraSidebarBorder 8s linear infinite;
-
-z-index:0;
+animation:teraSidebarBorder 6s linear infinite;
 
 }
 
-/* طبقة قص الخلفية حتى يظهر الإطار فقط */
+/* الطبقة الداخلية للصندوق */
 
-.tera-sidebar::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-border-radius:24px;
+.tera-sidebar-inner{
 
 background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
-z-index:1;
+border-radius:22px;
 
-}
-
-/* اجعل محتوى السايدبار فوق الطبقات */
-
-.tera-sidebar > *{
-
-position:relative;
-
-z-index:2;
+height:100%;
 
 }
 
@@ -382,8 +375,6 @@ background-position:0% 50%;
 }
 
 }
-
-
 
 
 /* ========================================================= */
