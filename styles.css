@@ -989,58 +989,43 @@ color:#ffffff !important;
 
 
 
-
 /* ========================================================= */
-/*         نظام تحريك الصفحة مع السايدبار - TERA            */
+/*         عزل السايدبار عن الصفحة بالكامل                   */
 /* ========================================================= */
 
-/* عند فتح القائمة */
+.tera-sidebar{
+
+position:fixed;
+
+top:calc(var(--header-height) + 10px);
+left:50%;
+
+transform:translate(-50%,-60px) scale(.96);
+
+opacity:0;
+
+z-index:10000;
+
+}
+
+.tera-sidebar.active{
+
+transform:translate(-50%,0) scale(1);
+
+opacity:1;
+
+}
+
+/* الصفحة لا تتحرك */
 
 body.sidebar-open main,
 body.sidebar-open .site-content{
 
-transform:translateX(-240px) scale(.98);
+transform:none !important;
 
-transition:
-transform .45s cubic-bezier(.22,1,.36,1);
-
-border-radius:18px;
-
-box-shadow:
-0 40px 120px rgba(0,0,0,.45);
+box-shadow:none !important;
 
 }
-
-/* تأثير تعتيم خفيف */
-
-body.sidebar-open main::after,
-body.sidebar-open .site-content::after{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.25);
-
-pointer-events:none;
-
-z-index:10;
-
-}
-
-/* حركة ناعمة للصفحة */
-
-main,
-.site-content{
-
-transition:
-transform .45s cubic-bezier(.22,1,.36,1),
-box-shadow .45s ease;
-
-}
-
 /* ========================================================= */
 /*                 ضبط السايدبار بشكل احترافي                */
 /* ========================================================= */
