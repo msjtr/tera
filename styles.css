@@ -290,7 +290,7 @@ transition:
 transform .55s cubic-bezier(.22,1,.36,1),
 opacity .35s ease;
 
-z-index:99999;
+z-index:999999;
 
 pointer-events:none;
 
@@ -302,17 +302,6 @@ transform:translate(-50%,0) scale(1);
 opacity:1;
 
 pointer-events:auto;
-
-}
-
-/* ========================================================= */
-/*                        عند الفتح                           */
-/* ========================================================= */
-
-.tera-sidebar.active{
-
-transform:translate(-50%,0) scale(1);
-opacity:1;
 
 }
 
@@ -581,18 +570,6 @@ flex:1;
 
 }
 
-/* السهم */
-.tera-arrow{
-
-margin-right:auto;
-
-font-size:20px;
-
-opacity:.8;
-
-transition:transform .3s ease;
-
-}
 
 /* عند فتح القائمة الفرعية */
 .tera-has-submenu.active .tera-arrow{
