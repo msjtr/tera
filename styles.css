@@ -276,7 +276,7 @@ height:calc(100vh - var(--header-height) - 40px);
 
 max-height:calc(100vh - var(--header-height) - 40px);
 
-overflow:hidden
+overflow:hidden;
   
 /* الإطار المتحرك */
 
@@ -368,6 +368,8 @@ background-position:0% 50%;
 .tera-sidebar-inner{
 
 height:100%;
+
+min-height:0;
 
 display:flex;
 flex-direction:column;
