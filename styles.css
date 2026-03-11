@@ -255,16 +255,19 @@ visibility:visible;
 /* ========================================================= */
 /*                     صندوق السايدبار                       */
 /* ========================================================= */
+/* ========================================================= */
+/*                  السايدبار المعزول بالكامل                */
+/* ========================================================= */
 
 .tera-sidebar{
 
 position:fixed;
 
 top:calc(var(--header-height) + 10px);
-left:50%;
+left:0;
+right:0;
 
-transform:translate(-50%,-60px) scale(.96);
-opacity:0;
+margin:auto;
 
 width:var(--sidebar-width);
 max-width:90%;
@@ -275,19 +278,19 @@ background:linear-gradient(180deg,#102a43,#0f2740,#0c2238);
 
 border-radius:24px;
 
-border:2px solid transparent;
-
-background-clip:padding-box;
-
-box-shadow:0 30px 80px rgba(0,0,0,.65);
+box-shadow:
+0 40px 120px rgba(0,0,0,.75),
+0 0 40px rgba(0,224,198,.15);
 
 display:flex;
 flex-direction:column;
 
-overflow:visible;
+opacity:0;
+
+transform:translateY(-60px) scale(.96);
 
 transition:
-transform .55s cubic-bezier(.22,1,.36,1),
+transform .45s cubic-bezier(.22,1,.36,1),
 opacity .35s ease;
 
 z-index:999999;
@@ -296,16 +299,17 @@ pointer-events:none;
 
 }
 
+/* عند الفتح */
+
 .tera-sidebar.active{
 
-transform:translate(-50%,0) scale(1);
 opacity:1;
+
+transform:translateY(0) scale(1);
 
 pointer-events:auto;
 
 }
-
-
 
 
 
