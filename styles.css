@@ -479,11 +479,7 @@ transition:all .3s ease;
 
 }
 
-.tera-close-btn:hover{
 
-transform:rotate(90deg) scale(1.1);
-
-}
 
 /* تأثير hover */
 
@@ -530,15 +526,6 @@ border-radius:10px;
 /*                        القائمة                             */
 /* ========================================================= */
 
-.tera-sidebar-menu{
-list-style:none;
-margin-top:20px;
-display:flex;
-flex-direction:column;
-gap:12px;
-flex:1;
-overflow-y:auto;
-}
 
 /* ========================================================= */
 /*                       عناصر القائمة                        */
