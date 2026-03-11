@@ -924,6 +924,8 @@ left:120%;
 
 /* تأثير hover */
 
+/* تأثير الكمبيوتر */
+
 .tera-login-link:hover{
 
 transform:translateY(-3px) scale(1.02);
@@ -934,6 +936,18 @@ box-shadow:
 
 }
 
+
+/* تأثير الجوال عند اللمس */
+
+.tera-login-link:active{
+
+transform:translateY(-3px) scale(1.02);
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.55),
+0 0 30px rgba(0,224,198,.6);
+
+}
 
 /* ========================================================= */
 /*          تأثير الإطار المضيء المتحرك - TERA                */
