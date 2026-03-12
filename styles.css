@@ -980,3 +980,41 @@ z-index:-1;
 /*                نهاية كود خلفية منصة تيرا                   */
 /*                                                            */
 /* ========================================================= */
+
+
+/* ========================================================= */
+/*               قسم الفيديو الرئيسي - TERA UI               */
+/* ========================================================= */
+
+.tera-video-section {
+  width: 100%;
+  margin-top: calc(var(--header-height) + 20px); /* مسافة تحت الهيدر */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tera-main-video {
+  width: 100%;
+  max-width: 1600px; /* تحديد أقصى عرض لدى الشاشات الكبيرة */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 224, 198, .25);
+}
+
+/* تحكم بالمارجن في الجوال */
+@media (max-width: 768px) {
+  .tera-video-section {
+    margin-top: calc(var(--header-height) + 15px);
+  }
+}
+
+/* تحسين للجوال الصغير جدًا */
+@media (max-width: 480px) {
+  .tera-video-section {
+    margin-top: calc(var(--header-height) + 10px);
+  }
+}
