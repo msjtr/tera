@@ -1,280 +1,850 @@
 /* ========================================================= */
 /*                                                            */
-/*     نظام واجهة منصة تيرا الاحترافي - ملف JS المنفصل        */
-/*              (التحكم الكامل في القوائم والتفاعلات)         */
+/*     نظام واجهة منصة تيرا الاحترافي - النسخة النهائية       */
+/*              (تأثيرات مضمونة 100% على الجوال)              */
 /*                                                            */
 /* ========================================================= */
 
-(function() {
-    'use strict';
+/* ----------------------------------- */
+/*      بداية: المتغيرات الرئيسية       */
+/* ----------------------------------- */
+:root {
+    /* الألوان الأساسية */
+    --tera-primary: #0f172a;
+    --tera-accent: #4abba6;
+    --tera-accent-light: #38bdf8;
+    --tera-white: #ffffff;
+    --tera-dark-blue: #0f172a;
+    --tera-divider: #1e293b;
+    --tera-bg: #132a4f;
+    --tera-bg-soft: #0f1f3f;
+    --tera-text: #ffffff;
+    --tera-glow: rgba(74, 187, 166, 0.6);
+    --tera-overlay: rgba(0, 0, 0, 0.65);
 
-    // ----------------------------------- //
-    // بداية: تهيئة المتغيرات العامة       //
-    // ----------------------------------- //
-    const TERA = {
-        // العناصر الرئيسية
-        header: null,
-        menuToggle: null,
-        sidebar: null,
-        overlay: null,
-        closeBtn: null,
-        submenuItems: [],
-        
-        // الحالة
-        isSidebarOpen: false,
-        isTransitioning: false,
-        
-        // الإعدادات
-        settings: {
-            closeOnOverlayClick: true,
-            closeOnEscape: true,
-            preventBodyScroll: true,
-            submenuToggleOnClick: true
-        }
-    };
-    // ----------------------------------- //
-    // نهاية: تهيئة المتغيرات العامة       //
-    // ----------------------------------- //
+    /* الأحجام */
+    --header-height: 75px;
+    --sidebar-width: 380px;
+    --font-size-normal: 16px;
+    --font-size-small: 14px;
+    --spacing-lg: 24px;
+    --spacing-md: 18px;
+    --spacing-sm: 12px;
 
-    // ----------------------------------- //
-    // بداية: تهيئة النظام والبحث عن العناصر //
-    // ----------------------------------- //
-    function initTeraUI() {
-        // البحث عن العناصر المطلوبة
-        TERA.menuToggle = document.querySelector('.tera-menu-toggle');
-        TERA.sidebar = document.querySelector('.tera-sidebar');
-        TERA.overlay = document.querySelector('.tera-overlay');
-        TERA.closeBtn = document.querySelector('.tera-close-btn');
-        
-        // التحقق من وجود العناصر الأساسية
-        if (!TERA.menuToggle || !TERA.sidebar) {
-            console.warn('TERA UI: بعض العناصر الأساسية غير موجودة');
-            return;
-        }
-        
-        // البحث عن القوائم الفرعية
-        TERA.submenuItems = document.querySelectorAll('.tera-has-submenu');
-        
-        // بدء الاستماع للأحداث
-        bindEvents();
-        
-        console.log('TERA UI: تم التهيئة بنجاح');
+    /* الخط */
+    --font-arabic: 'Tajawal', 'Cairo', sans-serif;
+}
+/* ----------------------------------- */
+/*      نهاية: المتغيرات الرئيسية       */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: الوضع الفاتح             */
+/* ----------------------------------- */
+@media (prefers-color-scheme: light) {
+    :root {
+        --tera-bg: #f4f7fb;
+        --tera-bg-soft: #ffffff;
+        --tera-text: #1e293b;
+        --tera-accent: #0ea5a4;
+        --tera-glow: rgba(14, 165, 164, 0.4);
+        --tera-dark-blue: #1e293b;
+        --tera-overlay: rgba(0, 0, 0, 0.5);
     }
-    // ----------------------------------- //
-    // نهاية: تهيئة النظام والبحث عن العناصر //
-    // ----------------------------------- //
+}
+/* ----------------------------------- */
+/*      نهاية: الوضع الفاتح             */
+/* ----------------------------------- */
 
-    // ----------------------------------- //
-    // بداية: ربط الأحداث بالعناصر          //
-    // ----------------------------------- //
-    function bindEvents() {
-        // حدث زر القائمة
-        if (TERA.menuToggle) {
-            TERA.menuToggle.addEventListener('click', toggleSidebar);
-        }
-        
-        // حدث زر الإغلاق
-        if (TERA.closeBtn) {
-            TERA.closeBtn.addEventListener('click', closeSidebar);
-        }
-        
-        // حدث طبقة التعتيم
-        if (TERA.overlay && TERA.settings.closeOnOverlayClick) {
-            TERA.overlay.addEventListener('click', closeSidebar);
-        }
-        
-        // حدث الضغط على Escape
-        if (TERA.settings.closeOnEscape) {
-            document.addEventListener('keydown', handleEscapeKey);
-        }
-        
-        // أحداث القوائم الفرعية
-        TERA.submenuItems.forEach(item => {
-            const trigger = item.querySelector('.tera-menu-link, .tera-menu-item');
-            if (trigger) {
-                trigger.addEventListener('click', (e) => toggleSubmenu(e, item));
-            }
-        });
-        
-        // أحداث النافذة (resize)
-        window.addEventListener('resize', handleResize);
-        
-        // منع انتشار الأحداث من داخل السايدبار
-        if (TERA.sidebar) {
-            TERA.sidebar.addEventListener('click', (e) => e.stopPropagation());
-        }
+/* ----------------------------------- */
+/*      بداية: إعدادات عامة             */
+/* ----------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-arabic);
+    background: var(--tera-bg);
+    color: var(--tera-text);
+}
+
+/* كلاس للتحكم من الجافا - منع تمرير الصفحة */
+body.sidebar-open {
+    overflow: hidden !important;
+    touch-action: none !important;
+    height: 100vh !important;
+    position: fixed !important;
+    width: 100% !important;
+}
+/* ----------------------------------- */
+/*      نهاية: إعدادات عامة             */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: الهيدر                   */
+/* ----------------------------------- */
+.tera-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: linear-gradient(135deg, #0f172a, #111c2d, #0b1220);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 25px;
+    z-index: 4000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease;
+    direction: rtl;
+}
+
+/* تأثير الضوء المتحرك */
+.tera-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(74, 187, 166, 0.12), transparent);
+    transform: skewX(-25deg);
+    animation: teraLight 6s ease-in-out infinite;
+}
+
+/* الخط المتحرك تحت الهيدر */
+.tera-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
+    background-size: 200% 100%;
+    animation: teraHeaderFlow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 12px rgba(0, 224, 198, .7), 0 0 28px rgba(0, 224, 198, .35);
+}
+
+@keyframes teraHeaderFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+/* ----------------------------------- */
+/*      نهاية: الهيدر                   */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: زر القائمة               */
+/* ----------------------------------- */
+.tera-menu-toggle {
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    min-width: 48px;
+    min-height: 48px;
+    position: relative;
+    z-index: 4001;
+    transition: transform 0.2s ease;
+}
+
+.tera-menu-toggle .line {
+    width: 28px;
+    height: 3px;
+    background: var(--tera-white);
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-menu-toggle:hover .line {
+        background: var(--tera-accent);
     }
-    // ----------------------------------- //
-    // نهاية: ربط الأحداث بالعناصر          //
-    // ----------------------------------- //
+}
 
-    // ----------------------------------- //
-    // بداية: فتح وإغلاق السايدبار          //
-    // ----------------------------------- //
-    function toggleSidebar() {
-        if (TERA.isSidebarOpen) {
-            closeSidebar();
-        } else {
-            openSidebar();
-        }
+/* تأثير للجوال واللمس */
+.tera-menu-toggle:active {
+    transform: scale(0.9);
+}
+
+.tera-menu-toggle:active .line {
+    background: var(--tera-accent) !important;
+    box-shadow: 0 0 20px var(--tera-accent);
+}
+
+.tera-menu-toggle:active .l1 {
+    transform: translateY(-2px);
+}
+
+.tera-menu-toggle:active .l3 {
+    transform: translateY(2px);
+}
+
+/* كلاس active يتم التحكم به من الجافا */
+.tera-menu-toggle.active .l1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.tera-menu-toggle.active .l2 {
+    opacity: 0;
+}
+
+.tera-menu-toggle.active .l3 {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ----------------------------------- */
+/*      نهاية: زر القائمة               */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: طبقة التعتيم             */
+/* ----------------------------------- */
+.tera-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--tera-overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 2000;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.tera-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+/* ----------------------------------- */
+/*      نهاية: طبقة التعتيم             */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: صندوق السايدبار          */
+/* ----------------------------------- */
+.tera-sidebar {
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: var(--sidebar-width);
+    max-width: 90%;
+    height: calc(100vh - var(--header-height) - 40px);
+    max-height: calc(100vh - var(--header-height) - 40px);
+    overflow: hidden;
+    padding: 4px;
+    background: linear-gradient(270deg, #00e0c6, #66fff2, #38bdf8, #00e0c6);
+    background-size: 400% 400%;
+    animation: teraSidebarBorder 2s linear infinite;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-60px) scale(.96);
+    transition: transform 0.45s cubic-bezier(.22, 1, .36, 1), 
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+    z-index: 999999;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, .75);
+    pointer-events: none;
+}
+
+.tera-sidebar.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+@keyframes teraSidebarBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* ----------------------------------- */
+/*      نهاية: صندوق السايدبار          */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: المحتوى الداخلي للسايدبار */
+/* ----------------------------------- */
+.tera-sidebar-inner {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px 25px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #102a43, #0f2740, #0c2238);
+}
+/* ----------------------------------- */
+/*      نهاية: المحتوى الداخلي          */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: صندوق الشعار             */
+/* ----------------------------------- */
+.tera-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 60px;
+}
+
+/* الشعارات المتجاوبة */
+.tera-logo-desktop,
+.tera-logo-tablet,
+.tera-logo-mobile {
+    display: none;
+    max-width: 170px;
+    height: 60px;
+    object-fit: contain;
+    margin: auto;
+    filter: drop-shadow(0 0 12px rgba(0, 224, 198, 0.25));
+    transition: all 0.35s ease;
+    pointer-events: none;
+}
+
+@media (min-width: 1024px) { .tera-logo-desktop { display: block; } }
+@media (min-width: 768px) and (max-width: 1023px) { .tera-logo-tablet { display: block; } }
+@media (max-width: 767px) { .tera-logo-mobile { display: block; } }
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-logo-box:hover {
+        background: rgba(255, 255, 255, 0.1);
     }
     
-    function openSidebar() {
-        if (TERA.isTransitioning || TERA.isSidebarOpen) return;
-        
-        TERA.isTransitioning = true;
-        
-        // إضافة الكلاسات المطلوبة
-        TERA.menuToggle?.classList.add('active');
-        TERA.sidebar?.classList.add('active');
-        TERA.overlay?.classList.add('active');
-        
-        // منع تمرير الصفحة
-        if (TERA.settings.preventBodyScroll) {
-            document.body.classList.add('sidebar-open');
-        }
-        
-        TERA.isSidebarOpen = true;
-        
-        // إنهاء حالة الانتقال بعد انتهاء الأنيميشن
-        setTimeout(() => {
-            TERA.isTransitioning = false;
-        }, 450);
-        
-        // حدث مخصص - تم فتح السايدبار
-        document.dispatchEvent(new CustomEvent('tera:sidebarOpened'));
+    .tera-logo-box:hover img {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 18px rgba(0, 224, 198, 0.45));
+    }
+}
+
+/* تأثير للجوال واللمس */
+.tera-logo-box:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.tera-logo-box:active img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 30px var(--tera-accent));
+}
+
+/* خط فاصل تحت الشعار */
+.tera-logo-box::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: -12px;
+    background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
+    opacity: 0.6;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.tera-logo-box:active::after {
+    opacity: 1;
+    height: 3px;
+}
+/* ----------------------------------- */
+/*      نهاية: صندوق الشعار             */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: زر إغلاق السايدبار       */
+/* ----------------------------------- */
+.tera-close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4abba6;
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-close-btn:hover {
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 224, 198, 0.6);
+    }
+}
+
+/* تأثير للجوال واللمس */
+.tera-close-btn:active {
+    transform: rotate(180deg) scale(1.2);
+    background: #5fccb8;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 40px var(--tera-accent);
+    color: #000000;
+}
+/* ----------------------------------- */
+/*      نهاية: زر الإغلاق               */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: القائمة الرئيسية         */
+/* ----------------------------------- */
+.tera-sidebar-menu {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100%;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #00e0c6 transparent;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00e0c6, #66fff2);
+    border-radius: 20px;
+}
+
+/* عناصر القائمة */
+.tera-menu-link,
+.tera-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 14px;
+    padding: 18px 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    position: relative;
+    line-height: 1.4;
+    min-height: 54px;
+}
+
+.tera-menu-link span,
+.tera-menu-item span {
+    flex: 1;
+    color: #ffffff !important;
+}
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-menu-link:hover,
+    .tera-menu-item:hover {
+        background: linear-gradient(90deg, rgba(74, 187, 166, .18), rgba(74, 187, 166, .05));
+        box-shadow: 0 0 8px rgba(0, 224, 198, .12);
+    }
+}
+
+/* تأثير للجوال واللمس */
+.tera-menu-link:active,
+.tera-menu-item:active {
+    transform: scale(0.98) translateX(5px);
+    background: linear-gradient(90deg, rgba(74, 187, 166, 0.4), rgba(74, 187, 166, 0.2));
+    box-shadow: 0 0 25px rgba(0, 224, 198, 0.5);
+}
+
+.tera-menu-link:active span,
+.tera-menu-item:active span {
+    text-shadow: 0 0 10px #ffffff;
+}
+/* ----------------------------------- */
+/*      نهاية: القائمة الرئيسية         */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: القوائم الفرعية          */
+/* ----------------------------------- */
+.tera-has-submenu {
+    position: relative;
+}
+
+.tera-arrow {
+    margin-right: auto;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+    opacity: .8;
+}
+
+.tera-has-submenu.active .tera-arrow {
+    transform: rotate(180deg);
+}
+
+.tera-submenu {
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    margin-top: 6px;
+    padding-right: 10px;
+    gap: 6px;
+}
+
+.tera-has-submenu.active .tera-submenu {
+    display: flex;
+}
+
+.tera-submenu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #ffffff !important;
+    opacity: .9;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+    min-height: 48px;
+}
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-submenu a:hover {
+        background: rgba(74, 187, 166, .15);
+        padding-right: 20px;
+    }
+}
+
+/* تأثير للجوال واللمس */
+.tera-submenu a:active {
+    transform: translateX(-8px) scale(0.98);
+    background: rgba(74, 187, 166, 0.4);
+    padding-right: 25px;
+    box-shadow: 0 0 20px rgba(0, 224, 198, 0.4);
+    opacity: 1;
+}
+/* ----------------------------------- */
+/*      نهاية: القوائم الفرعية          */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: زر تسجيل الدخول          */
+/* ----------------------------------- */
+.tera-login-item {
+    margin-top: 30px;
+    padding-top: 25px;
+    position: relative;
+}
+
+/* الفاصل العلوي */
+.tera-login-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
+    opacity: .6;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tera-login-link {
+    width: 100%;
+    padding: 18px 0;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+    background: linear-gradient(135deg, #00e0c6, #66fff2);
+    border: none;
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 18px rgba(0, 224, 198, .35);
+    min-height: 56px;
+}
+
+/* الضوء المتحرك */
+.tera-login-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .45), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.45s ease;
+    pointer-events: none;
+}
+
+/* تأثير hover للكمبيوتر */
+@media (hover: hover) {
+    .tera-login-link:hover::before {
+        left: 120%;
     }
     
-    function closeSidebar() {
-        if (TERA.isTransitioning || !TERA.isSidebarOpen) return;
-        
-        TERA.isTransitioning = true;
-        
-        // إزالة الكلاسات
-        TERA.menuToggle?.classList.remove('active');
-        TERA.sidebar?.classList.remove('active');
-        TERA.overlay?.classList.remove('active');
-        
-        // السماح بتمرير الصفحة
-        if (TERA.settings.preventBodyScroll) {
-            document.body.classList.remove('sidebar-open');
-        }
-        
-        TERA.isSidebarOpen = false;
-        
-        // إنهاء حالة الانتقال بعد انتهاء الأنيميشن
-        setTimeout(() => {
-            TERA.isTransitioning = false;
-        }, 450);
-        
-        // إغلاق جميع القوائم الفرعية
-        closeAllSubmenus();
-        
-        // حدث مخصص - تم إغلاق السايدبار
-        document.dispatchEvent(new CustomEvent('tera:sidebarClosed'));
+    .tera-login-link:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, .45), 0 0 25px rgba(0, 224, 198, .6);
     }
-    // ----------------------------------- //
-    // نهاية: فتح وإغلاق السايدبار          //
-    // ----------------------------------- //
+}
 
-    // ----------------------------------- //
-    // بداية: التحكم في القوائم الفرعية     //
-    // ----------------------------------- //
-    function toggleSubmenu(event, submenuItem) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        // التحقق مما إذا كان العنصر يحتوي على القائمة الفرعية
-        const submenu = submenuItem.querySelector('.tera-submenu');
-        if (!submenu) return;
-        
-        // تبديل حالة القائمة الفرعية
-        submenuItem.classList.toggle('active');
-        
-        // حدث مخصص - تم تغيير حالة القائمة الفرعية
-        document.dispatchEvent(new CustomEvent('tera:submenuToggled', {
-            detail: { item: submenuItem, isOpen: submenuItem.classList.contains('active') }
-        }));
+/* تأثير للجوال واللمس */
+.tera-login-link:active {
+    transform: scale(0.92);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 224, 198, 1);
+    filter: brightness(1.2);
+}
+
+.tera-login-link:active::before {
+    left: 120%;
+    transition: left 0.2s ease;
+}
+/* ----------------------------------- */
+/*      نهاية: زر تسجيل الدخول          */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: تثبيت الألوان            */
+/* ----------------------------------- */
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a,
+.tera-menu-link .tera-text,
+.tera-menu-item .tera-text,
+.tera-submenu a .tera-text,
+.tera-text {
+    color: #ffffff !important;
+}
+/* ----------------------------------- */
+/*      نهاية: تثبيت الألوان            */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: تحسينات الجوال           */
+/* ----------------------------------- */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 85%;
+        --header-height: 65px;
+    }
+
+    .tera-sidebar {
+        top: calc(var(--header-height) + 8px);
+        height: 85vh;
+        max-height: 85vh;
+        width: 94%;
+    }
+
+    .tera-sidebar-inner {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 18px 18px;
+    }
+
+    .tera-sidebar-menu {
+        max-height: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 16px 22px;
+        min-height: 54px;
+        font-size: 15px;
+    }
+
+    .tera-submenu a {
+        min-height: 48px;
+        padding: 12px 14px;
+    }
+
+    .tera-login-link {
+        min-height: 54px;
+        font-size: 15px;
     }
     
-    function closeAllSubmenus() {
-        TERA.submenuItems.forEach(item => {
-            item.classList.remove('active');
-        });
-    }
-    // ----------------------------------- //
-    // نهاية: التحكم في القوائم الفرعية     //
-    // ----------------------------------- //
-
-    // ----------------------------------- //
-    // بداية: معالجة الأحداث العامة         //
-    // ----------------------------------- //
-    function handleEscapeKey(e) {
-        if (e.key === 'Escape' && TERA.isSidebarOpen) {
-            closeSidebar();
-        }
+    .tera-close-btn {
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
     }
     
-    function handleResize() {
-        // يمكن إضافة منطق معين عند تغيير حجم الشاشة
+    .tera-logo-box {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        padding: 12px;
     }
-    // ----------------------------------- //
-    // نهاية: معالجة الأحداث العامة         //
-    // ----------------------------------- //
-
-    // ----------------------------------- //
-    // بداية: دوال مساعدة للاستخدام الخارجي //
-    // ----------------------------------- //
-    window.TERA = {
-        // دوال التحكم في السايدبار
-        openSidebar: openSidebar,
-        closeSidebar: closeSidebar,
-        toggleSidebar: toggleSidebar,
-        
-        // دوال التحكم في القوائم الفرعية
-        closeAllSubmenus: closeAllSubmenus,
-        
-        // معلومات الحالة
-        isOpen: () => TERA.isSidebarOpen,
-        
-        // تحديث الإعدادات
-        updateSettings: (newSettings) => {
-            Object.assign(TERA.settings, newSettings);
-        },
-        
-        // إعادة تهيئة النظام
-        reinit: () => {
-            // إعادة البحث عن العناصر
-            TERA.menuToggle = document.querySelector('.tera-menu-toggle');
-            TERA.sidebar = document.querySelector('.tera-sidebar');
-            TERA.overlay = document.querySelector('.tera-overlay');
-            TERA.closeBtn = document.querySelector('.tera-close-btn');
-            TERA.submenuItems = document.querySelectorAll('.tera-has-submenu');
-            
-            console.log('TERA UI: تمت إعادة التهيئة');
-        }
-    };
-    // ----------------------------------- //
-    // نهاية: دوال مساعدة للاستخدام الخارجي //
-    // ----------------------------------- //
-
-    // ----------------------------------- //
-    // بداية: تشغيل النظام عند تحميل الصفحة //
-    // ----------------------------------- //
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTeraUI);
-    } else {
-        // إذا كانت الصفحة قد حمّلت بالفعل
-        initTeraUI();
+    
+    .tera-logo-box img {
+        max-height: 50px;
     }
-    // ----------------------------------- //
-    // نهاية: تشغيل النظام عند تحميل الصفحة //
-    // ----------------------------------- //
+}
 
-})();
+@media (max-width: 480px) {
+    :root {
+        --sidebar-width: 100%;
+    }
+    
+    .tera-sidebar {
+        width: 96%;
+        border-radius: 20px;
+    }
+    
+    .tera-sidebar-inner {
+        padding: 0 14px 14px;
+        border-radius: 18px;
+    }
+    
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 14px 18px;
+        font-size: 14px;
+        gap: 12px;
+    }
+    
+    .tera-submenu a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .tera-arrow {
+        font-size: 20px;
+    }
+    
+    .tera-login-link {
+        padding: 16px 0;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    .tera-submenu a {
+        padding: 8px 10px;
+    }
+    
+    .tera-arrow {
+        font-size: 18px;
+    }
+    
+    .tera-logo-box {
+        margin: 10px 0 20px;
+    }
+    
+    .tera-logo-box img {
+        max-height: 45px;
+    }
+}
+/* ----------------------------------- */
+/*      نهاية: تحسينات الجوال           */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: تحسين الأداء             */
+/* ----------------------------------- */
+.tera-header,
+.tera-sidebar,
+.tera-menu-toggle,
+.tera-close-btn,
+.tera-logo-box,
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a,
+.tera-login-link {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* ----------------------------------- */
+/*      نهاية: تحسين الأداء             */
+/* ----------------------------------- */
 
 /* ========================================================= */
 /*                                                            */
-/*              نهاية ملف JavaScript - TERA UI                */
+/*              نهاية ملف CSS - TERA UI                       */
 /*                                                            */
 /* ========================================================= */
