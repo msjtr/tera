@@ -1,13 +1,11 @@
 /* ========================================================= */
 /*                                                            */
-/*              نظام واجهة منصة تيرا الاحترافي (TERA UI)      */
-/*              تنسيقات الهيدر + القائمة الجانبية + التفاعل   */
-/*              متوافق مع الجوال والتابلت والكمبيوتر          */
+/*     نظام واجهة منصة تيرا الاحترافي - ملف CSS المنفصل       */
 /*                                                            */
 /* ========================================================= */
 
 /* ----------------------------------- */
-/*           بداية: المتغيرات الرئيسية   */
+/*      بداية: المتغيرات الرئيسية       */
 /* ----------------------------------- */
 :root {
     /* الألوان الأساسية */
@@ -36,11 +34,11 @@
     --font-arabic: 'Tajawal', 'Cairo', sans-serif;
 }
 /* ----------------------------------- */
-/*           نهاية: المتغيرات الرئيسية   */
+/*      نهاية: المتغيرات الرئيسية       */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: الوضع الفاتح         */
+/*      بداية: الوضع الفاتح             */
 /* ----------------------------------- */
 @media (prefers-color-scheme: light) {
     :root {
@@ -53,11 +51,11 @@
     }
 }
 /* ----------------------------------- */
-/*           نهاية: الوضع الفاتح         */
+/*      نهاية: الوضع الفاتح             */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: إعدادات عامة         */
+/*      بداية: إعدادات عامة             */
 /* ----------------------------------- */
 * {
     margin: 0;
@@ -73,12 +71,19 @@ body {
     background: var(--tera-bg);
     color: var(--tera-text);
 }
+
+/* كلاس للتحكم من الجافا - منع تمرير الصفحة */
+body.sidebar-open {
+    overflow: hidden;
+    touch-action: none;
+    height: 100vh;
+}
 /* ----------------------------------- */
-/*           نهاية: إعدادات عامة         */
+/*      نهاية: إعدادات عامة             */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: الهيدر (الرئيسي)     */
+/*      بداية: الهيدر                   */
 /* ----------------------------------- */
 .tera-header {
     position: fixed;
@@ -131,11 +136,11 @@ body {
     100% { background-position: 100% 50%; }
 }
 /* ----------------------------------- */
-/*           نهاية: الهيدر               */
+/*      نهاية: الهيدر                   */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: زر القائمة (الهامبرغر) */
+/*      بداية: زر القائمة               */
 /* ----------------------------------- */
 .tera-menu-toggle {
     width: 45px;
@@ -162,6 +167,7 @@ body {
     background: var(--tera-accent);
 }
 
+/* كلاس active يتم التحكم به من الجافا */
 .tera-menu-toggle.active .l1 {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -174,11 +180,11 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 /* ----------------------------------- */
-/*           نهاية: زر القائمة           */
+/*      نهاية: زر القائمة               */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: طبقة التعتيم (Overlay) */
+/*      بداية: طبقة التعتيم             */
 /* ----------------------------------- */
 .tera-overlay {
     position: fixed;
@@ -190,16 +196,17 @@ body {
     z-index: 2000;
 }
 
+/* كلاس active يتم التحكم به من الجافا */
 .tera-overlay.active {
     opacity: 1;
     visibility: visible;
 }
 /* ----------------------------------- */
-/*           نهاية: طبقة التعتيم         */
+/*      نهاية: طبقة التعتيم             */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: صندوق السايدبار      */
+/*      بداية: صندوق السايدبار          */
 /* ----------------------------------- */
 .tera-sidebar {
     position: fixed;
@@ -212,7 +219,7 @@ body {
     height: calc(100vh - var(--header-height) - 40px);
     max-height: calc(100vh - var(--header-height) - 40px);
     overflow: hidden;
-    padding: 4px; /* الإطار المتحرك */
+    padding: 4px;
     background: linear-gradient(270deg, #00e0c6, #66fff2, #38bdf8, #00e0c6);
     background-size: 400% 400%;
     animation: teraSidebarBorder 2s linear infinite;
@@ -220,15 +227,20 @@ body {
     display: flex;
     flex-direction: column;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-60px) scale(.96);
-    transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+    transition: transform .45s cubic-bezier(.22, 1, .36, 1), 
+                opacity .35s ease,
+                visibility .35s ease;
     z-index: 999999;
-    pointer-events: auto;
     box-shadow: 0 40px 120px rgba(0, 0, 0, .75);
+    pointer-events: none;
 }
 
+/* كلاس active يتم التحكم به من الجافا */
 .tera-sidebar.active {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0) scale(1);
     pointer-events: auto;
 }
@@ -239,11 +251,11 @@ body {
     100% { background-position: 0% 50%; }
 }
 /* ----------------------------------- */
-/*           نهاية: صندوق السايدبار      */
+/*      نهاية: صندوق السايدبار          */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: المحتوى الداخلي للسايدبار */
+/*      بداية: المحتوى الداخلي للسايدبار */
 /* ----------------------------------- */
 .tera-sidebar-inner {
     height: 100%;
@@ -256,11 +268,11 @@ body {
     background: linear-gradient(180deg, #102a43, #0f2740, #0c2238);
 }
 /* ----------------------------------- */
-/*           نهاية: المحتوى الداخلي      */
+/*      نهاية: المحتوى الداخلي          */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: صندوق الشعار         */
+/*      بداية: صندوق الشعار             */
 /* ----------------------------------- */
 .tera-logo-box {
     display: flex;
@@ -275,7 +287,7 @@ body {
     position: relative;
 }
 
-/* الشعارات */
+/* الشعارات المتجاوبة */
 .tera-logo-desktop,
 .tera-logo-tablet,
 .tera-logo-mobile {
@@ -309,11 +321,11 @@ body {
     border-radius: 10px;
 }
 /* ----------------------------------- */
-/*           نهاية: صندوق الشعار        */
+/*      نهاية: صندوق الشعار             */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: زر إغلاق السايدبار   */
+/*      بداية: زر إغلاق السايدبار       */
 /* ----------------------------------- */
 .tera-close-btn {
     position: absolute;
@@ -341,11 +353,11 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 224, 198, 0.6);
 }
 /* ----------------------------------- */
-/*           نهاية: زر الإغلاق          */
+/*      نهاية: زر الإغلاق               */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: القائمة الرئيسية     */
+/*      بداية: القائمة الرئيسية         */
 /* ----------------------------------- */
 .tera-sidebar-menu {
     list-style: none;
@@ -359,9 +371,24 @@ body {
     max-height: 100%;
     -webkit-overflow-scrolling: touch;
     padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #00e0c6 transparent;
 }
 
-/* عناصر القائمة الرئيسية */
+.tera-sidebar-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tera-sidebar-menu::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00e0c6, #66fff2);
+    border-radius: 20px;
+}
+
+/* عناصر القائمة */
 .tera-menu-link,
 .tera-menu-item {
     display: flex;
@@ -375,7 +402,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
-    color: #ffffff !important; /*强制性 أبيض */
+    color: #ffffff !important;
     text-decoration: none;
     border-radius: 12px;
     transition: all .25s ease;
@@ -393,18 +420,16 @@ body {
 .tera-menu-item:hover {
     background: linear-gradient(90deg, rgba(74, 187, 166, .18), rgba(74, 187, 166, .05));
     box-shadow: 0 0 8px rgba(0, 224, 198, .12);
-    transform: none;
-    color: #ffffff !important;
 }
 /* ----------------------------------- */
-/*           نهاية: القائمة الرئيسية     */
+/*      نهاية: القائمة الرئيسية         */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: القوائم الفرعية     */
+/*      بداية: القوائم الفرعية          */
 /* ----------------------------------- */
-.tera-has-submenu.active .tera-arrow {
-    transform: rotate(180deg);
+.tera-has-submenu {
+    position: relative;
 }
 
 .tera-arrow {
@@ -412,6 +437,11 @@ body {
     font-size: 22px;
     transition: .3s;
     opacity: .8;
+}
+
+/* كلاس active يتم التحكم به من الجافا للقوائم الفرعية */
+.tera-has-submenu.active .tera-arrow {
+    transform: rotate(180deg);
 }
 
 .tera-submenu {
@@ -423,6 +453,7 @@ body {
     gap: 6px;
 }
 
+/* كلاس active يتم التحكم به من الجافا لعرض القائمة الفرعية */
 .tera-has-submenu.active .tera-submenu {
     display: flex;
 }
@@ -444,15 +475,13 @@ body {
 .tera-submenu a:hover {
     background: rgba(74, 187, 166, .15);
     padding-right: 20px;
-    box-shadow: none;
-    color: #ffffff !important;
 }
 /* ----------------------------------- */
-/*           نهاية: القوائم الفرعية     */
+/*      نهاية: القوائم الفرعية          */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: زر تسجيل الدخول      */
+/*      بداية: زر تسجيل الدخول          */
 /* ----------------------------------- */
 .tera-login-item {
     margin-top: 30px;
@@ -494,7 +523,7 @@ body {
     z-index: 5;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    transition: transform .12s ease, box-shadow .12s ease;
     box-shadow: 0 6px 18px rgba(0, 224, 198, .35);
 }
 
@@ -513,7 +542,10 @@ body {
 }
 
 @media (hover: hover) {
-    .tera-login-link:hover::before { left: 120%; }
+    .tera-login-link:hover::before {
+        left: 120%;
+    }
+    
     .tera-login-link:hover {
         transform: translateY(-3px) scale(1.03);
         box-shadow: 0 12px 30px rgba(0, 0, 0, .45), 0 0 25px rgba(0, 224, 198, .6);
@@ -523,50 +555,34 @@ body {
 .tera-login-link:active {
     transform: scale(.94);
     box-shadow: 0 5px 14px rgba(0, 0, 0, .35);
-    filter: brightness(1.05);
 }
 /* ----------------------------------- */
-/*           نهاية: زر تسجيل الدخول      */
+/*      نهاية: زر تسجيل الدخول          */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: شريط التمرير        */
+/*      بداية: تثبيت الألوان            */
 /* ----------------------------------- */
-.tera-sidebar-menu {
-    scrollbar-width: thin;
-    scrollbar-color: #00e0c6 transparent;
-}
-
-.tera-sidebar-menu::-webkit-scrollbar {
-    width: 5px;
-}
-
-.tera-sidebar-menu::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.tera-sidebar-menu::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00e0c6, #66fff2);
-    border-radius: 20px;
+.tera-menu-link,
+.tera-menu-item,
+.tera-submenu a,
+.tera-menu-link .tera-text,
+.tera-menu-item .tera-text,
+.tera-submenu a .tera-text,
+.tera-text {
+    color: #ffffff !important;
 }
 /* ----------------------------------- */
-/*           نهاية: شريط التمرير        */
+/*      نهاية: تثبيت الألوان            */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*           بداية: تحسينات الجوال      */
+/*      بداية: تحسينات الجوال           */
 /* ----------------------------------- */
 @media (max-width: 768px) {
     :root {
         --sidebar-width: 85%;
         --header-height: 65px;
-    }
-
-    body.sidebar-open main,
-    body.sidebar-open .site-content {
-        transform: none;
-        box-shadow: none;
-        border-radius: 0;
     }
 
     .tera-sidebar {
@@ -577,6 +593,7 @@ body {
 
     .tera-sidebar-inner {
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .tera-sidebar-menu {
@@ -585,13 +602,38 @@ body {
         -webkit-overflow-scrolling: touch;
     }
 
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 16px 22px;
+        min-height: 50px;
+    }
+
+    .tera-submenu a {
+        min-height: 44px;
+    }
+
     .tera-login-link {
-        position: relative;
-        z-index: 10000;
-        transform: translateZ(0);
-        will-change: transform;
-        touch-action: manipulation;
-        pointer-events: auto;
+        min-height: 50px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* إلغاء hover على الجوال */
+    .tera-menu-link:hover,
+    .tera-menu-item:hover,
+    .tera-submenu a:hover {
+        background: none;
+        box-shadow: none;
+    }
+    
+    /* تفعيل active بدلاً منه */
+    .tera-menu-link:active,
+    .tera-menu-item:active,
+    .tera-submenu a:active {
+        background: rgba(74, 187, 166, 0.25);
+    }
+    
+    .tera-login-link:active {
+        transform: scale(0.96);
     }
 }
 
@@ -599,34 +641,64 @@ body {
     :root {
         --sidebar-width: 100%;
     }
+    
+    .tera-sidebar {
+        width: 96%;
+    }
+    
+    .tera-sidebar-inner {
+        padding: 0 16px 16px;
+    }
+    
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 14px 18px;
+        font-size: 15px;
+    }
 }
 
-/* منع تمرير الصفحة عند فتح القائمة */
-body.sidebar-open {
-    overflow: hidden;
-    touch-action: none;
-    height: 100vh;
-}
-
-/* تحسين اللمس للعناصر */
-.tera-menu-link,
-.tera-menu-item,
-.tera-submenu a,
-.tera-login-link {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
-/* تثبيت نهائي للون النصوص */
-.tera-text {
-    color: #ffffff !important;
+@media (max-width: 360px) {
+    .tera-menu-link,
+    .tera-menu-item {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .tera-arrow {
+        font-size: 20px;
+    }
 }
 /* ----------------------------------- */
-/*           نهاية: تحسينات الجوال      */
+/*      نهاية: تحسينات الجوال           */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/*      بداية: تحسين الأداء             */
+/* ----------------------------------- */
+.tera-header,
+.tera-sidebar,
+.tera-menu-toggle,
+.tera-close-btn {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* تقليل الحركة للمستخدمين الذين يفضلون ذلك */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* ----------------------------------- */
+/*      نهاية: تحسين الأداء             */
 /* ----------------------------------- */
 
 /* ========================================================= */
 /*                                                            */
-/*             نهاية نظام واجهة منصة تيرا الاحترافي            */
+/*              نهاية ملف CSS - TERA UI                       */
 /*                                                            */
 /* ========================================================= */
