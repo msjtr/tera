@@ -1,7 +1,5 @@
 /* ========================================================= */
-/*                                                            */
 /*            نظام تفاعل منصة تيرا - TERA UI JS               */
-/*                                                            */
 /* ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -18,8 +16,7 @@ const overlay = document.getElementById("teraOverlay");
 const closeBtn = document.getElementById("teraClose");
 
 const submenuParents = document.querySelectorAll(".tera-has-submenu");
-
-
+const menuLinks = document.querySelectorAll(".tera-menu-link, .tera-submenu a");
 
 /* ========================================================= */
 /*                       فتح القائمة                          */
@@ -38,8 +35,6 @@ sidebar.setAttribute("aria-hidden","false");
 
 }
 
-
-
 /* ========================================================= */
 /*                       إغلاق القائمة                        */
 /* ========================================================= */
@@ -56,8 +51,6 @@ menuToggle.setAttribute("aria-expanded","false");
 sidebar.setAttribute("aria-hidden","true");
 
 }
-
-
 
 /* ========================================================= */
 /*                     زر فتح القائمة                         */
@@ -79,8 +72,6 @@ openSidebar();
 
 }
 
-
-
 /* ========================================================= */
 /*                      زر الإغلاق                            */
 /* ========================================================= */
@@ -96,8 +87,6 @@ closeSidebar();
 
 }
 
-
-
 /* ========================================================= */
 /*                   الضغط على الخلفية                        */
 /* ========================================================= */
@@ -107,8 +96,6 @@ if(overlay){
 overlay.addEventListener("click", closeSidebar);
 
 }
-
-
 
 /* ========================================================= */
 /*                      زر ESC                                */
@@ -121,8 +108,6 @@ closeSidebar();
 }
 
 });
-
-
 
 /* ========================================================= */
 /*                     القوائم الفرعية                        */
@@ -144,81 +129,48 @@ parent.classList.toggle("active");
 
 });
 
+/* ========================================================= */
+/*       إغلاق القائمة عند الضغط على رابط وتوجيه العميل      */
+/* ========================================================= */
 
+menuLinks.forEach(function(link){
+
+link.addEventListener("click", function(){
+
+closeSidebar();
+
+});
+
+});
 
 /* ========================================================= */
-/*                 تحسين اللمس في الجوال                      */
+/*                تحسين اللمس في الجوال                       */
 /* ========================================================= */
 
 const touchTargets = document.querySelectorAll(
-".tera-menu-link, .tera-menu-item, .tera-login-link, .tera-logo-box, .tera-close-btn"
+".tera-menu-link, .tera-menu-item, .tera-login-link"
 );
 
 touchTargets.forEach(function(el){
 
 el.addEventListener("touchstart", function(){
-
 this.classList.add("touch-active");
-
 });
 
 el.addEventListener("touchend", function(){
-
 setTimeout(()=>{
 this.classList.remove("touch-active");
 },150);
-
 });
 
 });
-
-
-
-/* ========================================================= */
-/*                منع الضغط السريع المتكرر                    */
-/* ========================================================= */
-
-let clickLocked = false;
-
-document.addEventListener("click", function(){
-
-if(clickLocked) return;
-
-clickLocked = true;
-
-setTimeout(()=>{
-clickLocked = false;
-},120);
-
-});
-
-
 
 /* ========================================================= */
 /*                  تحسين أداء الجوال                         */
 /* ========================================================= */
 
 if("ontouchstart" in window){
-
 document.body.classList.add("tera-touch-device");
-
 }
-
-
-
-/* ========================================================= */
-/*               إغلاق القائمة عند تغيير الحجم                */
-/* ========================================================= */
-
-window.addEventListener("resize", function(){
-
-if(window.innerWidth > 1024){
-
-closeSidebar();
-
-}
-
-});
-
 
 });
