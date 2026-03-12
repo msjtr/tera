@@ -1667,6 +1667,47 @@ touch-action:manipulation;
 
 }
 
+
+/* ========================================================= */
+/*              إصلاح حجم السايدبار في الجوال                */
+/* ========================================================= */
+
+@media (max-width:768px){
+
+.tera-sidebar{
+
+top:calc(var(--header-height) + 8px);
+
+/* تقليل الارتفاع */
+
+height:85vh;
+max-height:85vh;
+
+}
+
+/* السماح بالتمرير داخل القائمة */
+
+.tera-sidebar-inner{
+
+overflow-y:auto;
+
+}
+
+/* تحسين تمرير الجوال */
+
+.tera-sidebar-menu{
+
+max-height:none;
+
+overflow-y:auto;
+
+-webkit-overflow-scrolling:touch;
+
+}
+
+
+
+
 /* ========================================================= */
 /*                                                            */
 /*             نهاية نظام واجهة منصة تيرا الاحترافي            */
