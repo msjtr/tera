@@ -983,38 +983,80 @@ z-index:-1;
 
 
 /* ========================================================= */
-/*               قسم الفيديو الرئيسي - TERA UI               */
+/*                    فيديو الهيرو - TERA                    */
 /* ========================================================= */
 
-.tera-video-section {
-  width: 100%;
-  margin-top: calc(var(--header-height) + 20px); /* مسافة تحت الهيدر */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
+.tera-hero-video{
+
+width:100%;
+
+/* مسافة عن الهيدر */
+
+margin-top:calc(var(--header-height) + 20px);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+box-sizing:border-box;
+
 }
 
-.tera-main-video {
-  width: 100%;
-  max-width: 1600px; /* تحديد أقصى عرض لدى الشاشات الكبيرة */
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 224, 198, .25);
+
+/* الفيديو */
+
+.tera-video{
+
+width:100%;
+
+max-width:1400px;
+
+height:auto;
+
+border-radius:16px;
+
+object-fit:cover;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.35),
+0 0 25px rgba(0,224,198,.25);
+
 }
 
-/* تحكم بالمارجن في الجوال */
-@media (max-width: 768px) {
-  .tera-video-section {
-    margin-top: calc(var(--header-height) + 15px);
-  }
+
+/* ========================================================= */
+/*                     استجابة الجوال                         */
+/* ========================================================= */
+
+@media(max-width:768px){
+
+.tera-hero-video{
+
+margin-top:calc(var(--header-height) + 15px);
+
+padding:10px;
+
 }
 
-/* تحسين للجوال الصغير جدًا */
-@media (max-width: 480px) {
-  .tera-video-section {
-    margin-top: calc(var(--header-height) + 10px);
-  }
+.tera-video{
+
+border-radius:12px;
+
+}
+
+}
+
+
+@media(max-width:480px){
+
+.tera-hero-video{
+
+margin-top:calc(var(--header-height) + 10px);
+
+}
+
 }
