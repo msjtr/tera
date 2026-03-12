@@ -49,6 +49,7 @@
         --tera-accent: #0ea5a4;
         --tera-glow: rgba(14, 165, 164, 0.4);
         --tera-dark-blue: #1e293b;
+        --tera-overlay: rgba(0, 0, 0, 0.5);
     }
 }
 /* ----------------------------------- */
@@ -145,7 +146,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر القائمة - تأثيرات مضمونة */
+/*      بداية: زر القائمة               */
 /* ----------------------------------- */
 .tera-menu-toggle {
     width: 45px;
@@ -180,7 +181,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-menu-toggle:active {
     transform: scale(0.9);
 }
@@ -191,11 +192,11 @@ body.sidebar-open {
 }
 
 .tera-menu-toggle:active .l1 {
-    transform: translateY(-3px) scaleX(1.1);
+    transform: translateY(-2px);
 }
 
 .tera-menu-toggle:active .l3 {
-    transform: translateY(3px) scaleX(1.1);
+    transform: translateY(2px);
 }
 
 /* كلاس active يتم التحكم به من الجافا */
@@ -225,9 +226,10 @@ body.sidebar-open {
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
     z-index: 2000;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
-/* كلاس active يتم التحكم به من الجافا */
 .tera-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -268,7 +270,6 @@ body.sidebar-open {
     pointer-events: none;
 }
 
-/* كلاس active يتم التحكم به من الجافا */
 .tera-sidebar.active {
     opacity: 1;
     visibility: visible;
@@ -303,7 +304,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: صندوق الشعار - تأثيرات مضمونة */
+/*      بداية: صندوق الشعار             */
 /* ----------------------------------- */
 .tera-logo-box {
     display: flex;
@@ -351,7 +352,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-logo-box:active {
     transform: scale(0.95);
     background: rgba(255, 255, 255, 0.15);
@@ -384,7 +385,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر إغلاق السايدبار - تأثيرات مضمونة */
+/*      بداية: زر إغلاق السايدبار       */
 /* ----------------------------------- */
 .tera-close-btn {
     position: absolute;
@@ -417,7 +418,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-close-btn:active {
     transform: rotate(180deg) scale(1.2);
     background: #5fccb8;
@@ -429,7 +430,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: القائمة الرئيسية - تأثيرات مضمونة */
+/*      بداية: القائمة الرئيسية         */
 /* ----------------------------------- */
 .tera-sidebar-menu {
     list-style: none;
@@ -498,7 +499,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-menu-link:active,
 .tera-menu-item:active {
     transform: scale(0.98) translateX(5px);
@@ -515,7 +516,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: القوائم الفرعية - تأثيرات مضمونة */
+/*      بداية: القوائم الفرعية          */
 /* ----------------------------------- */
 .tera-has-submenu {
     position: relative;
@@ -528,7 +529,6 @@ body.sidebar-open {
     opacity: .8;
 }
 
-/* كلاس active يتم التحكم به من الجافا للقوائم الفرعية */
 .tera-has-submenu.active .tera-arrow {
     transform: rotate(180deg);
 }
@@ -542,7 +542,6 @@ body.sidebar-open {
     gap: 6px;
 }
 
-/* كلاس active يتم التحكم به من الجافا لعرض القائمة الفرعية */
 .tera-has-submenu.active .tera-submenu {
     display: flex;
 }
@@ -570,7 +569,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-submenu a:active {
     transform: translateX(-8px) scale(0.98);
     background: rgba(74, 187, 166, 0.4);
@@ -583,7 +582,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر تسجيل الدخول - تأثيرات مضمونة */
+/*      بداية: زر تسجيل الدخول          */
 /* ----------------------------------- */
 .tera-login-item {
     margin-top: 30px;
@@ -655,7 +654,7 @@ body.sidebar-open {
     }
 }
 
-/* تأثيرات للجوال - تعمل دائمًا */
+/* تأثير للجوال واللمس */
 .tera-login-link:active {
     transform: scale(0.92);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 224, 198, 1);
@@ -687,7 +686,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: تحسينات الجوال الأساسية  */
+/*      بداية: تحسينات الجوال           */
 /* ----------------------------------- */
 @media (max-width: 768px) {
     :root {
@@ -811,7 +810,7 @@ body.sidebar-open {
     }
 }
 /* ----------------------------------- */
-/*      نهاية: تحسينات الجوال الأساسية  */
+/*      نهاية: تحسينات الجوال           */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
