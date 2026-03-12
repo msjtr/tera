@@ -1,6 +1,6 @@
 /* ========================================================= */
 /*                                                            */
-/*     نظام واجهة منصة تيرا الاحترافي - نسخة الجوال الكاملة    */
+/*     نظام واجهة منصة تيرا الاحترافي - نسخة الجوال القوية     */
 /*              (جميع التأثيرات تعمل على الجوال)              */
 /*                                                            */
 /* ========================================================= */
@@ -39,30 +39,17 @@
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: الوضع الفاتح             */
-/* ----------------------------------- */
-@media (prefers-color-scheme: light) {
-    :root {
-        --tera-bg: #f4f7fb;
-        --tera-bg-soft: #ffffff;
-        --tera-text: #1e293b;
-        --tera-accent: #0ea5a4;
-        --tera-glow: rgba(14, 165, 164, 0.4);
-        --tera-dark-blue: #1e293b;
-    }
-}
-/* ----------------------------------- */
-/*      نهاية: الوضع الفاتح             */
-/* ----------------------------------- */
-
-/* ----------------------------------- */
-/*      بداية: إعدادات عامة             */
+/*      بداية: إعدادات عامة معززة       */
 /* ----------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* إزالة التحديد الأزرق على الجوال */
     -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 html,
@@ -76,12 +63,14 @@ body {
 
 /* كلاس للتحكم من الجافا - منع تمرير الصفحة */
 body.sidebar-open {
-    overflow: hidden;
-    touch-action: none;
-    height: 100vh;
+    overflow: hidden !important;
+    touch-action: none !important;
+    height: 100vh !important;
+    position: fixed !important;
+    width: 100% !important;
 }
 /* ----------------------------------- */
-/*      نهاية: إعدادات عامة             */
+/*      نهاية: إعدادات عامة معززة       */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
@@ -142,7 +131,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر القائمة               */
+/*      بداية: زر القائمة - متوافق مع الجوال */
 /* ----------------------------------- */
 .tera-menu-toggle {
     width: 45px;
@@ -155,6 +144,11 @@ body.sidebar-open {
     justify-content: center;
     align-items: center;
     gap: 6px;
+    /* تحسين اللمس للجوال */
+    min-width: 48px;
+    min-height: 48px;
+    position: relative;
+    z-index: 4001;
 }
 
 .tera-menu-toggle .line {
@@ -162,12 +156,20 @@ body.sidebar-open {
     height: 3px;
     background: var(--tera-white);
     border-radius: 5px;
-    transition: .4s;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
-.tera-menu-toggle:hover .line,
+/* تأثير اللمس على الجوال */
 .tera-menu-toggle:active .line {
     background: var(--tera-accent);
+    transform: scaleX(0.9);
+}
+
+/* تأثير hover للكمبيوتر فقط */
+@media (hover: hover) {
+    .tera-menu-toggle:hover .line {
+        background: var(--tera-accent);
+    }
 }
 
 /* كلاس active يتم التحكم به من الجافا */
@@ -177,10 +179,20 @@ body.sidebar-open {
 
 .tera-menu-toggle.active .l2 {
     opacity: 0;
+    transform: scaleX(0);
 }
 
 .tera-menu-toggle.active .l3 {
     transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* تحسين للجوال عند النقر */
+.tera-menu-toggle:active:not(.active) .l1 {
+    transform: translateY(-2px);
+}
+
+.tera-menu-toggle:active:not(.active) .l3 {
+    transform: translateY(2px);
 }
 /* ----------------------------------- */
 /*      نهاية: زر القائمة               */
@@ -195,8 +207,10 @@ body.sidebar-open {
     background: var(--tera-overlay);
     opacity: 0;
     visibility: hidden;
-    transition: .4s;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
     z-index: 2000;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
 }
 
 /* كلاس active يتم التحكم به من الجافا */
@@ -232,9 +246,9 @@ body.sidebar-open {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-60px) scale(.96);
-    transition: transform .45s cubic-bezier(.22, 1, .36, 1), 
-                opacity .35s ease,
-                visibility .35s ease;
+    transition: transform 0.45s cubic-bezier(.22, 1, .36, 1), 
+                opacity 0.35s ease,
+                visibility 0.35s ease;
     z-index: 999999;
     box-shadow: 0 40px 120px rgba(0, 0, 0, .75);
     pointer-events: none;
@@ -275,7 +289,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: صندوق الشعار             */
+/*      بداية: صندوق الشعار - متوافق مع الجوال */
 /* ----------------------------------- */
 .tera-logo-box {
     display: flex;
@@ -289,6 +303,9 @@ body.sidebar-open {
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease;
+    /* تحسين اللمس */
+    cursor: pointer;
+    min-height: 60px;
 }
 
 /* الشعارات المتجاوبة */
@@ -301,14 +318,26 @@ body.sidebar-open {
     object-fit: contain;
     margin: auto;
     filter: drop-shadow(0 0 12px rgba(0, 224, 198, 0.25));
-    transition: all .35s ease;
+    transition: all 0.35s ease;
+    pointer-events: none; /* مهم لتمرير اللمس إلى الصندوق */
 }
 
 @media (min-width: 1024px) { .tera-logo-desktop { display: block; } }
 @media (min-width: 768px) and (max-width: 1023px) { .tera-logo-tablet { display: block; } }
 @media (max-width: 767px) { .tera-logo-mobile { display: block; } }
 
-/* تأثير hover للكمبيوتر */
+/* تأثير اللمس للجوال - يعمل دائماً */
+.tera-logo-box:active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(0.98);
+}
+
+.tera-logo-box:active img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 25px rgba(0, 224, 198, 0.8));
+}
+
+/* تأثير hover للكمبيوتر فقط */
 @media (hover: hover) {
     .tera-logo-box:hover {
         background: rgba(255, 255, 255, 0.1);
@@ -318,17 +347,6 @@ body.sidebar-open {
         transform: scale(1.05);
         filter: drop-shadow(0 0 18px rgba(0, 224, 198, 0.45));
     }
-}
-
-/* تأثير active للجوال */
-.tera-logo-box:active {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(0.98);
-}
-
-.tera-logo-box:active img {
-    transform: scale(1.02);
-    filter: drop-shadow(0 0 20px rgba(0, 224, 198, 0.6));
 }
 
 /* خط فاصل تحت الشعار */
@@ -341,13 +359,19 @@ body.sidebar-open {
     background: linear-gradient(90deg, transparent, #00e0c6, #66fff2, #00e0c6, transparent);
     opacity: 0.6;
     border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.tera-logo-box:active::after {
+    opacity: 1;
+    height: 3px;
 }
 /* ----------------------------------- */
 /*      نهاية: صندوق الشعار             */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر إغلاق السايدبار       */
+/*      بداية: زر إغلاق السايدبار - متوافق مع الجوال */
 /* ----------------------------------- */
 .tera-close-btn {
     position: absolute;
@@ -355,6 +379,8 @@ body.sidebar-open {
     left: 20px;
     width: 45px;
     height: 45px;
+    min-width: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,29 +393,29 @@ body.sidebar-open {
     cursor: pointer;
     z-index: 999;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
-/* تأثير hover للكمبيوتر */
+/* تأثير اللمس للجوال */
+.tera-close-btn:active {
+    transform: rotate(90deg) scale(1.1);
+    background: #5fccb8;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 224, 198, 0.9);
+}
+
+/* تأثير hover للكمبيوتر فقط */
 @media (hover: hover) {
     .tera-close-btn:hover {
         transform: rotate(90deg) scale(1.1);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 224, 198, 0.6);
     }
 }
-
-/* تأثير active للجوال */
-.tera-close-btn:active {
-    transform: rotate(90deg) scale(1.05);
-    background: #5fccb8;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 224, 198, 0.7);
-}
 /* ----------------------------------- */
 /*      نهاية: زر الإغلاق               */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: القائمة الرئيسية         */
+/*      بداية: القائمة الرئيسية - متوافقة مع الجوال */
 /* ----------------------------------- */
 .tera-sidebar-menu {
     list-style: none;
@@ -437,9 +463,12 @@ body.sidebar-open {
     color: #ffffff !important;
     text-decoration: none;
     border-radius: 12px;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
     position: relative;
     line-height: 1.4;
+    /* تحسين اللمس */
+    min-height: 54px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .tera-menu-link span,
@@ -448,7 +477,15 @@ body.sidebar-open {
     color: #ffffff !important;
 }
 
-/* تأثير hover للكمبيوتر */
+/* تأثير اللمس للجوال */
+.tera-menu-link:active,
+.tera-menu-item:active {
+    background: linear-gradient(90deg, rgba(74, 187, 166, 0.3), rgba(74, 187, 166, 0.15));
+    box-shadow: 0 0 15px rgba(0, 224, 198, 0.3);
+    transform: scale(0.97) translateX(5px);
+}
+
+/* تأثير hover للكمبيوتر فقط */
 @media (hover: hover) {
     .tera-menu-link:hover,
     .tera-menu-item:hover {
@@ -457,19 +494,18 @@ body.sidebar-open {
     }
 }
 
-/* تأثير active للجوال */
-.tera-menu-link:active,
-.tera-menu-item:active {
-    background: linear-gradient(90deg, rgba(74, 187, 166, .25), rgba(74, 187, 166, .1));
-    box-shadow: 0 0 12px rgba(0, 224, 198, .25);
-    transform: scale(0.98);
+/* تأثير خاص للعناصر النشطة */
+.tera-menu-link.active,
+.tera-menu-item.active {
+    background: linear-gradient(90deg, rgba(74, 187, 166, 0.2), rgba(74, 187, 166, 0.1));
+    border-right: 3px solid #00e0c6;
 }
 /* ----------------------------------- */
 /*      نهاية: القائمة الرئيسية         */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: القوائم الفرعية          */
+/*      بداية: القوائم الفرعية - متوافقة مع الجوال */
 /* ----------------------------------- */
 .tera-has-submenu {
     position: relative;
@@ -478,7 +514,7 @@ body.sidebar-open {
 .tera-arrow {
     margin-right: auto;
     font-size: 22px;
-    transition: .3s;
+    transition: transform 0.3s ease;
     opacity: .8;
 }
 
@@ -509,32 +545,34 @@ body.sidebar-open {
     border-radius: 8px;
     color: #ffffff !important;
     opacity: .9;
-    transition: .25s;
+    transition: all 0.25s ease;
     text-decoration: none;
     border: none;
     box-shadow: none;
+    min-height: 48px;
 }
 
-/* تأثير hover للكمبيوتر */
+/* تأثير اللمس للجوال */
+.tera-submenu a:active {
+    background: rgba(74, 187, 166, 0.3);
+    padding-right: 25px;
+    transform: translateX(-5px);
+    box-shadow: 0 0 10px rgba(0, 224, 198, 0.2);
+}
+
+/* تأثير hover للكمبيوتر فقط */
 @media (hover: hover) {
     .tera-submenu a:hover {
         background: rgba(74, 187, 166, .15);
         padding-right: 20px;
     }
 }
-
-/* تأثير active للجوال */
-.tera-submenu a:active {
-    background: rgba(74, 187, 166, .25);
-    padding-right: 20px;
-    transform: translateX(-5px);
-}
 /* ----------------------------------- */
 /*      نهاية: القوائم الفرعية          */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: زر تسجيل الدخول          */
+/*      بداية: زر تسجيل الدخول - متوافق مع الجوال */
 /* ----------------------------------- */
 .tera-login-item {
     margin-top: 30px;
@@ -575,9 +613,10 @@ body.sidebar-open {
     cursor: pointer;
     z-index: 5;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
     box-shadow: 0 6px 18px rgba(0, 224, 198, .35);
+    min-height: 56px;
+    touch-action: manipulation;
 }
 
 /* الضوء المتحرك */
@@ -590,11 +629,23 @@ body.sidebar-open {
     height: 100%;
     background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .45), transparent);
     transform: skewX(-25deg);
-    transition: left .45s ease;
+    transition: left 0.45s ease;
     pointer-events: none;
 }
 
-/* تأثير hover للكمبيوتر */
+/* تأثير اللمس للجوال */
+.tera-login-link:active {
+    transform: scale(0.95);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 224, 198, 0.9);
+    filter: brightness(1.15);
+}
+
+.tera-login-link:active::before {
+    left: 120%;
+    transition: left 0.3s ease;
+}
+
+/* تأثير hover للكمبيوتر فقط */
 @media (hover: hover) {
     .tera-login-link:hover::before {
         left: 120%;
@@ -606,17 +657,10 @@ body.sidebar-open {
     }
 }
 
-/* تأثير active للجوال */
-.tera-login-link:active {
-    transform: scale(0.96);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 224, 198, .7);
-    filter: brightness(1.1);
-}
-
-/* استمرار تأثير الضوء المتحرك للجوال */
-.tera-login-link:active::before {
-    left: 120%;
-    transition: left 0.3s ease;
+/* تأثير focus للجوال */
+.tera-login-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 224, 198, 0.5);
 }
 /* ----------------------------------- */
 /*      نهاية: زر تسجيل الدخول          */
@@ -639,7 +683,7 @@ body.sidebar-open {
 /* ----------------------------------- */
 
 /* ----------------------------------- */
-/*      بداية: تحسينات الجوال           */
+/*      بداية: تحسينات الجوال القوية    */
 /* ----------------------------------- */
 @media (max-width: 768px) {
     :root {
@@ -651,11 +695,13 @@ body.sidebar-open {
         top: calc(var(--header-height) + 8px);
         height: 85vh;
         max-height: 85vh;
+        width: 94%;
     }
 
     .tera-sidebar-inner {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        padding: 0 18px 18px;
     }
 
     .tera-sidebar-menu {
@@ -667,26 +713,37 @@ body.sidebar-open {
     .tera-menu-link,
     .tera-menu-item {
         padding: 16px 22px;
-        min-height: 50px;
+        min-height: 54px;
+        font-size: 15px;
     }
 
     .tera-submenu a {
-        min-height: 44px;
+        min-height: 48px;
+        padding: 12px 14px;
     }
 
     .tera-login-link {
-        min-height: 50px;
+        min-height: 54px;
+        font-size: 15px;
     }
     
-    /* زيادة حجم منطقة اللمس */
-    .tera-menu-toggle {
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
+    /* تحسينات إضافية للجوال */
     .tera-close-btn {
-        min-width: 44px;
-        min-height: 44px;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+    }
+    
+    .tera-logo-box {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        padding: 12px;
+    }
+    
+    .tera-logo-box img {
+        max-height: 50px;
     }
 }
 
@@ -697,21 +754,43 @@ body.sidebar-open {
     
     .tera-sidebar {
         width: 96%;
+        border-radius: 20px;
     }
     
     .tera-sidebar-inner {
-        padding: 0 16px 16px;
+        padding: 0 14px 14px;
+        border-radius: 18px;
     }
     
     .tera-menu-link,
     .tera-menu-item {
         padding: 14px 18px;
-        font-size: 15px;
+        font-size: 14px;
+        gap: 12px;
     }
     
-    /* تأثيرات إضافية للشاشات الصغيرة */
+    .tera-submenu a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .tera-arrow {
+        font-size: 20px;
+    }
+    
+    .tera-login-link {
+        padding: 16px 0;
+        font-size: 14px;
+    }
+    
+    /* تأثيرات أقوى للشاشات الصغيرة */
+    .tera-menu-link:active,
+    .tera-menu-item:active {
+        transform: scale(0.96) translateX(3px);
+    }
+    
     .tera-login-link:active {
-        transform: scale(0.95);
+        transform: scale(0.94);
     }
 }
 
@@ -719,15 +798,27 @@ body.sidebar-open {
     .tera-menu-link,
     .tera-menu-item {
         padding: 12px 16px;
-        font-size: 14px;
+        font-size: 13px;
+    }
+    
+    .tera-submenu a {
+        padding: 8px 10px;
     }
     
     .tera-arrow {
-        font-size: 20px;
+        font-size: 18px;
+    }
+    
+    .tera-logo-box {
+        margin: 10px 0 20px;
+    }
+    
+    .tera-logo-box img {
+        max-height: 45px;
     }
 }
 /* ----------------------------------- */
-/*      نهاية: تحسينات الجوال           */
+/*      نهاية: تحسينات الجوال القوية    */
 /* ----------------------------------- */
 
 /* ----------------------------------- */
@@ -744,6 +835,8 @@ body.sidebar-open {
 .tera-login-link {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* تقليل الحركة للمستخدمين الذين يفضلون ذلك */
