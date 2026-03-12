@@ -315,7 +315,7 @@ opacity .35s ease;
 
 z-index:999999;
 
-pointer-events:none;
+pointer-events:auto;
 
 box-shadow:
 0 40px 120px rgba(0,0,0,.75);
@@ -1632,7 +1632,29 @@ overflow-y:auto;
 }
 
 
+/* ========================================================= */
+/*           إصلاح استجابة زر تسجيل الدخول في الجوال          */
+/* ========================================================= */
 
+.tera-login-link{
+
+position:relative;
+
+z-index:10000;
+
+/* إجبار المتصفح على إعطاء الزر طبقة مستقلة */
+
+transform:translateZ(0);
+
+will-change:transform;
+
+/* تحسين اللمس */
+
+touch-action:manipulation;
+
+pointer-events:auto;
+
+}
 
 /* ========================================================= */
 /*                                                            */
