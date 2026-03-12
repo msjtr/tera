@@ -1598,12 +1598,13 @@ color:#ffffff !important;
 
 
 
-
 /* ========================================================= */
 /*                     دعم الجوال                             */
 /* ========================================================= */
 
 @media (max-width:768px){
+
+/* تعطيل تأثيرات الصفحة عند فتح القائمة */
 
 body.sidebar-open main,
 body.sidebar-open .site-content{
@@ -1611,6 +1612,28 @@ body.sidebar-open .site-content{
 transform:none;
 box-shadow:none;
 border-radius:0;
+
+}
+
+
+/* ضبط ارتفاع القائمة في الجوال */
+
+.tera-sidebar{
+
+top:calc(var(--header-height) + 6px);
+
+height:calc(100vh - var(--header-height) - 20px);
+
+max-height:calc(100vh - var(--header-height) - 20px);
+
+}
+
+
+/* تحسين تمرير القائمة */
+
+.tera-sidebar-menu{
+
+-webkit-overflow-scrolling:touch;
 
 }
 
@@ -1625,10 +1648,14 @@ body.sidebar-open{
 
 overflow:hidden;
 touch-action:none;
+height:100vh;
 
 }
 
-/* تحسين استجابة الجوال */
+
+/* ========================================================= */
+/*                تحسين استجابة الجوال                        */
+/* ========================================================= */
 
 .tera-menu-link,
 .tera-menu-item,
@@ -1636,7 +1663,7 @@ touch-action:none;
 .tera-login-link{
 
 -webkit-tap-highlight-color: transparent;
-touch-action: manipulation;
+touch-action:manipulation;
 
 }
 
