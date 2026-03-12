@@ -188,10 +188,6 @@
         const submenu = submenuItem.querySelector('.tera-submenu');
         if (!submenu) return;
         
-        // إغلاق القوائم الفرعية الأخرى إذا كان مطلوباً
-        // يمكن تفعيل هذا الخيار إذا أردنا قائمة فرعية واحدة فقط مفتوحة
-        // closeOtherSubmenus(submenuItem);
-        
         // تبديل حالة القائمة الفرعية
         submenuItem.classList.toggle('active');
         
@@ -204,14 +200,6 @@
     function closeAllSubmenus() {
         TERA.submenuItems.forEach(item => {
             item.classList.remove('active');
-        });
-    }
-    
-    function closeOtherSubmenus(currentItem) {
-        TERA.submenuItems.forEach(item => {
-            if (item !== currentItem) {
-                item.classList.remove('active');
-            }
         });
     }
     // ----------------------------------- //
@@ -228,11 +216,7 @@
     }
     
     function handleResize() {
-        // إغلاق السايدبار تلقائياً إذا كان عرض الشاشة أكبر من حجم الجوال
-        // يمكن تفعيل هذا الخيار حسب الحاجة
-        // if (window.innerWidth > 768 && TERA.isSidebarOpen) {
-        //     closeSidebar();
-        // }
+        // يمكن إضافة منطق معين عند تغيير حجم الشاشة
     }
     // ----------------------------------- //
     // نهاية: معالجة الأحداث العامة         //
