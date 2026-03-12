@@ -1272,17 +1272,17 @@ transparent
 opacity:.6;
 
 border-radius:10px;
-box-shadow:
-0 0 8px rgba(0,224,198,.4),
-0 0 18px rgba(0,224,198,.2);
+
+pointer-events:none;
+
+z-index:1;
+
 }
 
 
 
-
-
 /* ========================================================= */
-/*        زر تسجيل الدخول الاحترافي - TERA MOBILE FIX        */
+/*        زر تسجيل الدخول الاحترافي - TERA FIXED              */
 /* ========================================================= */
 
 .tera-login-link{
@@ -1311,28 +1311,30 @@ background:linear-gradient(
 border:none;
 
 position:relative;
-overflow:hidden;
 
 cursor:pointer;
 
-/* سرعة الاستجابة */
-
-transition:
-transform .15s ease,
-box-shadow .15s ease,
-filter .15s ease;
-
-/* توهج خفيف */
-
-box-shadow:
-0 6px 18px rgba(0,224,198,.35);
+z-index:5;
 
 /* تحسين الجوال */
 
 -webkit-tap-highlight-color: transparent;
 touch-action: manipulation;
 
+/* حركة سريعة */
+
+transition:
+transform .12s ease,
+box-shadow .12s ease,
+filter .12s ease;
+
+/* توهج */
+
+box-shadow:
+0 6px 18px rgba(0,224,198,.35);
+
 }
+
 
 
 /* الضوء المتحرك */
@@ -1360,7 +1362,10 @@ transform:skewX(-25deg);
 
 transition:left .45s ease;
 
+pointer-events:none;
+
 }
+
 
 
 /* تأثير الكمبيوتر */
@@ -1368,7 +1373,9 @@ transition:left .45s ease;
 @media (hover:hover){
 
 .tera-login-link:hover::before{
+
 left:120%;
+
 }
 
 .tera-login-link:hover{
@@ -1384,6 +1391,7 @@ box-shadow:
 }
 
 
+
 /* تأثير الجوال */
 
 .tera-login-link:active{
@@ -1391,7 +1399,7 @@ box-shadow:
 transform:scale(.94);
 
 box-shadow:
-0 6px 14px rgba(0,0,0,.35);
+0 5px 14px rgba(0,0,0,.35);
 
 filter:brightness(1.05);
 
