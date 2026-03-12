@@ -1060,8 +1060,294 @@ max-width:100%;
 }
 
 
+/* ========================================================= */
+/*                 نهاية تنسيق قسم فيديو تيرا                 */
+/* ========================================================= */
+
+    /* ========================================================= */
+/*                                                            */
+/*        تصميم احترافي لقسم عن تيرا | TERA About Section     */
+/*                                                            */
+/* ========================================================= */
+
+#about,
+#goal,
+#vision{
+
+position:relative;
+
+padding:120px 20px;
+
+display:flex;
+
+justify-content:center;
+
+overflow:hidden;
+
+}
+
+
+/* الحاوية */
+
+.about-container{
+
+max-width:1050px;
+
+width:100%;
+
+margin:auto;
+
+text-align:right;
+
+direction:rtl;
+
+position:relative;
+
+z-index:2;
+
+}
+
+
+/* العنوان الرئيسي */
+
+.section-title{
+
+font-size:42px;
+
+font-weight:800;
+
+margin-bottom:15px;
+
+color:#ffffff;
+
+letter-spacing:.5px;
+
+position:relative;
+
+opacity:0;
+
+transform:translateX(80px);
+
+transition:1s ease;
+
+}
+
+
+/* الخط أسفل العنوان */
+
+.section-title::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-10px;
+
+right:0;
+
+width:80px;
+
+height:3px;
+
+background:linear-gradient(
+90deg,
+#00e0c6,
+#66fff2
+);
+
+border-radius:10px;
+
+}
+
+
+/* العنوان الفرعي */
+
+.about-subtitle{
+
+font-size:24px;
+
+margin-top:20px;
+
+margin-bottom:30px;
+
+color:#66fff2;
+
+font-weight:600;
+
+opacity:0;
+
+transform:translateX(80px);
+
+transition:1s ease .2s;
+
+}
+
+
+/* النص */
+
+.about-text{
+
+font-size:17px;
+
+line-height:2;
+
+color:#d7f7f2;
+
+margin-bottom:20px;
+
+opacity:0;
+
+transform:translateX(80px);
+
+transition:1s ease .4s;
+
+}
+
+
+/* عند الظهور */
+
+.tera-visible .section-title,
+.tera-visible .about-subtitle,
+.tera-visible .about-text{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+
+/* تأثير Hover خفيف */
+
+.about-text p:hover{
+
+color:#ffffff;
+
+transform:translateX(-5px);
+
+transition:.4s;
+
+}
 
 
 /* ========================================================= */
-/*                 نهاية تنسيق قسم فيديو تيرا                 */
+/*                Glow تقني للخلفية                           */
+/* ========================================================= */
+
+#about::before,
+#goal::before,
+#vision::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+background:radial-gradient(
+circle,
+rgba(0,224,198,.25),
+transparent 70%
+);
+
+top:-200px;
+
+right:-200px;
+
+filter:blur(120px);
+
+z-index:0;
+
+}
+
+
+/* ========================================================= */
+/*                تحسين الجوال                                */
+/* ========================================================= */
+
+@media(max-width:992px){
+
+.section-title{
+
+font-size:32px;
+
+}
+
+.about-subtitle{
+
+font-size:20px;
+
+}
+
+.about-text{
+
+font-size:16px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+#about,
+#goal,
+#vision{
+
+padding:90px 18px;
+
+}
+
+.section-title{
+
+font-size:26px;
+
+}
+
+.about-subtitle{
+
+font-size:18px;
+
+}
+
+.about-text{
+
+font-size:15px;
+
+line-height:1.9;
+
+}
+
+}
+
+
+@media(max-width:480px){
+
+.section-title{
+
+font-size:22px;
+
+}
+
+.about-subtitle{
+
+font-size:16px;
+
+}
+
+.about-text{
+
+font-size:14px;
+
+}
+
+
+
+
+/* ========================================================= */
+/*                                                            */
+/*            نهاية تصميم قسم عن تيرا الاحترافي                */
+/*                                                            */
 /* ========================================================= */
